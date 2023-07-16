@@ -43,8 +43,6 @@ namespace ArduinoLadder
             var asm = typeof(Program).Assembly;
             Version = asm.GetName().Version?.ToString() ?? "";
 
-            IconTool.WriteBitmaps(@"d:\ico", "fa-microchip", Color.Teal);
-
             #region Directory
             var dir = Path.Combine(Application.StartupPath, "arduino_ld");
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
