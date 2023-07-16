@@ -43,9 +43,7 @@ namespace ArduinoLadder
             var asm = typeof(Program).Assembly;
             Version = asm.GetName().Version?.ToString() ?? "";
 
-            var s = string.Concat(File.ReadAllLines(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "a.txt")).Select(x => $"sbPLC.AppendLine(\"{x}\");\r\n"));
-
-
+            //var s = string.Concat(File.ReadAllLines(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "a.txt")).Select(x => $"sbPLC.AppendLine(\"{x}\");\r\n"));
 
             #region Directory
             var dir = Path.Combine(Application.StartupPath, "arduino_ld");
