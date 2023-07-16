@@ -66,6 +66,7 @@ namespace ArduinoLadder.Forms
             this.pnlContent = new Devinno.Forms.Containers.DvContainer();
             this.ladder = new ArduinoLadder.Controls.LadderEditorControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnDefaultCode = new Devinno.Forms.Controls.DvButton();
             this.pnlTop.SuspendLayout();
             this.pnlLD.SuspendLayout();
             this.pnlToolBar.SuspendLayout();
@@ -356,7 +357,7 @@ namespace ArduinoLadder.Forms
             // pnlToolBar
             // 
             this.pnlToolBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pnlToolBar.ColumnCount = 16;
+            this.pnlToolBar.ColumnCount = 17;
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
@@ -367,6 +368,7 @@ namespace ArduinoLadder.Forms
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
@@ -381,8 +383,9 @@ namespace ArduinoLadder.Forms
             this.pnlToolBar.Controls.Add(this.btnHardware, 7, 0);
             this.pnlToolBar.Controls.Add(this.btnSymbol, 8, 0);
             this.pnlToolBar.Controls.Add(this.btnCommunication, 9, 0);
-            this.pnlToolBar.Controls.Add(this.lblSketchPath, 12, 0);
-            this.pnlToolBar.Controls.Add(this.btnExport, 15, 0);
+            this.pnlToolBar.Controls.Add(this.lblSketchPath, 13, 0);
+            this.pnlToolBar.Controls.Add(this.btnExport, 16, 0);
+            this.pnlToolBar.Controls.Add(this.btnDefaultCode, 11, 0);
             this.pnlToolBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlToolBar.Location = new System.Drawing.Point(7, 10);
             this.pnlToolBar.Name = "pnlToolBar";
@@ -892,6 +895,29 @@ namespace ArduinoLadder.Forms
             this.toolTip.UseAnimation = false;
             this.toolTip.UseFading = false;
             // 
+            // btnDefaultCode
+            // 
+            this.btnDefaultCode.BackgroundDraw = true;
+            this.btnDefaultCode.ButtonColor = null;
+            this.btnDefaultCode.Clickable = true;
+            this.btnDefaultCode.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleCenter;
+            this.btnDefaultCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDefaultCode.Gradient = true;
+            this.btnDefaultCode.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.btnDefaultCode.IconGap = 0;
+            this.btnDefaultCode.IconImage = null;
+            this.btnDefaultCode.IconSize = 12F;
+            this.btnDefaultCode.IconString = "fa-code";
+            this.btnDefaultCode.Location = new System.Drawing.Point(393, 3);
+            this.btnDefaultCode.Name = "btnDefaultCode";
+            this.btnDefaultCode.Round = null;
+            this.btnDefaultCode.ShadowGap = 1;
+            this.btnDefaultCode.Size = new System.Drawing.Size(39, 34);
+            this.btnDefaultCode.TabIndex = 13;
+            this.btnDefaultCode.TextPadding = new System.Windows.Forms.Padding(0);
+            this.toolTip.SetToolTip(this.btnDefaultCode, "기본 코드");
+            this.btnDefaultCode.UseKey = false;
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -959,6 +985,7 @@ namespace ArduinoLadder.Forms
         private Devinno.Forms.Controls.DvControl dvControl2;
         private Devinno.Forms.Controls.DvButton btnSetting;
         private Devinno.Forms.Controls.DvButton btnExport;
+        private Devinno.Forms.Controls.DvButton btnDefaultCode;
     }
 }
 

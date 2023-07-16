@@ -106,11 +106,12 @@ namespace ArduinoLadder.Managers
         #region StartDebug
         public void StartDebug(LadderDocument doc)
         {
-            var dic = LadderTool.GetDebugs(doc);
-            var lsDBGP = LadderTool.GetDBGP(dic);
-            var lsDBGW = LadderTool.GetDBGW(dic);
-            var DBGP_CNT = LadderTool.DBGP_Count(lsDBGP);
-            var DBGW_CNT = LadderTool.DBGW_Count(lsDBGW);
+            #region Debugs
+            var dic = DebugTool.GetDebugs(doc);
+            var lsDBGP = DebugTool.GetDBGP(dic);
+            var lsDBGW = DebugTool.GetDBGW(dic);
+            var DBGP_CNT = DebugTool.DBGP_Count(lsDBGP);
+            var DBGW_CNT = DebugTool.DBGW_Count(lsDBGW);
 
             Debugs.Clear();
             int iP = 0, iW = 0;
@@ -146,6 +147,7 @@ namespace ArduinoLadder.Managers
                     iP++;
                 }
             }
+            #endregion
 
             IsDebugging = true;
             comm.ClearAuto();

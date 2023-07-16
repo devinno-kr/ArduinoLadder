@@ -35,6 +35,7 @@ namespace ArduinoLadder.Forms
         FormHardware frmHardware;
         FormSetting frmSetting;
         FormCommunication frmComm;
+        FormDefault frmDefault;
 
         Timer tmr;
         bool bSaveFileDown = false;
@@ -51,6 +52,7 @@ namespace ArduinoLadder.Forms
             frmHardware = new FormHardware();
             frmSetting = new FormSetting();
             frmComm = new FormCommunication();
+            frmDefault = new FormDefault();
             #endregion
 
             #region Grid
@@ -178,6 +180,14 @@ namespace ArduinoLadder.Forms
                 Block = false;
             };
             #endregion
+            #region btnDefaultCode.ButtonClick      : 기본코드
+            btnDefaultCode.ButtonClick += (o, s) =>
+            {
+                Block = true;
+                frmDefault.ShowDefaultCode(CurrentDocument);
+                Block = false;
+            };
+            #endregion
             #region lblSketchPath.ButtonClicked     : 스케치 경로 설정
             lblSketchPath.ButtonClicked += (o, s) =>
             {
@@ -199,7 +209,7 @@ namespace ArduinoLadder.Forms
                 }
             };
             #endregion
-            #region btnExport.ButtonClick       : 배포
+            #region btnExport.ButtonClick           : 배포
             btnExport.ButtonClick += (o, s) =>
             {
                 if (CurrentDocument != null)
@@ -525,6 +535,7 @@ namespace ArduinoLadder.Forms
             btnHardware.Enabled = CurrentDocument != null && !IsDebugging;
             btnSymbol.Enabled = CurrentDocument != null && !IsDebugging;
             btnCommunication.Enabled = CurrentDocument != null && !IsDebugging;
+            btnDefaultCode.Enabled = CurrentDocument != null;
             lblSketchPath.Enabled = CurrentDocument != null && !IsDebugging;
             pnlLD.Enabled = CurrentDocument != null && !IsDebugging && ladder.Editable;
             lblDebugPort.Enabled = CurrentDocument != null && !IsDebugging;
