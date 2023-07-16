@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\hy752\.nuget\packages\devinno.forms\1.1.0.8\contentFiles\any\net5.0-windows7.0\ico.png" />
+    <Content Remove="C:\Users\hy752\.nuget\packages\devinno\1.1.0.9\contentFiles\any\net5.0\ico.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Devinno" Version="1.1.0.9" />
+    <PackageReference Include="Devinno.Forms" Version="1.1.0.8" />
+    <PackageReference Include="GuiLabs.Undo" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
