@@ -836,10 +836,10 @@ namespace ArduinoLadder.Tools
                                                             sbPLC.AppendLine(L($"        {nm} = _result_;", nd));
                                                             sbPLC.AppendLine(L($"        if(_result_)", nd));
                                                             sbPLC.AppendLine(L($"        {{", nd));
-                                                            if (cnt >= 1) sbPLC.AppendLine(L($"            {vaddr2.Code + (vaddr2.Index + 0)} = (ushort)(({addr1} & 0xF000) >> 12);", nd));
-                                                            if (cnt >= 2) sbPLC.AppendLine(L($"            {vaddr2.Code + (vaddr2.Index + 1)} = (ushort)(({addr1} & 0x0F00) >> 8);", nd));
-                                                            if (cnt >= 3) sbPLC.AppendLine(L($"            {vaddr2.Code + (vaddr2.Index + 2)} = (ushort)(({addr1} & 0x00F0) >> 4);", nd));
-                                                            if (cnt >= 4) sbPLC.AppendLine(L($"            {vaddr2.Code + (vaddr2.Index + 3)} = (ushort)(({addr1} & 0x000F) >> 0);", nd));
+                                                            if (cnt >= 1) sbPLC.AppendLine(L($"            {vaddr2.Code + (vaddr2.Index + 0)} = (unsigned short)(({addr1} & 0xF000) >> 12);", nd));
+                                                            if (cnt >= 2) sbPLC.AppendLine(L($"            {vaddr2.Code + (vaddr2.Index + 1)} = (unsigned short)(({addr1} & 0x0F00) >> 8);", nd));
+                                                            if (cnt >= 3) sbPLC.AppendLine(L($"            {vaddr2.Code + (vaddr2.Index + 2)} = (unsigned short)(({addr1} & 0x00F0) >> 4);", nd));
+                                                            if (cnt >= 4) sbPLC.AppendLine(L($"            {vaddr2.Code + (vaddr2.Index + 3)} = (unsigned short)(({addr1} & 0x000F) >> 0);", nd));
                                                             sbPLC.AppendLine(L($"        }}", nd));
 
                                                         }
@@ -1706,20 +1706,20 @@ namespace ArduinoLadder.Tools
                 sbSyms.AppendLine("    {");
                 sbSyms.AppendLine("        switch (Type)");
                 sbSyms.AppendLine("        {");
-                sbSyms.AppendLine("            case F_TON:               __T[idx] = (ushort)(__T[idx] < Goal ? __T[idx] + 1 : Goal);    break;");
-                sbSyms.AppendLine("            case F_TAON:  if (_100_)  __T[idx] = (ushort)(__T[idx] < Goal ? __T[idx] + 1 : Goal);    break;");
-                sbSyms.AppendLine("            case F_TOFF:              __T[idx] = (ushort)(__T[idx] > 0    ? __T[idx] - 1 : 0);          break;");
-                sbSyms.AppendLine("            case F_TAOFF: if (_100_)  __T[idx] = (ushort)(__T[idx] > 0    ? __T[idx] - 1 : 0);          break;");
+                sbSyms.AppendLine("            case F_TON:               __T[idx] = (unsigned short)(__T[idx] < Goal ? __T[idx] + 1 : Goal);    break;");
+                sbSyms.AppendLine("            case F_TAON:  if (_100_)  __T[idx] = (unsigned short)(__T[idx] < Goal ? __T[idx] + 1 : Goal);    break;");
+                sbSyms.AppendLine("            case F_TOFF:              __T[idx] = (unsigned short)(__T[idx] > 0    ? __T[idx] - 1 : 0);          break;");
+                sbSyms.AppendLine("            case F_TAOFF: if (_100_)  __T[idx] = (unsigned short)(__T[idx] > 0    ? __T[idx] - 1 : 0);          break;");
                 sbSyms.AppendLine("            case F_TMON:  ");
                 sbSyms.AppendLine("                        {            ");
-                sbSyms.AppendLine("                                    __T[idx] = (ushort)(__T[idx] < Goal ? __T[idx] + 1 : Goal);  ");
+                sbSyms.AppendLine("                                    __T[idx] = (unsigned short)(__T[idx] < Goal ? __T[idx] + 1 : Goal);  ");
                 sbSyms.AppendLine("                                    if (__T[idx] == Goal) {  __T[idx] = Goal = 0;   Type = NONE;  }");
                 sbSyms.AppendLine("                        }");
                 sbSyms.AppendLine("                        break;");
                 sbSyms.AppendLine("            case F_TAMON: ");
                 sbSyms.AppendLine("                        if (_100_)");
                 sbSyms.AppendLine("                        {");
-                sbSyms.AppendLine("                                    __T[idx] = (ushort)(__T[idx] < Goal ? __T[idx] + 1 : Goal);");
+                sbSyms.AppendLine("                                    __T[idx] = (unsigned short)(__T[idx] < Goal ? __T[idx] + 1 : Goal);");
                 sbSyms.AppendLine("                                    if (__T[idx] == Goal) {  __T[idx] = Goal = 0;   Type = NONE;  }");
                 sbSyms.AppendLine("                        }");
                 sbSyms.AppendLine("                        break;");
