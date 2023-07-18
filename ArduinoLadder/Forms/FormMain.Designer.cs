@@ -53,6 +53,7 @@ namespace ArduinoLadder.Forms
             this.btnCommunication = new Devinno.Forms.Controls.DvButton();
             this.lblSketchPath = new ArduinoLadder.Controls.DvValueLabelPath();
             this.btnExport = new Devinno.Forms.Controls.DvButton();
+            this.btnDefaultCode = new Devinno.Forms.Controls.DvButton();
             this.pnlStatus = new Devinno.Forms.Containers.DvContainer();
             this.lblCursorPosition = new Devinno.Forms.Controls.DvLabel();
             this.dvControl2 = new Devinno.Forms.Controls.DvControl();
@@ -66,7 +67,6 @@ namespace ArduinoLadder.Forms
             this.pnlContent = new Devinno.Forms.Containers.DvContainer();
             this.ladder = new ArduinoLadder.Controls.LadderEditorControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnDefaultCode = new Devinno.Forms.Controls.DvButton();
             this.pnlTop.SuspendLayout();
             this.pnlLD.SuspendLayout();
             this.pnlToolBar.SuspendLayout();
@@ -644,6 +644,30 @@ namespace ArduinoLadder.Forms
             this.toolTip.SetToolTip(this.btnExport, "배포");
             this.btnExport.UseKey = false;
             // 
+            // btnDefaultCode
+            // 
+            this.btnDefaultCode.BackgroundDraw = true;
+            this.btnDefaultCode.ButtonColor = null;
+            this.btnDefaultCode.Clickable = true;
+            this.btnDefaultCode.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleCenter;
+            this.btnDefaultCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDefaultCode.Gradient = true;
+            this.btnDefaultCode.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.btnDefaultCode.IconGap = 0;
+            this.btnDefaultCode.IconImage = null;
+            this.btnDefaultCode.IconSize = 12F;
+            this.btnDefaultCode.IconString = "fa-code";
+            this.btnDefaultCode.Location = new System.Drawing.Point(393, 3);
+            this.btnDefaultCode.Name = "btnDefaultCode";
+            this.btnDefaultCode.Round = null;
+            this.btnDefaultCode.ShadowGap = 1;
+            this.btnDefaultCode.Size = new System.Drawing.Size(39, 34);
+            this.btnDefaultCode.TabIndex = 13;
+            this.btnDefaultCode.Text = null;
+            this.btnDefaultCode.TextPadding = new System.Windows.Forms.Padding(0);
+            this.toolTip.SetToolTip(this.btnDefaultCode, "메인 코드");
+            this.btnDefaultCode.UseKey = false;
+            // 
             // pnlStatus
             // 
             this.pnlStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -895,29 +919,6 @@ namespace ArduinoLadder.Forms
             this.toolTip.UseAnimation = false;
             this.toolTip.UseFading = false;
             // 
-            // btnDefaultCode
-            // 
-            this.btnDefaultCode.BackgroundDraw = true;
-            this.btnDefaultCode.ButtonColor = null;
-            this.btnDefaultCode.Clickable = true;
-            this.btnDefaultCode.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleCenter;
-            this.btnDefaultCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDefaultCode.Gradient = true;
-            this.btnDefaultCode.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
-            this.btnDefaultCode.IconGap = 0;
-            this.btnDefaultCode.IconImage = null;
-            this.btnDefaultCode.IconSize = 12F;
-            this.btnDefaultCode.IconString = "fa-code";
-            this.btnDefaultCode.Location = new System.Drawing.Point(393, 3);
-            this.btnDefaultCode.Name = "btnDefaultCode";
-            this.btnDefaultCode.Round = null;
-            this.btnDefaultCode.ShadowGap = 1;
-            this.btnDefaultCode.Size = new System.Drawing.Size(39, 34);
-            this.btnDefaultCode.TabIndex = 13;
-            this.btnDefaultCode.TextPadding = new System.Windows.Forms.Padding(0);
-            this.toolTip.SetToolTip(this.btnDefaultCode, "기본 코드");
-            this.btnDefaultCode.UseKey = false;
-            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -935,7 +936,6 @@ namespace ArduinoLadder.Forms
             this.TitleIconBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
             this.TitleIconSize = 17F;
             this.TitleIconString = "fa-microchip";
-            this.toolTip.SetToolTip(this, "새 파일");
             this.pnlTop.ResumeLayout(false);
             this.pnlLD.ResumeLayout(false);
             this.pnlToolBar.ResumeLayout(false);

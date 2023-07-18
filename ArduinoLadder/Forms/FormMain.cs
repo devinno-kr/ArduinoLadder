@@ -31,7 +31,7 @@ namespace ArduinoLadder.Forms
         #endregion
 
         #region Member Variable
-        FormSymbol2 frmSymbol;
+        FormSymbol frmSymbol;
         FormHardware frmHardware;
         FormSetting frmSetting;
         FormCommunication frmComm;
@@ -48,7 +48,7 @@ namespace ArduinoLadder.Forms
             InitializeComponent();
 
             #region Forms
-            frmSymbol = new FormSymbol2();
+            frmSymbol = new FormSymbol();
             frmHardware = new FormHardware();
             frmSetting = new FormSetting();
             frmComm = new FormCommunication();
@@ -243,6 +243,7 @@ namespace ArduinoLadder.Forms
                 {
                     Program.DataMgr.ProjectFolder = ret.ProjectFolder;
                     Program.DataMgr.ArduinoFolder = ret.ArduinoFolder;
+                    Program.DataMgr.Language = ret.Language;
                     Program.DataMgr.SaveSetting();
                 }
                 Block = false;
@@ -328,6 +329,10 @@ namespace ArduinoLadder.Forms
             SetExComposited();
 
             UISet();
+
+            #region Language
+            Program.DataMgr.LanguageChanged += (o, s) => ToolTipSet();
+            #endregion
         }
         #endregion
 
@@ -355,7 +360,7 @@ namespace ArduinoLadder.Forms
         {
             ladder.Focus();
             ladder.Select();
-
+            ToolTipSet();
             base.OnLoad(e);
         }
         #endregion
@@ -430,7 +435,11 @@ namespace ArduinoLadder.Forms
             if (CurrentDocument != null && CurrentDocument.MustSave)
             {
                 Block = true;
-                switch (Program.MessageBox.ShowMessageBoxYesNoCancel("저장", "저장 하시겠습니까?"))
+                
+                var sTitle = Program.DataMgr.Language == Managers.Lang.KO ? "저장" : "Save";
+                var sMessage = Program.DataMgr.Language == Managers.Lang.KO ? "저장 하시겠습니까?" : "Would you like me to save it?";
+
+                switch (Program.MessageBox.ShowMessageBoxYesNoCancel(sTitle, sMessage))
                 {
                     case DialogResult.Yes: SaveFile(); break;
                     case DialogResult.No: break;
@@ -444,6 +453,8 @@ namespace ArduinoLadder.Forms
                 Block = true;
                 using (var ofd = new OpenFileDialog())
                 {
+                    var sTitle = Program.DataMgr.Language == Managers.Lang.KO ? "열기" : "Open";
+
                     ofd.InitialDirectory = Program.DataMgr.ProjectFolder;
                     ofd.Multiselect = false;
                     ofd.Filter = "Arduino Ladder File|*.dal";
@@ -480,7 +491,10 @@ namespace ArduinoLadder.Forms
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    Program.MessageBox.ShowMessageBoxOk("저장", "권한 부족으로 저장할 수 없습니다.");
+                    var sTitle = Program.DataMgr.Language == Managers.Lang.KO ? "저장" : "Save";
+                    var sMessage = Program.DataMgr.Language == Managers.Lang.KO ? "권한 부족으로 저장할 수 없습니다." : "Insufficient permissions to save.";
+
+                    Program.MessageBox.ShowMessageBoxOk(sTitle, sMessage);
                 }
 
                 if (Block) Block = false;
@@ -500,7 +514,10 @@ namespace ArduinoLadder.Forms
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    Program.MessageBox.ShowMessageBoxOk("저장", "권한 부족으로 저장할 수 없습니다.");
+                    var sTitle = Program.DataMgr.Language == Managers.Lang.KO ? "저장" : "Save";
+                    var sMessage = Program.DataMgr.Language == Managers.Lang.KO ? "권한 부족으로 저장할 수 없습니다." : "Insufficient permissions to save.";
+
+                    Program.MessageBox.ShowMessageBoxOk(sTitle, sMessage);
                 }
 
                 Block = false;
@@ -520,12 +537,44 @@ namespace ArduinoLadder.Forms
         public void Debug(List<DebugInfo> v) => ladder.SetDebug(v);
         #endregion
 
+        #region ToolTipSet
+        void ToolTipSet()
+        {
+            if (Program.DataMgr.Language == Managers.Lang.KO)
+            {
+                toolTip.SetToolTip(btnSaveFile, "저장");
+                toolTip.SetToolTip(btnSaveAsFile, "다른 이름으로 저장");
+                toolTip.SetToolTip(btnOpenFile, "열기");
+                toolTip.SetToolTip(btnNewFile, "새 파일");
+                toolTip.SetToolTip(btnHardware, "하드웨어");
+                toolTip.SetToolTip(btnSymbol, "심볼");
+                toolTip.SetToolTip(btnCommunication, "통신 설정");
+                toolTip.SetToolTip(btnCheck, "유효성 체크");
+                toolTip.SetToolTip(btnMonitoring, "모니터링");
+                toolTip.SetToolTip(btnExport, "배포");
+                toolTip.SetToolTip(btnDefaultCode, "메인 코드");
+            }
+            else if (Program.DataMgr.Language == Managers.Lang.EN)
+            {
+                toolTip.SetToolTip(btnSaveFile, "Save File");
+                toolTip.SetToolTip(btnSaveAsFile, "Save As File");
+                toolTip.SetToolTip(btnOpenFile, "Open File");
+                toolTip.SetToolTip(btnNewFile, "New File");
+                toolTip.SetToolTip(btnHardware, "Hardware");
+                toolTip.SetToolTip(btnSymbol, "Symbol");
+                toolTip.SetToolTip(btnCommunication, "Communication");
+                toolTip.SetToolTip(btnCheck, "Validation Check");
+                toolTip.SetToolTip(btnMonitoring, "Monitoring");
+                toolTip.SetToolTip(btnExport, "Deploy");
+                toolTip.SetToolTip(btnDefaultCode, "Main Code");
+            }
+        }
+        #endregion
         #region UISet
         void UISet()
         {
             bool IsDebugging = Program.DevMgr.IsDebugging;
 
-            lblCursorPosition.Text = CurrentDocument != null ? string.Format("행 : {0, -5}    열 : {1, -5}", ladder.CurX + 1, ladder.CurRow + 1) : "";
             btnMonitoring.ButtonColor = IsDebugging ? Color.Teal : Theme.ButtonColor;
 
             ladder.Visible = CurrentDocument != null;
@@ -542,13 +591,25 @@ namespace ArduinoLadder.Forms
             btnExport.Enabled = CurrentDocument != null && !IsDebugging;
             gridMessage.Enabled = CurrentDocument != null;
             btnMonitoring.Enabled = CurrentDocument != null;
-            
 
-            Title = "아두이노 레더 에디터" + (CurrentDocument != null ? "  :  " + CurrentDocument.DisplayTitle : "");
             ladder.Debug = IsDebugging;
             lblSketchPath.Value = CurrentDocument?.SketchPath ?? "";
             lblDebugPort.Value = $"{Program.DevMgr.PortName} : {Program.DevMgr.Baudrate}";
 
+            if (Program.DataMgr.Language == Managers.Lang.KO)
+            {
+                lblCursorPosition.Text = CurrentDocument != null ? $"열 : {(ladder.CurX + 1)}        행 : {(ladder.CurRow + 1)}" : "";
+                Title = "아두이노 레더 에디터" + (CurrentDocument != null ? "  :  " + CurrentDocument.DisplayTitle : "");
+                lblSketchPath.Title = "스케치 경로";
+                lblDebugPort.Title = "디버그 포트";
+            }
+            else if (Program.DataMgr.Language == Managers.Lang.EN)
+            {
+                lblCursorPosition.Text = CurrentDocument != null ? $"Col : {(ladder.CurX + 1)}        Row : {(ladder.CurRow + 1)}" : "";
+                Title = "Arduino Ladder Editor" + (CurrentDocument != null ? "  :  " + CurrentDocument.DisplayTitle : "");
+                lblSketchPath.Title = "Sketch Path";
+                lblDebugPort.Title = "Debug Port";
+            }
 
             #region SizeChanged
             if (szold != this.Size)

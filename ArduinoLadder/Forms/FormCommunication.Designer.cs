@@ -129,11 +129,11 @@ namespace ArduinoLadder.Forms
             this.lblTitleAreas.Name = "lblTitleAreas";
             this.lblTitleAreas.Round = null;
             this.lblTitleAreas.ShadowGap = 1;
-            this.lblTitleAreas.Size = new System.Drawing.Size(112, 30);
+            this.lblTitleAreas.Size = new System.Drawing.Size(227, 30);
             this.lblTitleAreas.Style = Devinno.Forms.Embossing.FlatConcave;
             this.lblTitleAreas.TabIndex = 1;
             this.lblTitleAreas.TabStop = false;
-            this.lblTitleAreas.Text = "통신 내역";
+            this.lblTitleAreas.Text = "통신 리스트";
             this.lblTitleAreas.TextPadding = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.lblTitleAreas.Unit = "";
             this.lblTitleAreas.UnitWidth = 36;

@@ -21,7 +21,7 @@ using System.Windows.Forms;
 
 namespace ArduinoLadder.Forms
 {
-    public partial class FormSymbol2 : DvForm
+    public partial class FormSymbol : DvForm
     {
         #region class : Result
         public class Result
@@ -42,7 +42,7 @@ namespace ArduinoLadder.Forms
         #endregion
 
         #region Constructor
-        public FormSymbol2()
+        public FormSymbol()
         {
             InitializeComponent();
 
@@ -139,7 +139,31 @@ namespace ArduinoLadder.Forms
             return ls.Count == 0;
         }
         #endregion
-
+        #region LangSet
+        void LangSet()
+        {
+            if (Program.DataMgr.Language == Managers.Lang.KO)
+            {
+                Title = "심볼";
+                lblTitleAreas.Text = "영역 크기";
+                dvLabel1.Text = "심볼 목록";
+                dvLabel2.Text = "입력";
+                btnOK.Text = "확인";
+                btnCancel.Text = "취소";
+                dvLabel3.Text = "※입력 형식 : '[주소]    [명칭]'\r\n※입력 예시 : 'D0    Test'";
+            }
+            else if (Program.DataMgr.Language == Managers.Lang.EN)
+            {
+                Title = "Symbol";
+                lblTitleAreas.Text = "Area Count";
+                dvLabel1.Text = "Symbol List";
+                dvLabel2.Text = "Input";
+                btnOK.Text = "Ok";
+                btnCancel.Text = "Cancel";
+                dvLabel3.Text = "※Input format : '[address]    [name]'\r\n※Input example : 'D0    Test'";
+            }
+        }
+        #endregion
         #region ShowSymbol
         public Result ShowSymbol(LadderDocument doc)
         {
@@ -169,6 +193,8 @@ namespace ArduinoLadder.Forms
             txt.Text = sb.ToString();
             tbl.SetItems(Data.Symbols);
 
+            LangSet();
+
             #region ShowDialog
             if (this.ShowDialog() == DialogResult.OK)
             {
@@ -185,7 +211,6 @@ namespace ArduinoLadder.Forms
             return ret;
         }
         #endregion
-
         #endregion
     }
 }

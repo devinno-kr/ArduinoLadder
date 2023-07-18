@@ -487,8 +487,8 @@ namespace ArduinoLadder.Ladder
     public interface ILadderFunc
     {
         string Name { get; }
-        string Description { get; }
-
+        string DescriptionKO { get; }
+        string DescriptionEN { get; }
         List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld);
     }
     #endregion
@@ -497,7 +497,7 @@ namespace ArduinoLadder.Ladder
     public class FuncTON : ILadderFunc
     {
         public string Name => "TON";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -516,6 +516,26 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("TON( [relay], value )");
+                sb.AppendLine("");
+                sb.AppendLine("relay : Only T relay can be used");
+                sb.AppendLine("value : Constant value between 1 and 65535 or the use of D register");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("When the condition is ON, the timer increases in increments of 10ms.");
+                sb.AppendLine("When it reaches the value, the relay is turned ON.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckTimerFunction(Name, doc, ld);
     }
     #endregion
@@ -523,7 +543,7 @@ namespace ArduinoLadder.Ladder
     public class FuncTAON : ILadderFunc
     {
         public string Name => "TAON";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -542,6 +562,26 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("TAON( [relay], value )");
+                sb.AppendLine("");
+                sb.AppendLine("relay : Only T relay can be used");
+                sb.AppendLine("value : Constant value between 1 and 65535 or the use of D register");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("When the condition is ON, the timer increases in increments of 100ms.");
+                sb.AppendLine("When it reaches the value, the relay is turned ON.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckTimerFunction(Name, doc, ld);
     }
     #endregion
@@ -549,7 +589,7 @@ namespace ArduinoLadder.Ladder
     public class FuncTOFF : ILadderFunc
     {
         public string Name => "TOFF";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -568,6 +608,27 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("TOFF( [relay], value )");
+                sb.AppendLine("");
+                sb.AppendLine("relay : Only T relay can be used");
+                sb.AppendLine("value : Constant value between 1 and 65535 or the use of D register");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("When the condition is ON, the relay is turned ON.");
+                sb.AppendLine("Subsequently, when the condition becomes OFF, the timer decreases in increments of 10ms.");
+                sb.AppendLine("After the elapsed time reaches the value, the relay is turned OFF.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckTimerFunction(Name, doc, ld);
     }
     #endregion
@@ -575,7 +636,7 @@ namespace ArduinoLadder.Ladder
     public class FuncTAOFF : ILadderFunc
     {
         public string Name => "TAOFF";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -594,6 +655,27 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("TAOFF( [relay], value )");
+                sb.AppendLine("");
+                sb.AppendLine("relay : Only T relay can be used");
+                sb.AppendLine("value : Constant value between 1 and 65535 or the use of D register");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("When the condition is ON, the relay is turned ON.");
+                sb.AppendLine("Subsequently, when the condition becomes OFF, the timer decreases in increments of 100ms.");
+                sb.AppendLine("After the elapsed time reaches the setting value, the relay is turned OFF.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckTimerFunction(Name, doc, ld);
     }
     #endregion
@@ -601,7 +683,7 @@ namespace ArduinoLadder.Ladder
     public class FuncTMON : ILadderFunc
     {
         public string Name => "TMON";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -620,6 +702,26 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("TMON( [relay], value )");
+                sb.AppendLine("");
+                sb.AppendLine("relay : Only T relay can be used.");
+                sb.AppendLine("value : Constant value from 1 to 65535 or D register can be used");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("If the condition is ON even for a moment, the relay is turned ON.");
+                sb.AppendLine("Afterwards, the timer increments in units of 10ms, and when it reaches the value, the relay is turned OFF.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckTimerFunction(Name, doc, ld);
     }
     #endregion
@@ -627,7 +729,7 @@ namespace ArduinoLadder.Ladder
     public class FuncTAMON : ILadderFunc
     {
         public string Name => "TAMON";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -646,6 +748,26 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("TAMON( [relay], value )");
+                sb.AppendLine("");
+                sb.AppendLine("relay : Only T relay can be used");
+                sb.AppendLine("value : Constant value from 1 to 65535 or D register can be used");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("If the condition is ON even for a moment, the relay is turned ON.");
+                sb.AppendLine("Afterwards, the timer increments in units of 100ms, and when it reaches the value, the relay is turned OFF.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckTimerFunction(Name, doc, ld);
     }
     #endregion
@@ -653,7 +775,7 @@ namespace ArduinoLadder.Ladder
     public class FuncSETOUT : ILadderFunc
     {
         public string Name => "SETOUT";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -671,6 +793,24 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("SETOUT( [relay] )");
+                sb.AppendLine("");
+                sb.AppendLine("relay : Only P and M relays can be used");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("If the condition is ON, the relay is turned ON.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckOutFunction(Name, doc, ld);
     }
     #endregion
@@ -678,7 +818,7 @@ namespace ArduinoLadder.Ladder
     public class FuncRSTOUT : ILadderFunc
     {
         public string Name => "RSTOUT";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -696,6 +836,24 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("RSTOUT( [relay] )");
+                sb.AppendLine("");
+                sb.AppendLine("relay : Only P and M relays can be used");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("If the condition is ON, the relay is turned OFF.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckOutFunction(Name, doc, ld);
     }
     #endregion
@@ -703,7 +861,7 @@ namespace ArduinoLadder.Ladder
     public class FuncMCS : ILadderFunc
     {
         public string Name => "MCS";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -722,6 +880,25 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("MCS( number )");
+                sb.AppendLine("");
+                sb.AppendLine("number : MCS number");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("A command that allows control of the ladder in block units.");
+                sb.AppendLine("Start of a block.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckMcsFunction(Name, doc, ld);
     }
     #endregion
@@ -729,7 +906,7 @@ namespace ArduinoLadder.Ladder
     public class FuncMCSCLR : ILadderFunc
     {
         public string Name => "MCSCLR";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -748,6 +925,25 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("MCSCLR( number )");
+                sb.AppendLine("");
+                sb.AppendLine("number : MCS number");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("A command that allows control of the ladder in block units.");
+                sb.AppendLine("End of a block.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckMcsFunction(Name, doc, ld);
     }
     #endregion
@@ -755,7 +951,7 @@ namespace ArduinoLadder.Ladder
     public class FuncWXCHG : ILadderFunc
     {
         public string Name => "WXCHG";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -774,6 +970,25 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("WXCHG( memory1, memory2 )");
+                sb.AppendLine("");
+                sb.AppendLine("memory1 : Memory 1 to be swapped.");
+                sb.AppendLine("memory2 : Memory 2 to be swapped.");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("Mutual exchange between memory 1 and memory 2.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckWxchgFunction(Name, doc, ld);
     }
     #endregion
@@ -781,7 +996,7 @@ namespace ArduinoLadder.Ladder
     public class FuncDIST : ILadderFunc
     {
         public string Name => "DIST";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -801,6 +1016,26 @@ namespace ArduinoLadder.Ladder
             }
         }
 
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("DIST( memory1, memory2, count )");
+                sb.AppendLine("");
+                sb.AppendLine("memory1 : Source memory");
+                sb.AppendLine("memory2 : Starting target memory");
+                sb.AppendLine("count : Number of values to be stored in memory");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("Divides a 16-bit value into 4-bit units and stores them in the target memory.");
+                return sb.ToString();
+            }
+        }
+
         public List<LadderCheckMessage> Check(LadderDocument doc, LadderItem ld) => LadderFunc.CheckDistFunction(Name, doc, ld);
     }
     #endregion
@@ -808,7 +1043,7 @@ namespace ArduinoLadder.Ladder
     public class FuncUNIT : ILadderFunc
     {
         public string Name => "UNIT";
-        public string Description
+        public string DescriptionKO
         {
             get
             {
@@ -824,6 +1059,26 @@ namespace ArduinoLadder.Ladder
                 sb.AppendLine("· 설명");
                 sb.AppendLine("");
                 sb.AppendLine("지정한 메모리들의 하위 4비트 합쳐 타깃 메모리에 저장");
+                return sb.ToString();
+            }
+        }
+
+        public string DescriptionEN
+        {
+            get
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine("· Syntax");
+                sb.AppendLine("");
+                sb.AppendLine("UNIT( memory1, memory2, count )");
+                sb.AppendLine("");
+                sb.AppendLine("memory1 : Starting source memory.");
+                sb.AppendLine("memory2 : Target memory.");
+                sb.AppendLine("count : Number of values to be stored in memory.");
+                sb.AppendLine("");
+                sb.AppendLine("· Description");
+                sb.AppendLine("");
+                sb.AppendLine("Combines the lower 4 bits of the specified memories and stores them in the target memory.");
                 return sb.ToString();
             }
         }

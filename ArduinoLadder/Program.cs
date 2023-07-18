@@ -47,7 +47,6 @@ namespace ArduinoLadder
             var dir = Path.Combine(Application.StartupPath, "arduino_ld");
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
             #endregion
-
             #region Fonts 
             Fonts = new PrivateFontCollection();
             var ba = Properties.Resources.NanumGothic;
@@ -56,12 +55,10 @@ namespace ArduinoLadder
             Fonts.AddMemoryFont(p, ba.Length);
             Marshal.FreeHGlobal(p);
             #endregion
-
             #region Managers
             DevMgr = new DeviceManager();
             DataMgr = new DataManager();
             #endregion
-
             #region Forms
             InputBox = new DvInputBox() { StartPosition = FormStartPosition.CenterParent, MinWidth = 250 };
             MessageBox = new DvMessageBox() { StartPosition = FormStartPosition.CenterParent, MinWidth = 250 };
@@ -76,6 +73,7 @@ namespace ArduinoLadder
             MessageBox.Icon = IconTool.GetIcon(new DvIcon(MessageBox.TitleIconString) { IconSize = MessageBox.TitleIconSize }, ICO_WH, ICO_WH, Color.White);
             SerialBox.Icon = IconTool.GetIcon(new DvIcon(SerialBox.TitleIconString) { IconSize = SerialBox.TitleIconSize }, ICO_WH, ICO_WH, Color.White);
             #endregion
+
 
             Application.Run(MainForm);
         }

@@ -1,7 +1,7 @@
 ﻿
 namespace ArduinoLadder.Forms
 {
-    partial class FormSymbol2
+    partial class FormSymbol
     {
         /// <summary>
         /// Required designer variable.

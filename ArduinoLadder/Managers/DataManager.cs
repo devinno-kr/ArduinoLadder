@@ -18,6 +18,26 @@ namespace ArduinoLadder.Managers
         #region Properties 
         public string ProjectFolder { get; set; }
         public string ArduinoFolder { get; set; }
+
+        #region Language
+        private Lang lang = Lang.NONE;
+        public Lang Language
+        {
+            get => lang;
+            set
+            {
+                if (lang != value)
+                {
+                    lang = value;
+                    LanguageChanged?.Invoke(this, null);
+                }
+            }
+        }
+        #endregion
+        #endregion
+
+        #region Event
+        public event EventHandler LanguageChanged;
         #endregion
 
         #region Constructor
@@ -35,6 +55,7 @@ namespace ArduinoLadder.Managers
             {
                 ProjectFolder = this.ProjectFolder,
                 ArduinoFolder = this.ArduinoFolder,
+                Language = this.Language,
             });
         }
         #endregion
@@ -46,20 +67,28 @@ namespace ArduinoLadder.Managers
                 var set = Serialize.JsonDeserializeFromFile<Set>(PATH_SETTING);
                 this.ProjectFolder = set.ProjectFolder;
                 this.ArduinoFolder = set.ArduinoFolder;
+                this.Language = set.Language;
             }
             else
             {
                 this.ProjectFolder = Path.Combine(Application.StartupPath, "arduino_ld");
                 this.ArduinoFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "arduino");
+                this.Language = Lang.KO;
             }
         }
         #endregion
         #endregion
     }
 
+    #region enum : Lang
+    public enum Lang { NONE, KO, EN }
+    #endregion
+    #region class : Set
     public class Set
     {
         public string ProjectFolder { get; set; }
         public string ArduinoFolder { get; set; }
+        public Lang Language { get; set; } = Lang.NONE;
     }
+    #endregion
 }

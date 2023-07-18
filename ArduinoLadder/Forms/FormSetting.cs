@@ -48,10 +48,42 @@ namespace ArduinoLadder.Forms
                 }
             };
             #endregion
+            #region inLang.ValueChanged
+            inLang.ValueChanged += (o, s) =>
+            {
+                if (inLang.Value) LangSet(Lang.KO);
+                else LangSet(Lang.EN);
+            };
+            #endregion
         }
         #endregion
 
         #region Method
+        #region LangSet
+        void LangSet(Lang lang)
+        {
+            if (lang == Managers.Lang.KO)
+            {
+                Title = "설정";
+                lblTitleAreas.Text = "설정 목록";
+                lblPath.Title = "프로젝트 폴더";
+                lblArduino.Title = "아두이노 폴더";
+                inLang.Title = "언어";
+                btnOK.Text = "확인";
+                btnCancel.Text = "취소";
+            }
+            else if (lang == Managers.Lang.EN)
+            {
+                Title = "Setting";
+                lblTitleAreas.Text = "Setting List";
+                lblPath.Title = "Project Folder";
+                lblArduino.Title = "Arduino Folder";
+                inLang.Title = "Language";
+                btnOK.Text = "Ok";
+                btnCancel.Text = "Cancel";
+            }
+        }
+        #endregion
         #region ShowSetting
         public Set ShowSetting()
         {
@@ -59,6 +91,9 @@ namespace ArduinoLadder.Forms
 
             lblPath.Value = Program.DataMgr.ProjectFolder;
             lblArduino.Value = Program.DataMgr.ArduinoFolder;
+            inLang.Value = Program.DataMgr.Language == Lang.KO;
+
+            LangSet(Program.DataMgr.Language);
 
             if (this.ShowDialog() == DialogResult.OK)
             {
@@ -66,6 +101,7 @@ namespace ArduinoLadder.Forms
                 {
                     ProjectFolder = lblPath.Value,
                     ArduinoFolder = lblArduino.Value,
+                    Language = inLang.Value ? Lang.KO : Lang.EN,
                 };
             }
 
