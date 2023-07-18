@@ -211,7 +211,7 @@ namespace ArduinoLadder.Forms
             this.dvLabel3.Name = "dvLabel3";
             this.dvLabel3.Round = null;
             this.dvLabel3.ShadowGap = 1;
-            this.dvLabel3.Size = new System.Drawing.Size(380, 40);
+            this.dvLabel3.Size = new System.Drawing.Size(457, 40);
             this.dvLabel3.Style = Devinno.Forms.Embossing.FlatConcave;
             this.dvLabel3.TabIndex = 5;
             this.dvLabel3.TabStop = false;

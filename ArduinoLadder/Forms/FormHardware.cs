@@ -98,7 +98,30 @@ namespace ArduinoLadder.Forms
             return ls.Count == 0;
         }
         #endregion
+        #region LangSet
+        void LangSet()
+        {
+            if(Program.DataMgr.Language == Managers.Lang.KO)
+            {
+                Title = "하드웨어";
+                lblTitleAreas.Text = "하드웨어 목록";
+                dvLabel1.Text = "입력";
+                btnOK.Text = "확인";
+                btnCancel.Text = "취소";
+                dvLabel3.Text = "※입력 형식 : '[모드]  [핀]  [메모리]'\r\n※입력 예시 : 'OUT  3  P0', 'IN  4  P10', 'AD  0  D10', 'DA  12  D20'";
 
+            }
+            else if(Program.DataMgr.Language == Managers.Lang.EN)
+            {
+                Title = "Hardware";
+                lblTitleAreas.Text = "Hardware List";
+                dvLabel1.Text = "Input";
+                btnOK.Text = "Ok";
+                btnCancel.Text = "Cancel";
+                dvLabel3.Text = "※Input format : '[mode]  [pin]  [memory]'\r\n※Input example : 'OUT  3  P0', 'IN  4  P10', 'AD  0  D10', 'DA  12  D20'";
+            }
+        }
+        #endregion
         #region ShowHardware
         public Result ShowHardware(LadderDocument doc)
         {
@@ -128,6 +151,8 @@ namespace ArduinoLadder.Forms
             foreach (var v in lsd) sb.AppendLine($"{v.Mode}\t{v.Pin}\t{v.Address}");
             txt.Text = sb.ToString();
             tbl.SetItems(Data.Hardwares);
+
+            LangSet();
 
             if (this.ShowDialog() == DialogResult.OK)
             {

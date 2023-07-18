@@ -16,11 +16,28 @@ namespace ArduinoLadder.Forms
 {
     public partial class FormDefault : DvForm
     {
+        #region Constructor
         public FormDefault()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Method
+        #region LangSet
+        void LangSet()
+        {
+            if (Program.DataMgr.Language == Managers.Lang.KO)
+            {
+                Title = "메인 코드";
+            }
+            else if (Program.DataMgr.Language == Managers.Lang.EN)
+            {
+                Title = "Main Code";
+            }
+        }
+        #endregion
+        #region ShowDefaultCode
         public void ShowDefaultCode(LadderDocument doc)
         {
             if (doc != null)
@@ -43,7 +60,7 @@ namespace ArduinoLadder.Forms
                 bool useEth = ls.Where(x => x.Name == LadderComm.ModbusTcpSlave.Name || x.Name == LadderComm.Mqtt.Name).Count() > 0;
                 bool useMQT = ls.Where(x => x.Name == LadderComm.Mqtt.Name).Count() > 0;
                 #endregion
-
+                #region Code
                 var sb = new StringBuilder();
 
                 sb.AppendLine("#include \"syms.h\"");
@@ -69,9 +86,14 @@ namespace ArduinoLadder.Forms
                 sb.AppendLine("");
 
                 txt.Text = sb.ToString();
+                #endregion
+                
+                LangSet();
 
                 this.ShowDialog();
             }
         }
+        #endregion
+        #endregion
     }
 }

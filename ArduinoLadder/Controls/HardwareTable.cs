@@ -113,8 +113,18 @@ namespace ArduinoLadder.Controls
                             e.Graphics.DrawLine(Pens.Black, rtScroll.Left, rtScroll.Top, rtScroll.Left, rtScroll.Bottom);
 
                             Theme.DrawText(e.Graphics, m[i], Font, Color.FromArgb(200, 200, 200), rtTitle);
-                            Theme.DrawText(e.Graphics, "핀 번호", Font, Color.FromArgb(200, 200, 200), rtCol1);
-                            Theme.DrawText(e.Graphics, "주소", Font, Color.FromArgb(200, 200, 200), rtCol2);
+
+                            var lang = Program.DataMgr?.Language ?? Managers.Lang.KO;
+                            if (lang == Managers.Lang.KO)
+                            {
+                                Theme.DrawText(e.Graphics, "핀 번호", Font, Color.FromArgb(200, 200, 200), rtCol1);
+                                Theme.DrawText(e.Graphics, "주소", Font, Color.FromArgb(200, 200, 200), rtCol2);
+                            }
+                            else if (lang == Managers.Lang.EN)
+                            {
+                                Theme.DrawText(e.Graphics, "Pin Number", Font, Color.FromArgb(200, 200, 200), rtCol1);
+                                Theme.DrawText(e.Graphics, "Address", Font, Color.FromArgb(200, 200, 200), rtCol2);
+                            }
                         }
                         #endregion
 
