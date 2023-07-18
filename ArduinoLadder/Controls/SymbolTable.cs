@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LM = ArduinoLadder.Tools.LangTool;
 
 namespace ArduinoLadder.Controls
 {
@@ -122,19 +123,9 @@ namespace ArduinoLadder.Controls
                             e.Graphics.DrawLine(Pens.Black, rtSC.Left, rtCol1.Top, rtSC.Left, rtCol1.Bottom);
                             e.Graphics.DrawLine(Pens.Black, rtScroll.Left, rtScroll.Top, rtScroll.Left, rtScroll.Bottom);
 
-                            var lang = Program.DataMgr?.Language ?? Managers.Lang.KO;
-                            if (lang == Managers.Lang.KO)
-                            {
-                                Theme.DrawText(e.Graphics, $"{m[i]} 영역", Font, Color.FromArgb(200, 200, 200), rtTitle);
-                                Theme.DrawText(e.Graphics, "주소", Font, Color.FromArgb(200, 200, 200), rtCol1);
-                                Theme.DrawText(e.Graphics, "명칭", Font, Color.FromArgb(200, 200, 200), rtCol2);
-                            }
-                            else if (lang == Managers.Lang.EN)
-                            {
-                                Theme.DrawText(e.Graphics, $"{m[i]} Area", Font, Color.FromArgb(200, 200, 200), rtTitle);
-                                Theme.DrawText(e.Graphics, "Address", Font, Color.FromArgb(200, 200, 200), rtCol1);
-                                Theme.DrawText(e.Graphics, "Name", Font, Color.FromArgb(200, 200, 200), rtCol2);
-                            }
+                            Theme.DrawText(e.Graphics, $"{m[i]} {LM.Name}", Font, Color.FromArgb(200, 200, 200), rtTitle);
+                            Theme.DrawText(e.Graphics, LM.Address, Font, Color.FromArgb(200, 200, 200), rtCol1);
+                            Theme.DrawText(e.Graphics, LM.Name, Font, Color.FromArgb(200, 200, 200), rtCol2);
                         }
                         #endregion
 

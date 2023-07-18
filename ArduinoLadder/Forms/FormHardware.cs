@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LM = ArduinoLadder.Tools.LangTool;
 
 namespace ArduinoLadder.Forms
 {
@@ -101,25 +102,12 @@ namespace ArduinoLadder.Forms
         #region LangSet
         void LangSet()
         {
-            if(Program.DataMgr.Language == Managers.Lang.KO)
-            {
-                Title = "하드웨어";
-                lblTitleAreas.Text = "하드웨어 목록";
-                dvLabel1.Text = "입력";
-                btnOK.Text = "확인";
-                btnCancel.Text = "취소";
-                dvLabel3.Text = "※입력 형식 : '[모드]  [핀]  [메모리]'\r\n※입력 예시 : 'OUT  3  P0', 'IN  4  P10', 'AD  0  D10', 'DA  12  D20'";
-
-            }
-            else if(Program.DataMgr.Language == Managers.Lang.EN)
-            {
-                Title = "Hardware";
-                lblTitleAreas.Text = "Hardware List";
-                dvLabel1.Text = "Input";
-                btnOK.Text = "Ok";
-                btnCancel.Text = "Cancel";
-                dvLabel3.Text = "※Input format : '[mode]  [pin]  [memory]'\r\n※Input example : 'OUT  3  P0', 'IN  4  P10', 'AD  0  D10', 'DA  12  D20'";
-            }
+            Title = LM.Hardware;
+            lblTitleAreas.Text = LM.HardwareList;
+            dvLabel1.Text = LM.Input;
+            btnOK.Text = LM.Input;
+            btnCancel.Text = LM.Cancel;
+            dvLabel3.Text = LM.HardwareInputFormat;
         }
         #endregion
         #region ShowHardware

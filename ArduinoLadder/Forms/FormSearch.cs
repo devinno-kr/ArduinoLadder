@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LM = ArduinoLadder.Tools.LangTool;
 
 namespace ArduinoLadder.Forms
 {
@@ -102,20 +103,10 @@ namespace ArduinoLadder.Forms
         #region LangSet
         void LangSet()
         {
-            if (Program.DataMgr.Language == Managers.Lang.KO)
-            {
-                Title = "찾기";
-                inSearch.Title = "검색어";
-                btnSearch.Text = "찾기";
-                btnClose.Text = "닫기";
-            }
-            else if (Program.DataMgr.Language == Managers.Lang.EN)
-            {
-                Title = "Search";
-                inSearch.Title = "Word";
-                btnSearch.Text = "Search";
-                btnClose.Text = "Close";
-            }
+            Title = LM.Search;
+            inSearch.Title = LM.SearchWord;
+            btnSearch.Text = LM.Search;
+            btnClose.Text = LM.Close;
         }
         #endregion
         #region ShowSearch

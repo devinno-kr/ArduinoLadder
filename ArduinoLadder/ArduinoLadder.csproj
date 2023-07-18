@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Devinno" Version="1.1.0.9" />
-    <PackageReference Include="Devinno.Forms" Version="1.1.0.8" />
+    <PackageReference Include="Devinno.Forms" Version="1.1.0.10" />
     <PackageReference Include="GuiLabs.Undo" Version="1.0.2" />
   </ItemGroup>
 

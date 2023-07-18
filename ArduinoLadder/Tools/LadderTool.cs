@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using LM = ArduinoLadder.Tools.LangTool;
 
 namespace ArduinoLadder.Tools
 {
@@ -184,7 +185,7 @@ namespace ArduinoLadder.Tools
                         {
                             Row = ed != null ? (int?)ed.Row + 1 : null,
                             Column = ed != null ? (int?)ed.Col + 1 : null,
-                            Message = $"완성되지 않은 연결입니다."
+                            Message = LM.LadderErrorIncomplete,
                         });
                     }
                 }
@@ -199,7 +200,7 @@ namespace ArduinoLadder.Tools
                 {
                     Row = v.Row + 1,
                     Column = v.Col + 1,
-                    Message = "잘못된 구문입니다."
+                    Message = LM.LadderErrorSyntax,
                 });
             }
             #endregion
@@ -223,7 +224,7 @@ namespace ArduinoLadder.Tools
                         {
                             Row = itm.Row + 1,
                             Column = itm.Col + 1,
-                            Message = "비정상적인 연결입니다."
+                            Message = LM.LadderErrorAbnormal,
                         });
                     }
                 }
@@ -240,7 +241,7 @@ namespace ArduinoLadder.Tools
                             {
                                 Row = itm.Row + 1,
                                 Column = itm.Col + 1,
-                                Message = "괄호가 닫히지 않았습니다."
+                                Message = LM.LadderErrorParenthesis
                             });
                         }
                     }
@@ -260,7 +261,7 @@ namespace ArduinoLadder.Tools
                                 {
                                     Row = itm.Row + 1,
                                     Column = itm.Col + 1,
-                                    Message = "함수 입력 형식이 잘못되었습니다."
+                                    Message = LM.LadderErrorFunction
                                 });
                             }
                         }
@@ -280,7 +281,7 @@ namespace ArduinoLadder.Tools
                         {
                             Row = itm.Row + 1,
                             Column = itm.Col + 1,
-                            Message = "입력 항목의 내용이 비어있습니다."
+                            Message = LM.LadderErrorEmptyItem
                         });
                     }
                 }

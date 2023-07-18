@@ -85,6 +85,7 @@ namespace ArduinoLadder.Forms
             this.Name = "FormDefault";
             this.Text = "메인 코드";
             this.Title = "메인 코드";
+            this.TitleIconBoxColor = System.Drawing.Color.Teal;
             this.TitleIconSize = 14F;
             this.TitleIconString = "fa-code";
             this.dvContainer1.ResumeLayout(false);

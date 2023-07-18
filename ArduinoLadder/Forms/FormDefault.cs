@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LM = ArduinoLadder.Tools.LangTool;
 
 namespace ArduinoLadder.Forms
 {
@@ -27,14 +28,7 @@ namespace ArduinoLadder.Forms
         #region LangSet
         void LangSet()
         {
-            if (Program.DataMgr.Language == Managers.Lang.KO)
-            {
-                Title = "메인 코드";
-            }
-            else if (Program.DataMgr.Language == Managers.Lang.EN)
-            {
-                Title = "Main Code";
-            }
+            Title = LM.MainCode;
         }
         #endregion
         #region ShowDefaultCode

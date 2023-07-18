@@ -1,4 +1,5 @@
-﻿using Devinno.Data;
+﻿using ArduinoLadder.Tools;
+using Devinno.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,6 +31,28 @@ namespace ArduinoLadder.Managers
                 {
                     lang = value;
                     LanguageChanged?.Invoke(this, null);
+
+                    if (Program.MessageBox != null)
+                    {
+                        Program.MessageBox.ButtonOk.Text = LangTool.Ok;
+                        Program.MessageBox.ButtonCancel.Text = LangTool.Cancel;
+                        Program.MessageBox.ButtonYes.Text = LangTool.Yes;
+                        Program.MessageBox.ButtonNo.Text = LangTool.No;
+                    }
+                    if (Program.InputBox != null)
+                    {
+                        Program.InputBox.ButtonOK.Text = LangTool.Ok;
+                        Program.InputBox.ButtonCancel.Text = LangTool.Cancel;
+                    }
+                    if (Program.SerialBox != null)
+                    {
+                        Program.SerialBox.ButtonOK.Text = LangTool.Ok;
+                        Program.SerialBox.ButtonCancel.Text = LangTool.Cancel;
+
+                        Program.SerialBox.InputPort.Title = LangTool.Port;
+                        Program.SerialBox.InputBaudrate.Title = LangTool.Baudrate;
+                        Program.SerialBox.Title = LangTool.PortSetting;
+                    }
                 }
             }
         }

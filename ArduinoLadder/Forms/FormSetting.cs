@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LM = ArduinoLadder.Tools.LangTool;
 
 namespace ArduinoLadder.Forms
 {
@@ -64,23 +65,23 @@ namespace ArduinoLadder.Forms
         {
             if (lang == Managers.Lang.KO)
             {
-                Title = "설정";
-                lblTitleAreas.Text = "설정 목록";
-                lblPath.Title = "프로젝트 폴더";
-                lblArduino.Title = "아두이노 폴더";
-                inLang.Title = "언어";
-                btnOK.Text = "확인";
-                btnCancel.Text = "취소";
+                Title = LM.SettingK;
+                lblTitleAreas.Text = LM.SettingListK;
+                lblPath.Title = LM.ProjectFolderK;
+                lblArduino.Title = LM.ArduinoFolderK;
+                inLang.Title = LM.LanguageK;
+                btnOK.Text = LM.OkK;
+                btnCancel.Text = LM.CancelK;
             }
             else if (lang == Managers.Lang.EN)
             {
-                Title = "Setting";
-                lblTitleAreas.Text = "Setting List";
-                lblPath.Title = "Project Folder";
-                lblArduino.Title = "Arduino Folder";
-                inLang.Title = "Language";
-                btnOK.Text = "Ok";
-                btnCancel.Text = "Cancel";
+                Title = LM.SettingE;
+                lblTitleAreas.Text = LM.SettingListE;
+                lblPath.Title = LM.ProjectFolderE;
+                lblArduino.Title = LM.ArduinoFolderE;
+                inLang.Title = LM.LanguageE;
+                btnOK.Text = LM.OkE;
+                btnCancel.Text = LM.CancelE;
             }
         }
         #endregion
