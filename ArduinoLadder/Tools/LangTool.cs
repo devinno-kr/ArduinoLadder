@@ -418,12 +418,14 @@ namespace ArduinoLadder.Tools
         }
         #endregion
         #region Slave
+        public const string SlaveK = "국번";
+        public const string SlaveE = "Slave";
         public static string Slave
         {
             get
             {
-                if (lang == Lang.KO) return "국번";
-                else if (lang == Lang.EN) return "Slave";
+                if (lang == Lang.KO) return SlaveK;
+                else if (lang == Lang.EN) return SlaveE;
                 else return "";
             }
         }
@@ -1466,6 +1468,16 @@ namespace ArduinoLadder.Tools
                 else return error;
             }
             else return error;
+        }
+        #endregion
+        #region Summary
+        public static string Summary(string summary)
+        {
+            if (lang == Lang.EN)
+            {
+                return summary.Replace(SlaveK, SlaveE);
+            }
+            else return summary;
         }
         #endregion
     }

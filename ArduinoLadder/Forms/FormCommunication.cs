@@ -19,7 +19,7 @@ namespace ArduinoLadder.Forms
     {
         #region Member Variable
         FormCommunicationInput frmInput = new FormCommunicationInput() { StartPosition = FormStartPosition.CenterParent };
-        List<ILadderComm> Items = new List<ILadderComm>();
+        List<LadderCommItem> Items = new List<LadderCommItem>();
         #endregion
 
         #region Constructor
@@ -45,19 +45,19 @@ namespace ArduinoLadder.Forms
             #region dg.CellButtonClick
             dg.CellButtonClick += (o, s) => {
 
-                var v = s.Cell.Row.Source as ILadderComm;
+                var v = s.Cell.Row.Source as LadderCommItem;
                 if (v != null)
                 {
                     Block = true;
-                    ILadderComm ret = frmInput.ShowCommInputModify(v);
+                    ILadderComm ret = frmInput.ShowCommInputModify(v.Comm);
                     Block = false;
 
                     if (ret != null)
                     {
                         var idx = Items.IndexOf(v);
-                        Items.Insert(idx, ret);
+                        Items.Insert(idx, new LadderCommItem(ret));
                         Items.Remove(v);
-                        dg.SetDataSource<ILadderComm>(Items);
+                        dg.SetDataSource<LadderCommItem>(Items);
                     }
                 }
 
@@ -70,7 +70,7 @@ namespace ArduinoLadder.Forms
             #region btnPlus.ButtonClick
             btnPM.ButtonClick += (o, s) =>
             {
-                if(s.Button.Name == "Add")
+                if (s.Button.Name == "Add")
                 {
                     Block = true;
                     ILadderComm ret = frmInput.ShowCommInputAdd();
@@ -78,20 +78,20 @@ namespace ArduinoLadder.Forms
 
                     if (ret != null)
                     {
-                        Items.Add(ret);
-                        dg.SetDataSource<ILadderComm>(Items);
+                        Items.Add(new LadderCommItem(ret));
+                        dg.SetDataSource<LadderCommItem>(Items);
                     }
                 }
-                else if(s.Button.Name == "Del")
+                else if (s.Button.Name == "Del")
                 {
-                    var sels = dg.Rows.Where(x => x.Selected).Select(x => x.Source as ILadderComm).ToList();
+                    var sels = dg.Rows.Where(x => x.Selected).Select(x => x.Source as LadderCommItem).ToList();
                     if (sels.Count > 0)
                     {
                         foreach (var v in sels)
                             if (Items.Contains(v))
                                 Items.Remove(v);
 
-                        dg.SetDataSource<ILadderComm>(Items);
+                        dg.SetDataSource<LadderCommItem>(Items);
                     }
                 }
             };
@@ -129,11 +129,11 @@ namespace ArduinoLadder.Forms
                 {
                     var str = CryptoTool.DecodeBase64String<string>(doc.Communications);
                     var ls = Serialize.JsonDeserializeWithType<List<ILadderComm>>(str);
-                    Items.AddRange(ls);
+                    Items.AddRange(ls.Select(x => new LadderCommItem(x)));
                 }
                 catch { }
             }
-            dg.SetDataSource<ILadderComm>(Items);
+            dg.SetDataSource<LadderCommItem>(Items);
             #endregion
 
             LangSet();
@@ -141,11 +141,27 @@ namespace ArduinoLadder.Forms
             List<ILadderComm> ret = null;
             if (this.ShowDialog() == DialogResult.OK)
             {
-                ret = Items.ToList();
+                ret = Items.Select(x => x.Comm).ToList();
             }
             return ret;
         }
         #endregion
         #endregion
     }
+
+    #region class : LadderCommItem
+    public class LadderCommItem
+    {
+        public string Name { get; private set; }
+        public string Summary { get; private set; }
+        public ILadderComm Comm { get; private set; }
+
+        public LadderCommItem(ILadderComm Comm)
+        {
+            this.Comm = Comm;
+            this.Name = Comm.Name;
+            this.Summary = LM.Summary(Comm.Summary);
+        }
+    }
+    #endregion
 }
