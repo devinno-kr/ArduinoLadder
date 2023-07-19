@@ -555,6 +555,10 @@ namespace ArduinoLadder.Forms
             Title = LM.AppTitle + (CurrentDocument != null ? "  :  " + CurrentDocument.DisplayTitle : "");
             lblSketchPath.Title = LM.SketchPath;
             lblDebugPort.Title = LM.DebugPort;
+
+            gridMessage.Columns[0].HeaderText = LM.Row;
+            gridMessage.Columns[1].HeaderText = LM.Col;
+            gridMessage.Columns[2].HeaderText = LM.Message;
         }
         #endregion
         #region UISet
