@@ -733,6 +733,8 @@ namespace ArduinoLadder.Forms
         #region ShowCommInputAdd
         public ILadderComm ShowCommInputAdd()
         {
+            if (Program.WindowBorder) Tools.WindowTool.Set(this);
+
             #region Set
             this.Title = this.Text = LM.CommunicationAdd;
 
@@ -758,6 +760,8 @@ namespace ArduinoLadder.Forms
         #region ShowCommInputModify
         public ILadderComm ShowCommInputModify(ILadderComm v)
         {
+            if (Program.WindowBorder) Tools.WindowTool.Set(this);
+
             #region Set
             this.Title = this.Text = LM.CommunicationAdd;
 

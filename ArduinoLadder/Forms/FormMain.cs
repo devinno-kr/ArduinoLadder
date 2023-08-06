@@ -9,6 +9,7 @@ using Devinno.Forms.Dialogs;
 using Devinno.Forms.Extensions;
 using Devinno.Forms.Icons;
 using Devinno.Forms.Themes;
+using Devinno.Forms.Tools;
 using Devinno.Tools;
 using System;
 using System.Collections.Generic;
@@ -334,6 +335,22 @@ namespace ArduinoLadder.Forms
             #region Language
             Program.DataMgr.LanguageChanged += (o, s) => ToolTipSet();
             #endregion
+
+            if (Program.WindowBorder)
+            {
+                WindowTool.SetForm(this);
+                WindowTool.SetForm(frmSymbol);
+                WindowTool.SetForm(frmHardware);
+                WindowTool.SetForm(frmComm);
+                WindowTool.SetForm(frmComm.InputForm);
+                WindowTool.SetFormFix(frmSetting);
+                WindowTool.SetFormFix(frmDefault);
+                WindowTool.SetFormFix(Program.InputBox);
+                WindowTool.SetFormFix(Program.MessageBox);
+                WindowTool.SetFormFix(Program.SerialBox);
+                WindowTool.SetFormFix(ladder.MessageBox);
+                WindowTool.SetForm(ladder.EditForm);
+            }
         }
         #endregion
 
@@ -343,7 +360,9 @@ namespace ArduinoLadder.Forms
         {
             var hTOP = pnlTop.Height + Padding.Top;
             var hBTM = Padding.Bottom + pnlStatus.Height + pnlMessage.Height;
-            var rt = new Rectangle(-5, hTOP, this.Width + 10, this.Height - hTOP - hBTM);
+            var rt = Program.WindowBorder ? new Rectangle(0, hTOP, this.Width, this.Height - hTOP - hBTM - 40) :
+                                            new Rectangle(-5, hTOP, this.Width + 10, this.Height - hTOP - hBTM);
+
             using (var br = new SolidBrush(pnlContent.BackColor))
             {
                 e.Graphics.FillRectangle(br, rt);
@@ -401,6 +420,7 @@ namespace ArduinoLadder.Forms
             {
                 Block = true;
 
+                if (Program.WindowBorder) WindowTool.Set(Program.MessageBox);
                 switch (Program.MessageBox.ShowMessageBoxYesNoCancel(LM.Save, LM.SaveQuestion))
                 {
                     case DialogResult.Yes: SaveFile(); break;
@@ -413,6 +433,11 @@ namespace ArduinoLadder.Forms
             if (!bCancel)
             {
                 Block = true;
+
+                if (Program.WindowBorder)
+                {
+                    WindowTool.Set(Program.InputBox);
+                }
 
                 Program.InputBox.UseEnterKey = true;
                 var ret = Program.InputBox.ShowString(LM.NewFile);

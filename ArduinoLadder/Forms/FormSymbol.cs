@@ -157,6 +157,8 @@ namespace ArduinoLadder.Forms
         {
             Result ret = null;
 
+            if (Program.WindowBorder) Tools.WindowTool.Set(this);
+
             this.doc = doc;
 
             Data = new Result();

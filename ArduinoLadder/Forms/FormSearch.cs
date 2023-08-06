@@ -112,6 +112,8 @@ namespace ArduinoLadder.Forms
         #region ShowSearch
         public void ShowSearch(LadderEditorControl editor)
         {
+            if (Program.WindowBorder) Tools.WindowTool.Set(this);
+
             this.editor = editor;
             this.SearchIndex = 0;
             this.SearchText = "";

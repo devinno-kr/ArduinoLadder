@@ -19,13 +19,15 @@ namespace ArduinoLadder
     {
         #region Const
         public const int ICO_WH = 24;
+        public const bool WindowBorder = true;
+        public const bool UseWindowDock = false;
         #endregion
 
         #region Properties
         public static FormMain MainForm { get; private set; }
-        public static DvInputBox InputBox { get; private set; }
-        public static DvMessageBox MessageBox { get; private set; }
-        public static DvSerialPortSettingBox SerialBox { get; private set; }
+        public static FormInputBox InputBox { get; private set; }
+        public static FormMessageBox MessageBox { get; private set; }
+        public static FormSerialPortSettingBox SerialBox { get; private set; }
 
         public static DeviceManager DevMgr { get; private set; }
         public static DataManager DataMgr { get; private set; }
@@ -60,10 +62,10 @@ namespace ArduinoLadder
             DataMgr = new DataManager();
             #endregion
             #region Forms
-            InputBox = new DvInputBox() { StartPosition = FormStartPosition.CenterParent, MinWidth = 250 };
-            MessageBox = new DvMessageBox() { StartPosition = FormStartPosition.CenterParent, MinWidth = 250 };
-            SerialBox = new DvSerialPortSettingBox() { StartPosition = FormStartPosition.CenterParent };
-            MainForm = new FormMain();
+            InputBox = new FormInputBox() { StartPosition = FormStartPosition.CenterParent, MinWidth = 250 };
+            MessageBox = new FormMessageBox() { StartPosition = FormStartPosition.CenterParent, MinWidth = 250 };
+            SerialBox = new FormSerialPortSettingBox() { StartPosition = FormStartPosition.CenterParent };
+            MainForm = new FormMain() { UseWindowDock = UseWindowDock };
 
             InputBox.TitleIconBoxColor = Color.FromArgb(0, 102, 99);
             MessageBox.TitleIconBoxColor = Color.FromArgb(0, 102, 99);

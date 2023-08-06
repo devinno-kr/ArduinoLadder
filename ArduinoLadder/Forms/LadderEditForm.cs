@@ -98,10 +98,6 @@ namespace ArduinoLadder.Forms
             this.Icon = Tools.IconTool.GetIcon(new Devinno.Forms.Icons.DvIcon(TitleIconString, Convert.ToInt32(TitleIconSize)), Program.ICO_WH, Program.ICO_WH, Color.White);
             #endregion
 
-            #region Icon
-            Icon = IconTool.GetIcon(new DvIcon(TitleIconString, Convert.ToInt32(TitleIconSize)), Program.ICO_WH, Program.ICO_WH, Color.White);
-            #endregion
-
             #region Event
             #region txt.KeyUp
             txt.KeyUp += (o, s) =>
@@ -159,7 +155,8 @@ namespace ArduinoLadder.Forms
         public string ShowLadderCode(LadderItem ld)
         {
             string ret = null;
-
+            
+           
             this.Item = ld;
 
             #region WindowSize
@@ -167,11 +164,13 @@ namespace ArduinoLadder.Forms
             {
                 this.Size = new Size(500, 400);
                 this.pnlContent.Visible = true;
+                if (Program.WindowBorder) Tools.WindowTool.SetForm(this);
             }
             else
             {
                 this.Size = new Size(300, 400 - CH);
                 this.pnlContent.Visible = false;
+                if (Program.WindowBorder) Tools.WindowTool.SetFormFix(this);
             }
             #endregion
             #region Select

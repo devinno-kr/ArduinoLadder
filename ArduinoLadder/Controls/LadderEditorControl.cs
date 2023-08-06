@@ -251,6 +251,12 @@ namespace ArduinoLadder.Controls
         public List<LadderRow> Rows { get; private set; } = new List<LadderRow>();
         public Dictionary<int, LadderRow> DicRows { get; private set; } = new Dictionary<int, LadderRow>();
         #endregion
+
+        public FormMessageBox MessageBox { get; } = new FormMessageBox() { StartPosition = FormStartPosition.CenterParent };
+
+        public LadderEditForm EditForm => frmEdit;
+        private LadderEditForm frmEdit = new LadderEditForm();
+
         #endregion
 
         #region Member Variable
@@ -258,9 +264,6 @@ namespace ArduinoLadder.Controls
         private Scroll scroll = new Scroll();
         private Point downPoint;
         private DateTime downTime;
-        #endregion
-        #region Dialogs
-        DvMessageBox MessageBox = new DvMessageBox() { StartPosition = FormStartPosition.CenterParent };
         #endregion
         #region Drag
         Point? dragpos = null;
@@ -279,9 +282,6 @@ namespace ArduinoLadder.Controls
         Point? selmove = null;
         Point? selup = null;
         Point selprev;
-        #endregion
-        #region Form
-        LadderEditForm frmEdit = new LadderEditForm();
         #endregion
         #region Timer
         Timer tmr = new Timer();

@@ -21,6 +21,11 @@ namespace ArduinoLadder.Forms
         public FormDefault()
         {
             InitializeComponent();
+
+            #region Form Props
+            StartPosition = FormStartPosition.CenterParent;
+            this.Icon = Tools.IconTool.GetIcon(new Devinno.Forms.Icons.DvIcon(TitleIconString, Convert.ToInt32(TitleIconSize)), Program.ICO_WH, Program.ICO_WH, Color.White);
+            #endregion
         }
         #endregion
 
@@ -34,6 +39,8 @@ namespace ArduinoLadder.Forms
         #region ShowDefaultCode
         public void ShowDefaultCode(LadderDocument doc)
         {
+            if (Program.WindowBorder) Tools.WindowTool.Set(this);
+
             if (doc != null)
             {
                 #region var

@@ -20,6 +20,8 @@ namespace ArduinoLadder.Forms
         #region Member Variable
         FormCommunicationInput frmInput = new FormCommunicationInput() { StartPosition = FormStartPosition.CenterParent };
         List<LadderCommItem> Items = new List<LadderCommItem>();
+
+        public FormCommunicationInput InputForm => frmInput;
         #endregion
 
         #region Constructor
@@ -121,6 +123,8 @@ namespace ArduinoLadder.Forms
         #region ShowCommunication
         public List<ILadderComm> ShowCommunication(LadderDocument doc)
         {
+            if (Program.WindowBorder) Tools.WindowTool.Set(this);
+
             #region Set
             Items.Clear();
             if (doc != null && !string.IsNullOrWhiteSpace(doc.Communications))

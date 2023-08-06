@@ -114,6 +114,8 @@ namespace ArduinoLadder.Forms
         public Result ShowHardware(LadderDocument doc)
         {
             Result ret = null;
+            
+            if (Program.WindowBorder) Tools.WindowTool.Set(this);
 
             this.doc = doc;
 

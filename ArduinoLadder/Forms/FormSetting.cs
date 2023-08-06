@@ -56,6 +56,11 @@ namespace ArduinoLadder.Forms
                 else LangSet(Lang.EN);
             };
             #endregion
+
+            #region Form Props
+            StartPosition = FormStartPosition.CenterParent;
+            this.Icon = Tools.IconTool.GetIcon(new Devinno.Forms.Icons.DvIcon(TitleIconString, Convert.ToInt32(TitleIconSize)), Program.ICO_WH, Program.ICO_WH, Color.White);
+            #endregion
         }
         #endregion
 
@@ -89,6 +94,14 @@ namespace ArduinoLadder.Forms
         public Set ShowSetting()
         {
             Set ret = null;
+
+            var bWinH = Program.WindowBorder ? 41 : 0;
+            if (Program.WindowBorder) Tools.WindowTool.Set(this);
+
+            #region Size
+            var pad = dvContainer1.Padding;
+            this.Size = new Size(450, TitleHeight + pad.Top + (36 + 46 + 46 + 46) + dvControl1.Height + dvContainer2.Height + pad.Bottom + bWinH);
+            #endregion
 
             lblPath.Value = Program.DataMgr.ProjectFolder;
             lblArduino.Value = Program.DataMgr.ArduinoFolder;
