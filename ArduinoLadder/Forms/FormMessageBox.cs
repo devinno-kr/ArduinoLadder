@@ -72,8 +72,8 @@ namespace ArduinoLadder.Forms
             SizeF sz;
             using (var g = CreateGraphics()) sz = g.MeasureString(Message, Font);
             var btnSZ = Convert.ToInt32(ButtonHeight + 6);
-            var gapW = layout.Padding.Left + layout.Padding.Right + lbl.Margin.Left + lbl.Margin.Right + 6;
-            var gapH = layout.Padding.Top + layout.Padding.Bottom + lbl.Margin.Top + lbl.Margin.Bottom + 12;
+            var gapW = layout.Padding.Left + layout.Padding.Right + lbl.Margin.Left + lbl.Margin.Right + (20 * 2);
+            var gapH = layout.Padding.Top + layout.Padding.Bottom + lbl.Margin.Top + lbl.Margin.Bottom + 12 + (20 * 2);
             
             var bWinH = Program.WindowBorder ? 41 : 0;
             if (Program.WindowBorder) Tools.WindowTool.Set(this);

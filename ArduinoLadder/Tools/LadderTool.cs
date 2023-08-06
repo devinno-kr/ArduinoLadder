@@ -247,27 +247,39 @@ namespace ArduinoLadder.Tools
                     }
                     else
                     {
-                        if (LadderFunc.Funcs.Where(x => x.Name.StartsWith(code.Split('(').Where(x=>!string.IsNullOrWhiteSpace(x.Trim())).FirstOrDefault()?.Trim())).Count() > 0)
+                        if (!string.IsNullOrWhiteSpace(code))
                         {
-                            var fn = FuncInfo.Parse(code);
-                            if (fn != null)
+                            if (LadderFunc.Funcs.Where(x => x.Name.StartsWith(code.Split('(').Where(x2 => !string.IsNullOrWhiteSpace(x2.Trim())).FirstOrDefault()?.Trim())).Count() > 0)
                             {
-                                var result = LadderFunc.Check(doc, itm);
-                                if (result.Count > 0) ret.AddRange(result);
+                                var fn = FuncInfo.Parse(code);
+                                if (fn != null)
+                                {
+                                    var result = LadderFunc.Check(doc, itm);
+                                    if (result.Count > 0) ret.AddRange(result);
+                                }
+                                else
+                                {
+                                    ret.Add(new LadderCheckMessage()
+                                    {
+                                        Row = itm.Row + 1,
+                                        Column = itm.Col + 1,
+                                        Message = LM.LadderErrorFunction
+                                    });
+                                }
                             }
                             else
                             {
-                                ret.Add(new LadderCheckMessage()
-                                {
-                                    Row = itm.Row + 1,
-                                    Column = itm.Col + 1,
-                                    Message = LM.LadderErrorFunction
-                                });
+                                var v = GetWords(code);
                             }
                         }
                         else
                         {
-                            var v = GetWords(code);
+                            ret.Add(new LadderCheckMessage()
+                            {
+                                Row = itm.Row + 1,
+                                Column = itm.Col + 1,
+                                Message = LM.LadderErrorWrongFormula
+                            });
                         }
                     }
                 }

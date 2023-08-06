@@ -40,7 +40,7 @@ namespace ArduinoLadder.Controls
                 var vc = ValueColor ?? theme.LabelColor;
                 //theme.DrawText(g, Value, Font, ForeColor, rtValue);
                 var rt = Util.INT(rtValue);
-                rt.Inflate(-7, 0);
+                rt.Inflate(-10, 0);
                 TextRenderer.DrawText(g, Value, Font, rt, ForeColor, vc, TextFormatFlags.PathEllipsis | TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter);
             }
         }

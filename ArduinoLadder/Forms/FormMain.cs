@@ -298,8 +298,8 @@ namespace ArduinoLadder.Forms
                                 r = ladder.DicRows[r.Row].Parent;
                             }
                             ladder.MakeRows();
-                            var cy = ladder.Rows.IndexOf(ladder.DicRows[v.Row.Value]);
-                            ladder.CurY = cy - 1;
+                            var cy = ladder.Rows.IndexOf(ladder.DicRows[v.Row.Value - 1]);
+                            ladder.CurY = cy ;
                             ladder.CurX = v.Column.Value - 1;
                         }
                     }
