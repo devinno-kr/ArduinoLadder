@@ -39,7 +39,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="libraries\MBED_RPI_PICO_TimerInterrupt.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="libraries\ModbusRTUMaster.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
