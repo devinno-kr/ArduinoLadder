@@ -38,6 +38,9 @@
     <None Update="libraries\DueTimer.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="libraries\MBED_RPI_PICO_TimerInterrupt.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="libraries\ModbusRTUMaster.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
