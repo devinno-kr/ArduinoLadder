@@ -48,6 +48,9 @@ namespace ArduinoLadder
             #region Directory
             var dir = Path.Combine(Application.StartupPath, "arduino_ld");
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+            var dir2 = Path.Combine(Application.StartupPath, "boardlist");
+            if (!Directory.Exists(dir2)) Directory.CreateDirectory(dir2);
             #endregion
             #region Fonts 
             Fonts = new PrivateFontCollection();

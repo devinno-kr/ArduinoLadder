@@ -39,6 +39,38 @@ namespace ArduinoLadder.Forms
             btnCancel.ButtonClick += (o, s) => DialogResult = DialogResult.Cancel;
             #endregion
 
+            #region btnExport.ButtonClick
+            btnExport.ButtonClick += (o, s) =>
+            {
+                using (var sfd = new SaveFileDialog())
+                {
+                    sfd.InitialDirectory = Path.Combine(Application.StartupPath, "boardlist");
+                    sfd.Filter = "Arduino Ladder Board File(*.abd)|*.abd";
+                    if(sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        File.WriteAllText(sfd.FileName, txt.Text);
+                    }
+                }
+            };
+            #endregion
+
+            #region btnImport.ButtonClick
+            btnImport.ButtonClick += (o, s) =>
+            {
+                using (var ofd = new OpenFileDialog())
+                {
+                    ofd.InitialDirectory = Path.Combine(Application.StartupPath, "boardlist");
+                    ofd.Filter = "Arduino Ladder Board File(*.abd)|*.abd";
+                    ofd.Multiselect = false;
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        var str = File.ReadAllText(ofd.FileName);
+                        txt.Text = str;
+                    }
+                }
+            };
+            #endregion
+
             #region txt.KeyPress
             txt.CharacterCasing = CharacterCasing.Upper;
             txt.KeyPress += (o, s) => { if (s.KeyChar == ' ') s.KeyChar = '\t'; };
@@ -108,6 +140,8 @@ namespace ArduinoLadder.Forms
             btnOK.Text = LM.Input;
             btnCancel.Text = LM.Cancel;
             dvLabel3.Text = LM.HardwareInputFormat;
+            btnImport.Text = LM.Import;
+            btnExport.Text = LM.Export;
         }
         #endregion
         #region ShowHardware

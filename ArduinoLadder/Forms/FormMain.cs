@@ -306,6 +306,13 @@ namespace ArduinoLadder.Forms
                 }
             };
             #endregion
+
+            #region btnDTR.ButtonClick              : DTR
+            btnDTR.ButtonClick += (o, s) =>
+            {
+                Program.DevMgr.DTR = !Program.DevMgr.DTR;
+            };
+            #endregion
             #endregion
 
             #region ToolTip
@@ -336,6 +343,7 @@ namespace ArduinoLadder.Forms
             Program.DataMgr.LanguageChanged += (o, s) => ToolTipSet();
             #endregion
 
+            #region WindowBorder
             if (Program.WindowBorder)
             {
                 WindowTool.SetForm(this);
@@ -351,6 +359,7 @@ namespace ArduinoLadder.Forms
                 WindowTool.SetFormFix(ladder.MessageBox);
                 WindowTool.SetForm(ladder.EditForm);
             }
+            #endregion
         }
         #endregion
 
@@ -612,6 +621,8 @@ namespace ArduinoLadder.Forms
             lblSketchPath.Value = CurrentDocument?.SketchPath ?? "";
             lblDebugPort.Value = $"{Program.DevMgr.PortName} : {Program.DevMgr.Baudrate}";
 
+            btnDTR.Enabled = IsDebugging && Program.DevMgr.IsOpen;
+            btnDTR.ButtonColor = Program.DevMgr.DTR ? Color.Teal : Theme.ButtonColor;
             LangSet();
 
             #region SizeChanged

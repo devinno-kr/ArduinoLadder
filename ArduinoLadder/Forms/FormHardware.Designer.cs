@@ -32,7 +32,6 @@ namespace ArduinoLadder.Forms
             this.dvContainer1 = new Devinno.Forms.Containers.DvContainer();
             this.dvTableLayoutPanel1 = new Devinno.Forms.Containers.DvTableLayoutPanel();
             this.lblTitleAreas = new Devinno.Forms.Controls.DvLabel();
-            this.dvLabel1 = new Devinno.Forms.Controls.DvLabel();
             this.inputPanel1 = new ArduinoLadder.Controls.InputPanel();
             this.txt = new System.Windows.Forms.TextBox();
             this.tbl = new ArduinoLadder.Controls.HardwareTable();
@@ -42,10 +41,16 @@ namespace ArduinoLadder.Forms
             this.btnOK = new Devinno.Forms.Controls.DvButton();
             this.dvControl2 = new Devinno.Forms.Controls.DvControl();
             this.btnCancel = new Devinno.Forms.Controls.DvButton();
+            this.dvContainer3 = new Devinno.Forms.Containers.DvContainer();
+            this.dvLabel1 = new Devinno.Forms.Controls.DvLabel();
+            this.btnExport = new Devinno.Forms.Controls.DvButton();
+            this.dvControl3 = new Devinno.Forms.Controls.DvControl();
+            this.btnImport = new Devinno.Forms.Controls.DvButton();
             this.dvContainer1.SuspendLayout();
             this.dvTableLayoutPanel1.SuspendLayout();
             this.inputPanel1.SuspendLayout();
             this.dvContainer2.SuspendLayout();
+            this.dvContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dvContainer1
@@ -70,9 +75,9 @@ namespace ArduinoLadder.Forms
             this.dvTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.dvTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.dvTableLayoutPanel1.Controls.Add(this.lblTitleAreas, 0, 0);
-            this.dvTableLayoutPanel1.Controls.Add(this.dvLabel1, 2, 0);
             this.dvTableLayoutPanel1.Controls.Add(this.inputPanel1, 2, 1);
             this.dvTableLayoutPanel1.Controls.Add(this.tbl, 0, 1);
+            this.dvTableLayoutPanel1.Controls.Add(this.dvContainer3, 2, 0);
             this.dvTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dvTableLayoutPanel1.Location = new System.Drawing.Point(7, 10);
             this.dvTableLayoutPanel1.Name = "dvTableLayoutPanel1";
@@ -106,31 +111,6 @@ namespace ArduinoLadder.Forms
             this.lblTitleAreas.TextPadding = new System.Windows.Forms.Padding(2, 0, 0, 0);
             this.lblTitleAreas.Unit = "";
             this.lblTitleAreas.UnitWidth = null;
-            // 
-            // dvLabel1
-            // 
-            this.dvLabel1.BackgroundDraw = false;
-            this.dvLabel1.BorderColor = null;
-            this.dvLabel1.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleLeft;
-            this.dvLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dvLabel1.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
-            this.dvLabel1.IconGap = 3;
-            this.dvLabel1.IconImage = null;
-            this.dvLabel1.IconSize = 12F;
-            this.dvLabel1.IconString = "fa-i-cursor";
-            this.dvLabel1.LabelColor = null;
-            this.dvLabel1.Location = new System.Drawing.Point(613, 3);
-            this.dvLabel1.Name = "dvLabel1";
-            this.dvLabel1.Round = null;
-            this.dvLabel1.ShadowGap = 1;
-            this.dvLabel1.Size = new System.Drawing.Size(388, 30);
-            this.dvLabel1.Style = Devinno.Forms.Embossing.FlatConcave;
-            this.dvLabel1.TabIndex = 3;
-            this.dvLabel1.TabStop = false;
-            this.dvLabel1.Text = "입력";
-            this.dvLabel1.TextPadding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.dvLabel1.Unit = "";
-            this.dvLabel1.UnitWidth = null;
             // 
             // inputPanel1
             // 
@@ -277,6 +257,103 @@ namespace ArduinoLadder.Forms
             this.btnCancel.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnCancel.UseKey = false;
             // 
+            // dvContainer3
+            // 
+            this.dvContainer3.Controls.Add(this.btnImport);
+            this.dvContainer3.Controls.Add(this.dvControl3);
+            this.dvContainer3.Controls.Add(this.btnExport);
+            this.dvContainer3.Controls.Add(this.dvLabel1);
+            this.dvContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dvContainer3.Location = new System.Drawing.Point(613, 3);
+            this.dvContainer3.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.dvContainer3.Name = "dvContainer3";
+            this.dvContainer3.ShadowGap = 1;
+            this.dvContainer3.Size = new System.Drawing.Size(391, 30);
+            this.dvContainer3.TabIndex = 6;
+            this.dvContainer3.TabStop = false;
+            // 
+            // dvLabel1
+            // 
+            this.dvLabel1.BackgroundDraw = false;
+            this.dvLabel1.BorderColor = null;
+            this.dvLabel1.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleLeft;
+            this.dvLabel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dvLabel1.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.dvLabel1.IconGap = 3;
+            this.dvLabel1.IconImage = null;
+            this.dvLabel1.IconSize = 12F;
+            this.dvLabel1.IconString = "fa-i-cursor";
+            this.dvLabel1.LabelColor = null;
+            this.dvLabel1.Location = new System.Drawing.Point(0, 0);
+            this.dvLabel1.Name = "dvLabel1";
+            this.dvLabel1.Round = null;
+            this.dvLabel1.ShadowGap = 1;
+            this.dvLabel1.Size = new System.Drawing.Size(110, 30);
+            this.dvLabel1.Style = Devinno.Forms.Embossing.FlatConcave;
+            this.dvLabel1.TabIndex = 4;
+            this.dvLabel1.TabStop = false;
+            this.dvLabel1.Text = "입력";
+            this.dvLabel1.TextPadding = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.dvLabel1.Unit = "";
+            this.dvLabel1.UnitWidth = null;
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackgroundDraw = true;
+            this.btnExport.ButtonColor = null;
+            this.btnExport.Clickable = true;
+            this.btnExport.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleCenter;
+            this.btnExport.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnExport.Gradient = true;
+            this.btnExport.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.btnExport.IconGap = 0;
+            this.btnExport.IconImage = null;
+            this.btnExport.IconSize = 12F;
+            this.btnExport.IconString = "fa-file-export";
+            this.btnExport.Location = new System.Drawing.Point(300, 0);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Round = null;
+            this.btnExport.ShadowGap = 1;
+            this.btnExport.Size = new System.Drawing.Size(91, 30);
+            this.btnExport.TabIndex = 5;
+            this.btnExport.Text = "내보내기";
+            this.btnExport.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnExport.UseKey = false;
+            // 
+            // dvControl3
+            // 
+            this.dvControl3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dvControl3.Location = new System.Drawing.Point(297, 0);
+            this.dvControl3.Name = "dvControl3";
+            this.dvControl3.ShadowGap = 1;
+            this.dvControl3.Size = new System.Drawing.Size(3, 30);
+            this.dvControl3.TabIndex = 6;
+            this.dvControl3.TabStop = false;
+            this.dvControl3.Text = "dvControl3";
+            // 
+            // btnImport
+            // 
+            this.btnImport.BackgroundDraw = true;
+            this.btnImport.ButtonColor = null;
+            this.btnImport.Clickable = true;
+            this.btnImport.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleCenter;
+            this.btnImport.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnImport.Gradient = true;
+            this.btnImport.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.btnImport.IconGap = 0;
+            this.btnImport.IconImage = null;
+            this.btnImport.IconSize = 12F;
+            this.btnImport.IconString = "fa-file-import";
+            this.btnImport.Location = new System.Drawing.Point(206, 0);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Round = null;
+            this.btnImport.ShadowGap = 1;
+            this.btnImport.Size = new System.Drawing.Size(91, 30);
+            this.btnImport.TabIndex = 7;
+            this.btnImport.Text = "가져오기";
+            this.btnImport.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnImport.UseKey = false;
+            // 
             // FormHardware
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -297,6 +374,7 @@ namespace ArduinoLadder.Forms
             this.inputPanel1.ResumeLayout(false);
             this.inputPanel1.PerformLayout();
             this.dvContainer2.ResumeLayout(false);
+            this.dvContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -312,9 +390,13 @@ namespace ArduinoLadder.Forms
         private Devinno.Forms.Controls.DvButton btnCancel;
         private Devinno.Forms.Containers.DvTableLayoutPanel dvTableLayoutPanel1;
         private Devinno.Forms.Controls.DvLabel lblTitleAreas;
-        private Devinno.Forms.Controls.DvLabel dvLabel1;
         private Controls.InputPanel inputPanel1;
         private System.Windows.Forms.TextBox txt;
         private Controls.HardwareTable tbl;
+        private Devinno.Forms.Containers.DvContainer dvContainer3;
+        private Devinno.Forms.Controls.DvButton btnImport;
+        private Devinno.Forms.Controls.DvControl dvControl3;
+        private Devinno.Forms.Controls.DvButton btnExport;
+        private Devinno.Forms.Controls.DvLabel dvLabel1;
     }
 }

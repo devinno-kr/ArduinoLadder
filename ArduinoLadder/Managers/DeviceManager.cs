@@ -21,19 +21,26 @@ namespace ArduinoLadder.Managers
 
         #region Properties
         public bool IsDebugging { get; private set; }
+        public bool IsOpen => comm.IsStart && comm.IsOpen;  
         public int Baudrate { get => comm.Baudrate; set => comm.Baudrate = value; }
         public string PortName { get => comm.Port; set => comm.Port = value; }
+        
+        public bool DTR
+        {
+            get => comm.DTR;
+            set => comm.DTR = value;
+        }
         #endregion
 
         #region Member Variable
-        private ModbusRTUMaster comm;
+        private ModbusRTUMaster2 comm;
         private Dictionary<int, DebugInfo> Debugs = new Dictionary<int, DebugInfo>();
         #endregion
 
         #region Constructor
         public DeviceManager()
         {
-            comm = new ModbusRTUMaster();
+            comm = new ModbusRTUMaster2();
             comm.BitReadReceived += Comm_BitReadReceived;
             comm.WordReadReceived += Comm_WordReadReceived;
             comm.Timeout = 100;
@@ -54,7 +61,7 @@ namespace ArduinoLadder.Managers
         #endregion
 
         #region Event
-        private void Comm_WordReadReceived(object sender, ModbusRTUMaster.WordReadEventArgs e)
+        private void Comm_WordReadReceived(object sender, ModbusRTUMaster2.WordReadEventArgs e)
         {
             for (int i = 0; i < e.ReceiveData.Length; i++)
             {
@@ -89,7 +96,7 @@ namespace ArduinoLadder.Managers
             Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
         }
 
-        private void Comm_BitReadReceived(object sender, ModbusRTUMaster.BitReadEventArgs e)
+        private void Comm_BitReadReceived(object sender, ModbusRTUMaster2.BitReadEventArgs e)
         {
             for (int i = 0; i < e.ReceiveData.Length; i++)
             {

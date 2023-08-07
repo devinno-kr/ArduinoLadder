@@ -438,6 +438,9 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine("#include <TimerThree.h>");
                 sbPLC.AppendLine("#elif defined(__SAM3X8E__)");
                 sbPLC.AppendLine("#include <DueTimer.h>");
+                sbPLC.AppendLine("#elif ( defined(ARDUINO_NANO_RP2040_CONNECT) || defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_ADAFRUIT_FEATHER_RP2040) || defined(ARDUINO_GENERIC_RP2040) ) && defined(ARDUINO_ARCH_MBED)");
+                sbPLC.AppendLine("#define USING_MBED_RPI_PICO_TIMER_INTERRUPT true"); 
+                sbPLC.AppendLine("#include <MBED_RPi_Pico_TimerInterrupt.h>");
                 sbPLC.AppendLine("#endif");
                 sbPLC.AppendLine("");
                 sbPLC.AppendLine("#include <ModbusRTUSlave.h>");
@@ -487,6 +490,22 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine($"unsigned char __DBGP[{DBGP_CNT}];");
                 sbPLC.AppendLine($"unsigned short __DBGW[{DBGW_CNT}];");
                 sbPLC.AppendLine($"");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("#if ( defined(ARDUINO_NANO_RP2040_CONNECT) || defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_ADAFRUIT_FEATHER_RP2040) || defined(ARDUINO_GENERIC_RP2040) ) && defined(ARDUINO_ARCH_MBED)");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("MBED_RPI_PICO_Timer pcTmr(3);");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("void pcTmrISR(uint num)          ");
+                sbPLC.AppendLine("{                             ");
+                sbPLC.AppendLine("  TIMER_ISR_START(num);       ");
+                sbPLC.AppendLine("                              ");
+                sbPLC.AppendLine("  ladderTick();               ");
+                sbPLC.AppendLine("                              ");
+                sbPLC.AppendLine("  TIMER_ISR_END(num);         ");
+                sbPLC.AppendLine("}                             ");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("#endif");
+                sbPLC.AppendLine("");
                 #endregion
                 #region ladder var
                 {
@@ -541,6 +560,8 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine("    #elif defined(__SAM3X8E__)");
                 sbPLC.AppendLine("    Timer3.attachInterrupt(ladderTick);");
                 sbPLC.AppendLine("    Timer3.start(10000);");
+                sbPLC.AppendLine("    #elif ( defined(ARDUINO_NANO_RP2040_CONNECT) || defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_ADAFRUIT_FEATHER_RP2040) || defined(ARDUINO_GENERIC_RP2040) ) && defined(ARDUINO_ARCH_MBED)");
+                sbPLC.AppendLine("    pcTmr.attachInterruptInterval(10000, pcTmrISR);");
                 sbPLC.AppendLine("    #endif");
                 #endregion
                 sbPLC.AppendLine("");
@@ -1571,8 +1592,8 @@ namespace ArduinoLadder.Tools
                 #endregion
                 #region enums
                 sbSyms.AppendLine("");
-                sbSyms.AppendLine("enum TimerType {  NONE = 0, F_TON = 1, F_TAON = 2, F_TOFF = 3, F_TAOFF = 4, F_TMON = 5, F_TAMON = 6 };");
-                sbSyms.AppendLine("enum DebugType {  D_Contact, D_Timer, D_Word, D_Float, D_DWord, D_Text };");
+                sbSyms.AppendLine("enum LadderTimerType {  NONE = 0, F_TON = 1, F_TAON = 2, F_TOFF = 3, F_TAOFF = 4, F_TMON = 5, F_TAMON = 6 };");
+                sbSyms.AppendLine("enum LadderDebugType {  D_Contact, D_Timer, D_Word, D_Float, D_DWord, D_Text };");
                 sbSyms.AppendLine("");
                 #endregion
                 #region struct
@@ -1623,7 +1644,7 @@ namespace ArduinoLadder.Tools
                 #region struct DebugInfo
                 sbSyms.AppendLine("typedef struct");
                 sbSyms.AppendLine("{");
-                sbSyms.AppendLine("  DebugType Type;");
+                sbSyms.AppendLine("  LadderDebugType Type;");
                 sbSyms.AppendLine("  int Row;");
                 sbSyms.AppendLine("  int Column;");
                 sbSyms.AppendLine("  bool Contact;");
@@ -1679,7 +1700,7 @@ namespace ArduinoLadder.Tools
                 sbSyms.AppendLine("{");
                 sbSyms.AppendLine("  public :");
                 sbSyms.AppendLine("    unsigned short Goal;");
-                sbSyms.AppendLine("    TimerType Type = NONE;");
+                sbSyms.AppendLine("    LadderTimerType Type = NONE;");
                 sbSyms.AppendLine("    ");
                 sbSyms.AppendLine("    TMR(long idx)");
                 sbSyms.AppendLine("    {");

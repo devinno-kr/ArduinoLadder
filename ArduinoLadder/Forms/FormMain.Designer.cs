@@ -55,10 +55,11 @@ namespace ArduinoLadder.Forms
             this.btnExport = new Devinno.Forms.Controls.DvButton();
             this.btnDefaultCode = new Devinno.Forms.Controls.DvButton();
             this.pnlStatus = new Devinno.Forms.Containers.DvContainer();
+            this.lblDebugPort = new Devinno.Forms.Controls.DvValueLabelText();
+            this.dvControl3 = new Devinno.Forms.Controls.DvControl();
             this.lblCursorPosition = new Devinno.Forms.Controls.DvLabel();
             this.dvControl2 = new Devinno.Forms.Controls.DvControl();
             this.btnSetting = new Devinno.Forms.Controls.DvButton();
-            this.lblDebugPort = new Devinno.Forms.Controls.DvValueLabelText();
             this.dvControl1 = new Devinno.Forms.Controls.DvControl();
             this.btnMonitoring = new Devinno.Forms.Controls.DvButton();
             this.splitter = new Devinno.Forms.Containers.DvSplitterTableLayoutPanel();
@@ -67,6 +68,7 @@ namespace ArduinoLadder.Forms
             this.pnlContent = new Devinno.Forms.Containers.DvContainer();
             this.ladder = new ArduinoLadder.Controls.LadderEditorControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnDTR = new Devinno.Forms.Controls.DvButton();
             this.pnlTop.SuspendLayout();
             this.pnlLD.SuspendLayout();
             this.pnlToolBar.SuspendLayout();
@@ -671,10 +673,12 @@ namespace ArduinoLadder.Forms
             // pnlStatus
             // 
             this.pnlStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlStatus.Controls.Add(this.lblDebugPort);
+            this.pnlStatus.Controls.Add(this.dvControl3);
+            this.pnlStatus.Controls.Add(this.btnDTR);
             this.pnlStatus.Controls.Add(this.lblCursorPosition);
             this.pnlStatus.Controls.Add(this.dvControl2);
             this.pnlStatus.Controls.Add(this.btnSetting);
-            this.pnlStatus.Controls.Add(this.lblDebugPort);
             this.pnlStatus.Controls.Add(this.dvControl1);
             this.pnlStatus.Controls.Add(this.btnMonitoring);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -686,6 +690,50 @@ namespace ArduinoLadder.Forms
             this.pnlStatus.TabIndex = 6;
             this.pnlStatus.TabStop = false;
             this.pnlStatus.Text = "dvContainer1";
+            // 
+            // lblDebugPort
+            // 
+            this.lblDebugPort.Button = "";
+            this.lblDebugPort.ButtonColor = null;
+            this.lblDebugPort.ButtonIconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.lblDebugPort.ButtonIconGap = 0;
+            this.lblDebugPort.ButtonIconImage = null;
+            this.lblDebugPort.ButtonIconSize = 12F;
+            this.lblDebugPort.ButtonIconString = "fa-ellipsis";
+            this.lblDebugPort.ButtonTextPadding = new System.Windows.Forms.Padding(0);
+            this.lblDebugPort.ButtonWidth = 40;
+            this.lblDebugPort.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblDebugPort.Location = new System.Drawing.Point(612, 10);
+            this.lblDebugPort.Name = "lblDebugPort";
+            this.lblDebugPort.Round = null;
+            this.lblDebugPort.ShadowGap = 1;
+            this.lblDebugPort.Size = new System.Drawing.Size(297, 40);
+            this.lblDebugPort.TabIndex = 17;
+            this.lblDebugPort.Text = "디버그 포트";
+            this.lblDebugPort.Title = "디버그 포트";
+            this.lblDebugPort.TitleColor = null;
+            this.lblDebugPort.TitleIconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.lblDebugPort.TitleIconGap = 0;
+            this.lblDebugPort.TitleIconImage = null;
+            this.lblDebugPort.TitleIconSize = 12F;
+            this.lblDebugPort.TitleIconString = null;
+            this.lblDebugPort.TitleTextPadding = new System.Windows.Forms.Padding(0);
+            this.lblDebugPort.TitleWidth = 80;
+            this.lblDebugPort.Unit = "";
+            this.lblDebugPort.UnitWidth = null;
+            this.lblDebugPort.Value = "";
+            this.lblDebugPort.ValueColor = null;
+            // 
+            // dvControl3
+            // 
+            this.dvControl3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dvControl3.Location = new System.Drawing.Point(909, 10);
+            this.dvControl3.Name = "dvControl3";
+            this.dvControl3.ShadowGap = 1;
+            this.dvControl3.Size = new System.Drawing.Size(6, 40);
+            this.dvControl3.TabIndex = 21;
+            this.dvControl3.TabStop = false;
+            this.dvControl3.Text = "dvControl3";
             // 
             // lblCursorPosition
             // 
@@ -745,39 +793,6 @@ namespace ArduinoLadder.Forms
             this.btnSetting.Text = null;
             this.btnSetting.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSetting.UseKey = false;
-            // 
-            // lblDebugPort
-            // 
-            this.lblDebugPort.Button = "";
-            this.lblDebugPort.ButtonColor = null;
-            this.lblDebugPort.ButtonIconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
-            this.lblDebugPort.ButtonIconGap = 0;
-            this.lblDebugPort.ButtonIconImage = null;
-            this.lblDebugPort.ButtonIconSize = 12F;
-            this.lblDebugPort.ButtonIconString = "fa-ellipsis";
-            this.lblDebugPort.ButtonTextPadding = new System.Windows.Forms.Padding(0);
-            this.lblDebugPort.ButtonWidth = 40;
-            this.lblDebugPort.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblDebugPort.Location = new System.Drawing.Point(663, 10);
-            this.lblDebugPort.Name = "lblDebugPort";
-            this.lblDebugPort.Round = null;
-            this.lblDebugPort.ShadowGap = 1;
-            this.lblDebugPort.Size = new System.Drawing.Size(297, 40);
-            this.lblDebugPort.TabIndex = 17;
-            this.lblDebugPort.Text = "디버그 포트";
-            this.lblDebugPort.Title = "디버그 포트";
-            this.lblDebugPort.TitleColor = null;
-            this.lblDebugPort.TitleIconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
-            this.lblDebugPort.TitleIconGap = 0;
-            this.lblDebugPort.TitleIconImage = null;
-            this.lblDebugPort.TitleIconSize = 12F;
-            this.lblDebugPort.TitleIconString = null;
-            this.lblDebugPort.TitleTextPadding = new System.Windows.Forms.Padding(0);
-            this.lblDebugPort.TitleWidth = 80;
-            this.lblDebugPort.Unit = "";
-            this.lblDebugPort.UnitWidth = null;
-            this.lblDebugPort.Value = "";
-            this.lblDebugPort.ValueColor = null;
             // 
             // dvControl1
             // 
@@ -919,6 +934,29 @@ namespace ArduinoLadder.Forms
             this.toolTip.UseAnimation = false;
             this.toolTip.UseFading = false;
             // 
+            // btnDTR
+            // 
+            this.btnDTR.BackgroundDraw = true;
+            this.btnDTR.ButtonColor = null;
+            this.btnDTR.Clickable = true;
+            this.btnDTR.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleCenter;
+            this.btnDTR.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDTR.Gradient = true;
+            this.btnDTR.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.btnDTR.IconGap = 0;
+            this.btnDTR.IconImage = null;
+            this.btnDTR.IconSize = 12F;
+            this.btnDTR.IconString = null;
+            this.btnDTR.Location = new System.Drawing.Point(915, 10);
+            this.btnDTR.Name = "btnDTR";
+            this.btnDTR.Round = null;
+            this.btnDTR.ShadowGap = 1;
+            this.btnDTR.Size = new System.Drawing.Size(45, 40);
+            this.btnDTR.TabIndex = 22;
+            this.btnDTR.Text = "DTR";
+            this.btnDTR.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnDTR.UseKey = false;
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -986,6 +1024,8 @@ namespace ArduinoLadder.Forms
         private Devinno.Forms.Controls.DvButton btnSetting;
         private Devinno.Forms.Controls.DvButton btnExport;
         private Devinno.Forms.Controls.DvButton btnDefaultCode;
+        private Devinno.Forms.Controls.DvControl dvControl3;
+        private Devinno.Forms.Controls.DvButton btnDTR;
     }
 }
 

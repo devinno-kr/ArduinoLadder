@@ -1001,6 +1001,33 @@ namespace ArduinoLadder.Tools
             }
         }
         #endregion
+        #region Export
+        public const string ExportK = "내보내기";
+        public const string ExportE = "Export";
+        public static string Export
+        {
+            get
+            {
+                if (lang == Lang.KO) return ExportK;
+                else if (lang == Lang.EN) return ExportE;
+                else return "";
+            }
+        }
+        #endregion
+        #region Import
+        public const string ImportK = "가져오기";
+        public const string ImportE = "Import";
+        public static string Import
+        {
+            get
+            {
+                if (lang == Lang.KO) return ImportK;
+                else if (lang == Lang.EN) return ImportE;
+                else return "";
+            }
+        }
+        #endregion
+
 
         #region Ok
         public const string OkK = "확인";
