@@ -42,15 +42,19 @@ namespace ArduinoLadder.Forms
             #region btnExport.ButtonClick
             btnExport.ButtonClick += (o, s) =>
             {
+                
                 using (var sfd = new SaveFileDialog())
                 {
-                    sfd.InitialDirectory = Path.Combine(Application.StartupPath, "boardlist");
-                    sfd.Filter = "Arduino Ladder Board File(*.abd)|*.abd";
+                    if (Directory.Exists(Path.Combine(Program.DataMgr.ProjectFolder, "boardlist"))) sfd.InitialDirectory = Path.Combine(Program.DataMgr.ProjectFolder, "boardlist");
+                    else if (Directory.Exists(Program.DataMgr.ProjectFolder)) sfd.InitialDirectory = Program.DataMgr.ProjectFolder;
+                    //sfd.InitialDirectory = Path.Combine(Application.StartupPath, "boardlist");
+                    sfd.Filter = "Arduino Ladder Board File(*.albd)|*.albd";
                     if(sfd.ShowDialog() == DialogResult.OK)
                     {
                         File.WriteAllText(sfd.FileName, txt.Text);
                     }
                 }
+                
             };
             #endregion
 
@@ -59,8 +63,10 @@ namespace ArduinoLadder.Forms
             {
                 using (var ofd = new OpenFileDialog())
                 {
-                    ofd.InitialDirectory = Path.Combine(Application.StartupPath, "boardlist");
-                    ofd.Filter = "Arduino Ladder Board File(*.abd)|*.abd";
+                    if (Directory.Exists(Path.Combine(Program.DataMgr.ProjectFolder, "boardlist"))) ofd.InitialDirectory = Path.Combine(Program.DataMgr.ProjectFolder, "boardlist");
+                    else if (Directory.Exists(Program.DataMgr.ProjectFolder)) ofd.InitialDirectory = Program.DataMgr.ProjectFolder;
+                    //ofd.InitialDirectory = Path.Combine(Application.StartupPath, "boardlist");
+                    ofd.Filter = "Arduino Ladder Board File(*.albd)|*.albd";
                     ofd.Multiselect = false;
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
