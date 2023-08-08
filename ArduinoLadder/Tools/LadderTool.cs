@@ -504,6 +504,18 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine("  TIMER_ISR_END(num);         ");
                 sbPLC.AppendLine("}                             ");
                 sbPLC.AppendLine("");
+                sbPLC.AppendLine("#elif (defined(ARDUINO_ARCH_ESP32) || defined(ESP32))");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("hw_timer_t* timer = NULL;                             ");
+                sbPLC.AppendLine("portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED; ");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("void ARDUINO_ISR_ATTR onladderTimerTick()             ");
+                sbPLC.AppendLine("{                                                     ");
+                sbPLC.AppendLine("    portENTER_CRITICAL_ISR(&timerMux);                ");
+                sbPLC.AppendLine("    ladderTick();                                     ");
+                sbPLC.AppendLine("    portEXIT_CRITICAL_ISR(&timerMux);                 ");
+                sbPLC.AppendLine("}");
+                sbPLC.AppendLine("");
                 sbPLC.AppendLine("#endif");
                 sbPLC.AppendLine("");
                 #endregion
@@ -562,6 +574,11 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine("    Timer3.start(10000);");
                 sbPLC.AppendLine("    #elif ( defined(ARDUINO_NANO_RP2040_CONNECT) || defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_ADAFRUIT_FEATHER_RP2040) || defined(ARDUINO_GENERIC_RP2040) ) && defined(ARDUINO_ARCH_MBED)");
                 sbPLC.AppendLine("    pcTmr.attachInterruptInterval(10000, pcTmrISR);");
+                sbPLC.AppendLine("    #elif (defined(ARDUINO_ARCH_ESP32) || defined(ESP32))");
+                sbPLC.AppendLine("    timer = timerBegin(0, 80, true);");
+                sbPLC.AppendLine("    timerAttachInterrupt(timer, &onladderTimerTick, true);");
+                sbPLC.AppendLine("    timerAlarmWrite(timer, 10000, true);");
+                sbPLC.AppendLine("    timerAlarmEnable(timer);");
                 sbPLC.AppendLine("    #endif");
                 #endregion
                 sbPLC.AppendLine("");
