@@ -444,6 +444,7 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine("#endif");
                 sbPLC.AppendLine("");
                 sbPLC.AppendLine("#include <ModbusRTUSlave.h>");
+                sbPLC.AppendLine("#include <ModbusBits.h>");
                 sbPLC.AppendLine("");
                 #endregion
                 #region #define
@@ -1293,7 +1294,7 @@ namespace ArduinoLadder.Tools
                     {
                         if (v.Key == LadderComm.Mqtt.Name) sbCOM.AppendLine("#include <PubSubClient.h>");
                         else if (v.Key == LadderComm.ModbusRtuSlave.Name) sbCOM.AppendLine("#include <ModbusRTUSlave.h>");
-                        else if (v.Key == LadderComm.ModbusTcpSlave.Name) sbCOM.AppendLine("#include <ModbusTcpSlave.h>");
+                        else if (v.Key == LadderComm.ModbusTcpSlave.Name) sbCOM.AppendLine("#include <ModbusTCPSlave.h>");
                     }
                     sbCOM.AppendLine("");
                 }
