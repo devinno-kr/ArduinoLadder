@@ -74,9 +74,9 @@ namespace ArduinoLadder
             MessageBox.TitleIconBoxColor = Color.FromArgb(0, 102, 99);
             SerialBox.TitleIconBoxColor = Color.FromArgb(0, 102, 99);
 
-            InputBox.Icon = IconTool.GetIcon(new DvIcon(InputBox.TitleIconString) { IconSize = InputBox.TitleIconSize }, ICO_WH, ICO_WH, Color.White);
-            MessageBox.Icon = IconTool.GetIcon(new DvIcon(MessageBox.TitleIconString) { IconSize = MessageBox.TitleIconSize }, ICO_WH, ICO_WH, Color.White);
-            SerialBox.Icon = IconTool.GetIcon(new DvIcon(SerialBox.TitleIconString) { IconSize = SerialBox.TitleIconSize }, ICO_WH, ICO_WH, Color.White);
+            InputBox.Icon = IconTool.GetIcon(new DvIcon(InputBox.TitleIconString) { IconSize = 16}, ICO_WH, ICO_WH, Color.White);
+            MessageBox.Icon = IconTool.GetIcon(new DvIcon(MessageBox.TitleIconString) { IconSize = 16 }, ICO_WH, ICO_WH, Color.White);
+            SerialBox.Icon = IconTool.GetIcon(new DvIcon(SerialBox.TitleIconString) { IconSize = 16}, ICO_WH, ICO_WH, Color.White);
            
             MessageBox.ButtonOk.Text = LangTool.Ok;
             MessageBox.ButtonCancel.Text = LangTool.Cancel;

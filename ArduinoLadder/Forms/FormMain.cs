@@ -332,7 +332,7 @@ namespace ArduinoLadder.Forms
             #region Set
             ladder.Font = new Font("나눔고딕", 8);
             Theme.Animation = Theme.TouchMode = false;
-            Icon = IconTool.GetIcon(new DvIcon(TitleIconString, Convert.ToInt32(TitleIconSize)), Program.ICO_WH, Program.ICO_WH, Color.White);
+            Icon = IconTool.GetIcon(new DvIcon(TitleIconString, 16), Program.ICO_WH, Program.ICO_WH, Color.White);
             #endregion
 
             SetExComposited();

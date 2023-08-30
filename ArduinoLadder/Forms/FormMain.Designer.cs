@@ -57,6 +57,7 @@ namespace ArduinoLadder.Forms
             this.pnlStatus = new Devinno.Forms.Containers.DvContainer();
             this.lblDebugPort = new Devinno.Forms.Controls.DvValueLabelText();
             this.dvControl3 = new Devinno.Forms.Controls.DvControl();
+            this.btnDTR = new Devinno.Forms.Controls.DvButton();
             this.lblCursorPosition = new Devinno.Forms.Controls.DvLabel();
             this.dvControl2 = new Devinno.Forms.Controls.DvControl();
             this.btnSetting = new Devinno.Forms.Controls.DvButton();
@@ -68,7 +69,6 @@ namespace ArduinoLadder.Forms
             this.pnlContent = new Devinno.Forms.Containers.DvContainer();
             this.ladder = new ArduinoLadder.Controls.LadderEditorControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnDTR = new Devinno.Forms.Controls.DvButton();
             this.pnlTop.SuspendLayout();
             this.pnlLD.SuspendLayout();
             this.pnlToolBar.SuspendLayout();
@@ -735,6 +735,29 @@ namespace ArduinoLadder.Forms
             this.dvControl3.TabStop = false;
             this.dvControl3.Text = "dvControl3";
             // 
+            // btnDTR
+            // 
+            this.btnDTR.BackgroundDraw = true;
+            this.btnDTR.ButtonColor = null;
+            this.btnDTR.Clickable = true;
+            this.btnDTR.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleCenter;
+            this.btnDTR.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDTR.Gradient = true;
+            this.btnDTR.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.btnDTR.IconGap = 0;
+            this.btnDTR.IconImage = null;
+            this.btnDTR.IconSize = 12F;
+            this.btnDTR.IconString = null;
+            this.btnDTR.Location = new System.Drawing.Point(915, 10);
+            this.btnDTR.Name = "btnDTR";
+            this.btnDTR.Round = null;
+            this.btnDTR.ShadowGap = 1;
+            this.btnDTR.Size = new System.Drawing.Size(45, 40);
+            this.btnDTR.TabIndex = 22;
+            this.btnDTR.Text = "DTR";
+            this.btnDTR.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnDTR.UseKey = false;
+            // 
             // lblCursorPosition
             // 
             this.lblCursorPosition.BackgroundDraw = true;
@@ -933,29 +956,6 @@ namespace ArduinoLadder.Forms
             this.toolTip.ReshowDelay = 40;
             this.toolTip.UseAnimation = false;
             this.toolTip.UseFading = false;
-            // 
-            // btnDTR
-            // 
-            this.btnDTR.BackgroundDraw = true;
-            this.btnDTR.ButtonColor = null;
-            this.btnDTR.Clickable = true;
-            this.btnDTR.ContentAlignment = Devinno.Forms.DvContentAlignment.MiddleCenter;
-            this.btnDTR.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnDTR.Gradient = true;
-            this.btnDTR.IconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
-            this.btnDTR.IconGap = 0;
-            this.btnDTR.IconImage = null;
-            this.btnDTR.IconSize = 12F;
-            this.btnDTR.IconString = null;
-            this.btnDTR.Location = new System.Drawing.Point(915, 10);
-            this.btnDTR.Name = "btnDTR";
-            this.btnDTR.Round = null;
-            this.btnDTR.ShadowGap = 1;
-            this.btnDTR.Size = new System.Drawing.Size(45, 40);
-            this.btnDTR.TabIndex = 22;
-            this.btnDTR.Text = "DTR";
-            this.btnDTR.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnDTR.UseKey = false;
             // 
             // FormMain
             // 

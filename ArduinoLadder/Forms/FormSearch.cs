@@ -37,7 +37,7 @@ namespace ArduinoLadder.Forms
 
             #region Icon
             StartPosition = FormStartPosition.CenterParent;
-            Icon = IconTool.GetIcon(new DvIcon(TitleIconString, Convert.ToInt32(TitleIconSize)), Program.ICO_WH, Program.ICO_WH, Color.White);
+            Icon = IconTool.GetIcon(new DvIcon(TitleIconString, 16), Program.ICO_WH, Program.ICO_WH, Color.White);
             #endregion
         }
         #endregion
