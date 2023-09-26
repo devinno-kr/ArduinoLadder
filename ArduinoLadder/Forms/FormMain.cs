@@ -86,7 +86,7 @@ namespace ArduinoLadder.Forms
                 using (var br = new SolidBrush(btnSaveAsFile.ButtonColor ?? Theme.ButtonColor))
                 {
                     var n = bSaveFileDown ? 1 : 0;
-                    int x = 20, y = 17, gp = 3;
+                    int x = 20, y = 20, gp = 3;
 
                     br.Color = btnSaveAsFile.ButtonColor ?? Theme.ButtonColor;
                     s.Graphics.DrawIcon(new DvIcon("fa-asterisk") { IconSize = 7 }, br, new Rectangle(x - gp, y + n - gp, 10, 10), Devinno.Forms.DvContentAlignment.MiddleCenter);

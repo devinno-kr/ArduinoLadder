@@ -68,16 +68,13 @@ namespace ArduinoLadder
             SerialBox = new DvSerialPortSettingBox() { FormBorderStyle = FormBorderStyle.FixedSingle, BlankForm = true, StartPosition = FormStartPosition.CenterParent };
             MainForm = new FormMain() { };
 
-            InputBox.TitleIconBoxColor = Color.FromArgb(0, 102, 99);
-            MessageBox.TitleIconBoxColor = Color.FromArgb(0, 102, 99);
-            SerialBox.TitleIconBoxColor = Color.FromArgb(0, 102, 99);
-
             MessageBox.ButtonOk.Text = LangTool.Ok;
             MessageBox.ButtonCancel.Text = LangTool.Cancel;
             MessageBox.ButtonYes.Text = LangTool.Yes;
             MessageBox.ButtonNo.Text = LangTool.No;
             InputBox.ButtonOK.Text = LangTool.Ok;
             InputBox.ButtonCancel.Text = LangTool.Cancel;
+            InputBox.MinWidth = 300;
             SerialBox.ButtonOK.Text = LangTool.Ok;
             SerialBox.ButtonCancel.Text = LangTool.Cancel;
             SerialBox.InputPort.Title = LangTool.Port;
