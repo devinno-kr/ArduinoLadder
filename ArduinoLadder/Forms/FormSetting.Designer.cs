@@ -56,7 +56,7 @@ namespace ArduinoLadder.Forms
             this.dvContainer1.Name = "dvContainer1";
             this.dvContainer1.Padding = new System.Windows.Forms.Padding(10);
             this.dvContainer1.ShadowGap = 1;
-            this.dvContainer1.Size = new System.Drawing.Size(446, 241);
+            this.dvContainer1.Size = new System.Drawing.Size(446, 244);
             this.dvContainer1.TabIndex = 0;
             this.dvContainer1.TabStop = false;
             this.dvContainer1.Text = "dvContainer1";
@@ -212,7 +212,7 @@ namespace ArduinoLadder.Forms
             this.dvControl1.Location = new System.Drawing.Point(10, 184);
             this.dvControl1.Name = "dvControl1";
             this.dvControl1.ShadowGap = 1;
-            this.dvControl1.Size = new System.Drawing.Size(426, 7);
+            this.dvControl1.Size = new System.Drawing.Size(426, 10);
             this.dvControl1.TabIndex = 6;
             this.dvControl1.TabStop = false;
             this.dvControl1.Text = "dvControl1";
@@ -223,7 +223,7 @@ namespace ArduinoLadder.Forms
             this.dvContainer2.Controls.Add(this.dvControl2);
             this.dvContainer2.Controls.Add(this.btnCancel);
             this.dvContainer2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dvContainer2.Location = new System.Drawing.Point(10, 191);
+            this.dvContainer2.Location = new System.Drawing.Point(10, 194);
             this.dvContainer2.Name = "dvContainer2";
             this.dvContainer2.Padding = new System.Windows.Forms.Padding(168, 0, 0, 0);
             this.dvContainer2.ShadowGap = 1;
@@ -294,7 +294,7 @@ namespace ArduinoLadder.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BlankForm = true;
-            this.ClientSize = new System.Drawing.Size(446, 241);
+            this.ClientSize = new System.Drawing.Size(446, 244);
             this.Controls.Add(this.dvContainer1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

@@ -136,7 +136,7 @@ namespace ArduinoLadder.Forms
             #endregion
             #endregion
 
-            CH = pnlContent.Height;
+            CH = pnlContent.Height + 10;
         }
         #endregion
 
