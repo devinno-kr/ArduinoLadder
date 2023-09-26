@@ -95,7 +95,6 @@ namespace ArduinoLadder.Forms
 
             #region Form Props
             StartPosition = FormStartPosition.CenterParent;
-            this.Icon = Tools.IconTool.GetIcon(new Devinno.Forms.Icons.DvIcon(TitleIconString, 16), Program.ICO_WH, Program.ICO_WH, Color.White);
             #endregion
 
             #region Event
@@ -164,13 +163,11 @@ namespace ArduinoLadder.Forms
             {
                 this.Size = new Size(500, 400);
                 this.pnlContent.Visible = true;
-                if (Program.WindowBorder) Tools.WindowTool.SetForm(this);
             }
             else
             {
                 this.Size = new Size(300, 400 - CH);
                 this.pnlContent.Visible = false;
-                if (Program.WindowBorder) Tools.WindowTool.SetFormFix(this);
             }
             #endregion
             #region Select

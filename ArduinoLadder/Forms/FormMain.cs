@@ -137,7 +137,6 @@ namespace ArduinoLadder.Forms
             #region btnHardware.ButtonClick         : 하드웨어
             btnHardware.ButtonClick += (o, s) =>
             {
-                Block = true;
                 var ret = frmHardware.ShowHardware(CurrentDocument);
                 if (ret != null)
                 {
@@ -146,13 +145,11 @@ namespace ArduinoLadder.Forms
 
                     CurrentDocument.Edit = true;
                 }
-                Block = false;
             };
             #endregion
             #region btnSymbol.ButtonClick           : 심볼
             btnSymbol.ButtonClick += (o, s) =>
             {
-                Block = true;
                 var ret = frmSymbol.ShowSymbol(CurrentDocument);
                 if (ret != null)
                 {
@@ -166,28 +163,23 @@ namespace ArduinoLadder.Forms
 
                     CurrentDocument.Edit = true;
                 }
-                Block = false;
             };
             #endregion
             #region btnCommunication.ButtonClick    : 통신설정
             btnCommunication.ButtonClick += (o, s) =>
             {
-                Block = true;
                 var ret = frmComm.ShowCommunication(CurrentDocument);
                 if (ret != null)
                 {
                     CurrentDocument.Communications = CryptoTool.EncodeBase64String(Serialize.JsonSerializeWithType(ret));
                     CurrentDocument.Edit = true;
                 }
-                Block = false;
             };
             #endregion
             #region btnDefaultCode.ButtonClick      : 기본코드
             btnDefaultCode.ButtonClick += (o, s) =>
             {
-                Block = true;
                 frmDefault.ShowDefaultCode(CurrentDocument);
-                Block = false;
             };
             #endregion
             #region lblSketchPath.ButtonClicked     : 스케치 경로 설정
@@ -239,7 +231,6 @@ namespace ArduinoLadder.Forms
             #region btnSetting.ButtonClick          : 설정
             btnSetting.ButtonClick += (o, s) =>
             {
-                Block = true;
                 var ret = frmSetting.ShowSetting();
                 if (ret != null)
                 {
@@ -248,14 +239,11 @@ namespace ArduinoLadder.Forms
                     Program.DataMgr.Language = ret.Language;
                     Program.DataMgr.SaveSetting();
                 }
-                Block = false;
             };
             #endregion
             #region lblDebugPort.ButtonClicked      : 디버그 포트 설정
             lblDebugPort.ButtonClicked += (o, s) =>
             {
-                Block = true;
-
                 var v = Program.DevMgr;
                 var ret = Program.SerialBox.ShowSimpleSerialPortSetting(new SerialPortSetting { Port = v.PortName, Baudrate = v.Baudrate });
                 if (ret != null)
@@ -264,8 +252,6 @@ namespace ArduinoLadder.Forms
                     v.Baudrate = ret.Baudrate;
                     v.Save();
                 }
-
-                Block = false;
             };
             #endregion
             #region btnMonitoring.ButtonClick       : 모니터링
@@ -332,7 +318,6 @@ namespace ArduinoLadder.Forms
             #region Set
             ladder.Font = new Font("나눔고딕", 8);
             Theme.Animation = Theme.TouchMode = false;
-            Icon = IconTool.GetIcon(new DvIcon(TitleIconString, 16), Program.ICO_WH, Program.ICO_WH, Color.White);
             #endregion
 
             SetExComposited();
@@ -342,24 +327,7 @@ namespace ArduinoLadder.Forms
             #region Language
             Program.DataMgr.LanguageChanged += (o, s) => ToolTipSet();
             #endregion
-
-            #region WindowBorder
-            if (Program.WindowBorder)
-            {
-                WindowTool.SetForm(this);
-                WindowTool.SetForm(frmSymbol);
-                WindowTool.SetForm(frmHardware);
-                WindowTool.SetForm(frmComm);
-                WindowTool.SetForm(frmComm.InputForm);
-                WindowTool.SetFormFix(frmSetting);
-                WindowTool.SetFormFix(frmDefault);
-                WindowTool.SetFormFix(Program.InputBox);
-                WindowTool.SetFormFix(Program.MessageBox);
-                WindowTool.SetFormFix(Program.SerialBox);
-                WindowTool.SetFormFix(ladder.MessageBox);
-                WindowTool.SetForm(ladder.EditForm);
-            }
-            #endregion
+             
         }
         #endregion
 
@@ -369,8 +337,7 @@ namespace ArduinoLadder.Forms
         {
             var hTOP = pnlTop.Height + Padding.Top;
             var hBTM = Padding.Bottom + pnlStatus.Height + pnlMessage.Height;
-            var rt = Program.WindowBorder ? new Rectangle(0, hTOP, this.Width, this.Height - hTOP - hBTM - 40) :
-                                            new Rectangle(-5, hTOP, this.Width + 10, this.Height - hTOP - hBTM);
+            var rt = new Rectangle(0, hTOP, this.Width, this.Height - hTOP - hBTM - 40);
 
             using (var br = new SolidBrush(pnlContent.BackColor))
             {
@@ -400,13 +367,9 @@ namespace ArduinoLadder.Forms
         {
             if (CurrentDocument != null && CurrentDocument.MustSave)
             {
-                Block = true;
-                 
                 var ret = Program.MessageBox.ShowMessageBoxYesNo(LM.Save, LM.SaveQuestion);
                 if (ret == DialogResult.Yes) SaveFile();
                 else if (ret == DialogResult.Cancel) e.Cancel = true;
-
-                Block = false;
             }
             base.OnClosing(e);
         }
@@ -427,27 +390,16 @@ namespace ArduinoLadder.Forms
             bool bCancel = false;
             if (CurrentDocument != null && CurrentDocument.MustSave)
             {
-                Block = true;
-
-                if (Program.WindowBorder) WindowTool.Set(Program.MessageBox);
                 switch (Program.MessageBox.ShowMessageBoxYesNoCancel(LM.Save, LM.SaveQuestion))
                 {
                     case DialogResult.Yes: SaveFile(); break;
                     case DialogResult.No: break;
                     case DialogResult.Cancel: bCancel = true; break;
                 }
-                Block = false;
             }
 
             if (!bCancel)
             {
-                Block = true;
-
-                if (Program.WindowBorder)
-                {
-                    WindowTool.Set(Program.InputBox);
-                }
-
                 Program.InputBox.UseEnterKey = true;
                 var ret = Program.InputBox.ShowString(LM.NewFile);
                 if (ret != null)
@@ -461,8 +413,6 @@ namespace ArduinoLadder.Forms
                     UISet();
                 }
                 Program.InputBox.UseEnterKey = false;
-
-                Block = false;
             }
         }
         #endregion
@@ -472,21 +422,16 @@ namespace ArduinoLadder.Forms
             bool bCancel = false;
             if (CurrentDocument != null && CurrentDocument.MustSave)
             {
-                Block = true;
-                 
                 switch (Program.MessageBox.ShowMessageBoxYesNoCancel(LM.Save, LM.SaveQuestion))
                 {
                     case DialogResult.Yes: SaveFile(); break;
                     case DialogResult.No: break;
                     case DialogResult.Cancel: bCancel = true; break;
                 }
-
-                Block = false;
             }
 
             if (!bCancel)
             {
-                Block = true;
                 using (var ofd = new OpenFileDialog())
                 {
                     ofd.Title = LM.Open;
@@ -509,7 +454,6 @@ namespace ArduinoLadder.Forms
                         UISet();
                     }
                 }
-                Block = false;
             }
         }
         #endregion
@@ -518,8 +462,6 @@ namespace ArduinoLadder.Forms
         {
             if (CurrentDocument != null)
             {
-                if (!string.IsNullOrWhiteSpace(CurrentDocument.FileName) && File.Exists(CurrentDocument.FileName)) Block = true;
-
                 try
                 {
                     CurrentDocument.Save();
@@ -528,8 +470,6 @@ namespace ArduinoLadder.Forms
                 {
                     Program.MessageBox.ShowMessageBoxOk(LM.Save, LM.SavePermissions);
                 }
-
-                if (Block) Block = false;
             }
         }
         #endregion
@@ -538,8 +478,6 @@ namespace ArduinoLadder.Forms
         {
             if (CurrentDocument != null)
             {
-                Block = true;
-
                 try
                 {
                     CurrentDocument.SaveAs();
@@ -548,8 +486,6 @@ namespace ArduinoLadder.Forms
                 {
                     Program.MessageBox.ShowMessageBoxOk(LM.Save, LM.SavePermissions);
                 }
-
-                Block = false;
             }
         }
         #endregion
@@ -557,9 +493,7 @@ namespace ArduinoLadder.Forms
         #region Message
         public void Message(string Title, string Message)
         {
-            Block = true;
             Program.MessageBox.ShowMessageBoxOk(Title, Message);
-            Block = false;
         }
         #endregion
         #region Debug

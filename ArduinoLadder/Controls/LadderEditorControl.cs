@@ -252,7 +252,7 @@ namespace ArduinoLadder.Controls
         public Dictionary<int, LadderRow> DicRows { get; private set; } = new Dictionary<int, LadderRow>();
         #endregion
 
-        public FormMessageBox MessageBox { get; } = new FormMessageBox() { StartPosition = FormStartPosition.CenterParent };
+        public DvMessageBox MessageBox { get; } = new DvMessageBox() { BlankForm = true, FormBorderStyle = FormBorderStyle.FixedSingle, StartPosition = FormStartPosition.CenterParent };
 
         public LadderEditForm EditForm => frmEdit;
         private LadderEditForm frmEdit = new LadderEditForm();
@@ -1031,25 +1031,16 @@ namespace ArduinoLadder.Controls
                             var v = GetLadder(CurRow, CurX);
                             if (v != null)
                             {
-
-                                if (frm != null) frm.Block = true;
-
                                 var code = frmEdit.ShowLadderCode(v);
                                 if (code != null) SetCode(v, code);
-
-                                if (frm != null) frm.Block = false;
                             }
                             else
                             {
-                                if (frm != null) frm.Block = true;
-
                                 var code = frmEdit.ShowLadderCode(v);
                                 if (code != null)
                                 {
                                     AddLadderAction(new LadderItem() { Code = code, Col = CurX, Row = CurRow, ItemType = LadderItemType.NONE, VerticalLine = false });
                                 }
-
-                                if (frm != null) frm.Block = false;
                             }
                         }
                     }

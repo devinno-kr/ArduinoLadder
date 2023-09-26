@@ -37,7 +37,6 @@ namespace ArduinoLadder.Forms
 
             #region Icon
             StartPosition = FormStartPosition.CenterParent;
-            Icon = IconTool.GetIcon(new DvIcon(TitleIconString, 16), Program.ICO_WH, Program.ICO_WH, Color.White);
             #endregion
         }
         #endregion
@@ -112,8 +111,6 @@ namespace ArduinoLadder.Forms
         #region ShowSearch
         public void ShowSearch(LadderEditorControl editor)
         {
-            if (Program.WindowBorder) Tools.WindowTool.Set(this);
-
             this.editor = editor;
             this.SearchIndex = 0;
             this.SearchText = "";

@@ -5,6 +5,7 @@ using Devinno.Forms;
 using Devinno.Forms.Controls;
 using Devinno.Forms.Dialogs;
 using Devinno.Forms.Icons;
+using Devinno.Forms.Tools;
 using Devinno.Tools;
 using System;
 using System.Collections.Generic;
@@ -50,9 +51,7 @@ namespace ArduinoLadder.Forms
                 var v = s.Cell.Row.Source as LadderCommItem;
                 if (v != null)
                 {
-                    Block = true;
                     ILadderComm ret = frmInput.ShowCommInputModify(v.Comm);
-                    Block = false;
 
                     if (ret != null)
                     {
@@ -74,9 +73,7 @@ namespace ArduinoLadder.Forms
             {
                 if (s.Button.Name == "Add")
                 {
-                    Block = true;
                     ILadderComm ret = frmInput.ShowCommInputAdd();
-                    Block = false;
 
                     if (ret != null)
                     {
@@ -100,10 +97,6 @@ namespace ArduinoLadder.Forms
             #endregion
             #endregion
 
-            #region Icon
-            Icon = IconTool.GetIcon(new DvIcon(TitleIconString, 16), Program.ICO_WH, Program.ICO_WH, Color.White);
-            #endregion
-
             StartPosition = FormStartPosition.CenterParent;
         }
         #endregion
@@ -123,8 +116,6 @@ namespace ArduinoLadder.Forms
         #region ShowCommunication
         public List<ILadderComm> ShowCommunication(LadderDocument doc)
         {
-            if (Program.WindowBorder) Tools.WindowTool.Set(this);
-
             #region Set
             Items.Clear();
             if (doc != null && !string.IsNullOrWhiteSpace(doc.Communications))

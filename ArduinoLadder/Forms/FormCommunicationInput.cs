@@ -369,7 +369,6 @@ namespace ArduinoLadder.Forms
 
             #region Form Props
             StartPosition = FormStartPosition.CenterParent;
-            this.Icon = Tools.IconTool.GetIcon(new Devinno.Forms.Icons.DvIcon(TitleIconString, 16), Program.ICO_WH, Program.ICO_WH, Color.White);
             #endregion
  
         }
@@ -730,8 +729,6 @@ namespace ArduinoLadder.Forms
         #region ShowCommInputAdd
         public ILadderComm ShowCommInputAdd()
         {
-            if (Program.WindowBorder) Tools.WindowTool.Set(this);
-
             #region Set
             this.Title = this.Text = LM.CommunicationAdd;
 
@@ -757,8 +754,6 @@ namespace ArduinoLadder.Forms
         #region ShowCommInputModify
         public ILadderComm ShowCommInputModify(ILadderComm v)
         {
-            if (Program.WindowBorder) Tools.WindowTool.Set(this);
-
             #region Set
             this.Title = this.Text = LM.CommunicationAdd;
 
@@ -968,8 +963,6 @@ namespace ArduinoLadder.Forms
                 var BoxColor = (Row.Selected ? SelectedCellBackColor : CellBackColor).BrightnessTransmit(Theme.DataGridInputBright);
                 if (CollisionTool.Check(CellBounds, x, y))
                 {
-                    Wnd.Block = true;
-
                     var ret = ValueTool.GetHexValue(Program.InputBox.ShowString(Column.HeaderText, ValueTool.GetHexString((int?)Value ?? 0)) ?? "");
                     if (ret.HasValue && !((object)ret.Value).Equals(Value))
                     {
@@ -980,9 +973,6 @@ namespace ArduinoLadder.Forms
                         Grid.InvokeValueChanged(this, old, (object)(ret.Value));
                         #endregion
                     }
-
-                    Wnd.Block = false;
-
                 }
                 #endregion
             }

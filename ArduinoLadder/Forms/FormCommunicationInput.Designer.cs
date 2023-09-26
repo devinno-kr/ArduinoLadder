@@ -29,6 +29,7 @@ namespace ArduinoLadder.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCommunicationInput));
             this.pnl = new Devinno.Forms.Containers.DvContainer();
             this.pnlContent = new Devinno.Forms.Containers.DvPanel();
             this.tab = new Devinno.Forms.Containers.DvTablessControl();
@@ -160,11 +161,11 @@ namespace ArduinoLadder.Forms
             this.pnl.Controls.Add(this.dvControl6);
             this.pnl.Controls.Add(this.dvPanel2);
             this.pnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl.Location = new System.Drawing.Point(3, 40);
+            this.pnl.Location = new System.Drawing.Point(0, 0);
             this.pnl.Name = "pnl";
-            this.pnl.Padding = new System.Windows.Forms.Padding(7, 10, 7, 0);
+            this.pnl.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
             this.pnl.ShadowGap = 1;
-            this.pnl.Size = new System.Drawing.Size(1018, 678);
+            this.pnl.Size = new System.Drawing.Size(1024, 708);
             this.pnl.TabIndex = 5;
             this.pnl.TabStop = false;
             this.pnl.Text = "dvContainer2";
@@ -180,13 +181,13 @@ namespace ArduinoLadder.Forms
             this.pnlContent.IconImage = null;
             this.pnlContent.IconSize = 12F;
             this.pnlContent.IconString = "fa-pen-to-square";
-            this.pnlContent.Location = new System.Drawing.Point(7, 130);
+            this.pnlContent.Location = new System.Drawing.Point(10, 130);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Padding = new System.Windows.Forms.Padding(3, 33, 3, 3);
             this.pnlContent.PanelColor = null;
             this.pnlContent.Round = null;
             this.pnlContent.ShadowGap = 1;
-            this.pnlContent.Size = new System.Drawing.Size(1004, 548);
+            this.pnlContent.Size = new System.Drawing.Size(1004, 578);
             this.pnlContent.TabIndex = 3;
             this.pnlContent.TabStop = false;
             this.pnlContent.Text = "Modbus RTU Slave";
@@ -207,7 +208,7 @@ namespace ArduinoLadder.Forms
             this.tab.Multiline = true;
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(998, 512);
+            this.tab.Size = new System.Drawing.Size(998, 542);
             this.tab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tab.TabIndex = 11;
             // 
@@ -218,7 +219,7 @@ namespace ArduinoLadder.Forms
             this.tpMDRS.Location = new System.Drawing.Point(4, 5);
             this.tpMDRS.Name = "tpMDRS";
             this.tpMDRS.Padding = new System.Windows.Forms.Padding(7);
-            this.tpMDRS.Size = new System.Drawing.Size(990, 503);
+            this.tpMDRS.Size = new System.Drawing.Size(990, 533);
             this.tpMDRS.TabIndex = 0;
             // 
             // MDRS_tbl
@@ -254,7 +255,7 @@ namespace ArduinoLadder.Forms
             this.MDRS_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.MDRS_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.MDRS_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MDRS_tbl.Size = new System.Drawing.Size(976, 489);
+            this.MDRS_tbl.Size = new System.Drawing.Size(976, 519);
             this.MDRS_tbl.TabIndex = 0;
             // 
             // dvContainer2
@@ -685,7 +686,7 @@ namespace ArduinoLadder.Forms
             this.tpMDRM.Location = new System.Drawing.Point(4, 5);
             this.tpMDRM.Name = "tpMDRM";
             this.tpMDRM.Padding = new System.Windows.Forms.Padding(7);
-            this.tpMDRM.Size = new System.Drawing.Size(990, 503);
+            this.tpMDRM.Size = new System.Drawing.Size(990, 533);
             this.tpMDRM.TabIndex = 1;
             this.tpMDRM.Text = "tabPage2";
             // 
@@ -711,7 +712,7 @@ namespace ArduinoLadder.Forms
             this.MDRM_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.MDRM_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.MDRM_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MDRM_tbl.Size = new System.Drawing.Size(976, 489);
+            this.MDRM_tbl.Size = new System.Drawing.Size(976, 519);
             this.MDRM_tbl.TabIndex = 1;
             // 
             // MDRM_dgBind
@@ -731,7 +732,7 @@ namespace ArduinoLadder.Forms
             this.MDRM_dgBind.SelectedRowColor = System.Drawing.Color.DarkRed;
             this.MDRM_dgBind.SelectionMode = Devinno.Forms.Controls.DvDataGridSelectionMode.Single;
             this.MDRM_dgBind.ShadowGap = 1;
-            this.MDRM_dgBind.Size = new System.Drawing.Size(482, 303);
+            this.MDRM_dgBind.Size = new System.Drawing.Size(482, 333);
             this.MDRM_dgBind.SummaryRowColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.MDRM_dgBind.TabIndex = 7;
             this.MDRM_dgBind.Text = "dvDataGrid1";
@@ -906,7 +907,7 @@ namespace ArduinoLadder.Forms
             this.MDRM_dgMonitor.SelectedRowColor = System.Drawing.Color.DarkRed;
             this.MDRM_dgMonitor.SelectionMode = Devinno.Forms.Controls.DvDataGridSelectionMode.Single;
             this.MDRM_dgMonitor.ShadowGap = 1;
-            this.MDRM_dgMonitor.Size = new System.Drawing.Size(482, 303);
+            this.MDRM_dgMonitor.Size = new System.Drawing.Size(482, 333);
             this.MDRM_dgMonitor.SummaryRowColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.MDRM_dgMonitor.TabIndex = 5;
             this.MDRM_dgMonitor.Text = "dvDataGrid2";
@@ -989,7 +990,7 @@ namespace ArduinoLadder.Forms
             this.tpMDTS.Location = new System.Drawing.Point(4, 5);
             this.tpMDTS.Name = "tpMDTS";
             this.tpMDTS.Padding = new System.Windows.Forms.Padding(7);
-            this.tpMDTS.Size = new System.Drawing.Size(990, 503);
+            this.tpMDTS.Size = new System.Drawing.Size(990, 533);
             this.tpMDTS.TabIndex = 2;
             this.tpMDTS.Text = "tabPage1";
             // 
@@ -1024,7 +1025,7 @@ namespace ArduinoLadder.Forms
             this.MDTS_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.MDTS_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.MDTS_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MDTS_tbl.Size = new System.Drawing.Size(976, 489);
+            this.MDTS_tbl.Size = new System.Drawing.Size(976, 519);
             this.MDTS_tbl.TabIndex = 1;
             // 
             // dvContainer6
@@ -1385,7 +1386,7 @@ namespace ArduinoLadder.Forms
             this.tpMDTM.Location = new System.Drawing.Point(4, 5);
             this.tpMDTM.Name = "tpMDTM";
             this.tpMDTM.Padding = new System.Windows.Forms.Padding(7);
-            this.tpMDTM.Size = new System.Drawing.Size(990, 503);
+            this.tpMDTM.Size = new System.Drawing.Size(990, 533);
             this.tpMDTM.TabIndex = 3;
             this.tpMDTM.Text = "tabPage2";
             // 
@@ -1411,7 +1412,7 @@ namespace ArduinoLadder.Forms
             this.MDTM_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.MDTM_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.MDTM_tbl.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MDTM_tbl.Size = new System.Drawing.Size(976, 489);
+            this.MDTM_tbl.Size = new System.Drawing.Size(976, 519);
             this.MDTM_tbl.TabIndex = 2;
             // 
             // MDTM_inRemoteIP
@@ -1465,7 +1466,7 @@ namespace ArduinoLadder.Forms
             this.MDTM_dgBind.SelectedRowColor = System.Drawing.Color.DarkRed;
             this.MDTM_dgBind.SelectionMode = Devinno.Forms.Controls.DvDataGridSelectionMode.Single;
             this.MDTM_dgBind.ShadowGap = 1;
-            this.MDTM_dgBind.Size = new System.Drawing.Size(482, 303);
+            this.MDTM_dgBind.Size = new System.Drawing.Size(482, 333);
             this.MDTM_dgBind.SummaryRowColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.MDTM_dgBind.TabIndex = 7;
             this.MDTM_dgBind.Text = "dvDataGrid1";
@@ -1526,7 +1527,7 @@ namespace ArduinoLadder.Forms
             this.MDTM_dgMonitor.SelectedRowColor = System.Drawing.Color.DarkRed;
             this.MDTM_dgMonitor.SelectionMode = Devinno.Forms.Controls.DvDataGridSelectionMode.Single;
             this.MDTM_dgMonitor.ShadowGap = 1;
-            this.MDTM_dgMonitor.Size = new System.Drawing.Size(482, 303);
+            this.MDTM_dgMonitor.Size = new System.Drawing.Size(482, 333);
             this.MDTM_dgMonitor.SummaryRowColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.MDTM_dgMonitor.TabIndex = 5;
             this.MDTM_dgMonitor.Text = "dvDataGrid2";
@@ -1662,7 +1663,7 @@ namespace ArduinoLadder.Forms
             this.tpMQTT.Location = new System.Drawing.Point(4, 5);
             this.tpMQTT.Name = "tpMQTT";
             this.tpMQTT.Padding = new System.Windows.Forms.Padding(7);
-            this.tpMQTT.Size = new System.Drawing.Size(990, 503);
+            this.tpMQTT.Size = new System.Drawing.Size(990, 533);
             this.tpMQTT.TabIndex = 4;
             this.tpMQTT.Text = "tabPage3";
             // 
@@ -1688,7 +1689,7 @@ namespace ArduinoLadder.Forms
             this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.dvTableLayoutPanel1.Size = new System.Drawing.Size(976, 489);
+            this.dvTableLayoutPanel1.Size = new System.Drawing.Size(976, 519);
             this.dvTableLayoutPanel1.TabIndex = 3;
             // 
             // MQTT_dgPub
@@ -1708,7 +1709,7 @@ namespace ArduinoLadder.Forms
             this.MQTT_dgPub.SelectedRowColor = System.Drawing.Color.DarkRed;
             this.MQTT_dgPub.SelectionMode = Devinno.Forms.Controls.DvDataGridSelectionMode.Single;
             this.MQTT_dgPub.ShadowGap = 1;
-            this.MQTT_dgPub.Size = new System.Drawing.Size(482, 303);
+            this.MQTT_dgPub.Size = new System.Drawing.Size(482, 333);
             this.MQTT_dgPub.SummaryRowColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.MQTT_dgPub.TabIndex = 7;
             this.MQTT_dgPub.Text = "dvDataGrid1";
@@ -1885,7 +1886,7 @@ namespace ArduinoLadder.Forms
             this.MQTT_dgSub.SelectedRowColor = System.Drawing.Color.DarkRed;
             this.MQTT_dgSub.SelectionMode = Devinno.Forms.Controls.DvDataGridSelectionMode.Single;
             this.MQTT_dgSub.ShadowGap = 1;
-            this.MQTT_dgSub.Size = new System.Drawing.Size(482, 303);
+            this.MQTT_dgSub.Size = new System.Drawing.Size(482, 333);
             this.MQTT_dgSub.SummaryRowColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.MQTT_dgSub.TabIndex = 5;
             this.MQTT_dgSub.Text = "dvDataGrid2";
@@ -1928,7 +1929,7 @@ namespace ArduinoLadder.Forms
             // dvControl6
             // 
             this.dvControl6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dvControl6.Location = new System.Drawing.Point(7, 120);
+            this.dvControl6.Location = new System.Drawing.Point(10, 120);
             this.dvControl6.Name = "dvControl6";
             this.dvControl6.ShadowGap = 1;
             this.dvControl6.Size = new System.Drawing.Size(1004, 10);
@@ -1947,7 +1948,7 @@ namespace ArduinoLadder.Forms
             this.dvPanel2.IconImage = null;
             this.dvPanel2.IconSize = 12F;
             this.dvPanel2.IconString = "fa-check";
-            this.dvPanel2.Location = new System.Drawing.Point(7, 10);
+            this.dvPanel2.Location = new System.Drawing.Point(10, 10);
             this.dvPanel2.Name = "dvPanel2";
             this.dvPanel2.Padding = new System.Windows.Forms.Padding(10, 40, 10, 10);
             this.dvPanel2.PanelColor = null;
@@ -2212,11 +2213,11 @@ namespace ArduinoLadder.Forms
             this.pnlBottom.Controls.Add(this.dvControl1);
             this.pnlBottom.Controls.Add(this.btnCancel);
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(3, 718);
+            this.pnlBottom.Location = new System.Drawing.Point(0, 708);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Padding = new System.Windows.Forms.Padding(7, 10, 7, 7);
+            this.pnlBottom.Padding = new System.Windows.Forms.Padding(10);
             this.pnlBottom.ShadowGap = 1;
-            this.pnlBottom.Size = new System.Drawing.Size(1018, 47);
+            this.pnlBottom.Size = new System.Drawing.Size(1024, 60);
             this.pnlBottom.TabIndex = 6;
             this.pnlBottom.TabStop = false;
             this.pnlBottom.Text = "dvContainer1";
@@ -2234,11 +2235,11 @@ namespace ArduinoLadder.Forms
             this.btnOK.IconImage = null;
             this.btnOK.IconSize = 10F;
             this.btnOK.IconString = null;
-            this.btnOK.Location = new System.Drawing.Point(821, 10);
+            this.btnOK.Location = new System.Drawing.Point(824, 10);
             this.btnOK.Name = "btnOK";
             this.btnOK.Round = null;
             this.btnOK.ShadowGap = 1;
-            this.btnOK.Size = new System.Drawing.Size(90, 30);
+            this.btnOK.Size = new System.Drawing.Size(90, 40);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "확인";
             this.btnOK.TextPadding = new System.Windows.Forms.Padding(0);
@@ -2247,10 +2248,10 @@ namespace ArduinoLadder.Forms
             // dvControl1
             // 
             this.dvControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dvControl1.Location = new System.Drawing.Point(911, 10);
+            this.dvControl1.Location = new System.Drawing.Point(914, 10);
             this.dvControl1.Name = "dvControl1";
             this.dvControl1.ShadowGap = 1;
-            this.dvControl1.Size = new System.Drawing.Size(10, 30);
+            this.dvControl1.Size = new System.Drawing.Size(10, 40);
             this.dvControl1.TabIndex = 1;
             this.dvControl1.TabStop = false;
             this.dvControl1.Text = "dvControl1";
@@ -2268,11 +2269,11 @@ namespace ArduinoLadder.Forms
             this.btnCancel.IconImage = null;
             this.btnCancel.IconSize = 10F;
             this.btnCancel.IconString = null;
-            this.btnCancel.Location = new System.Drawing.Point(921, 10);
+            this.btnCancel.Location = new System.Drawing.Point(924, 10);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Round = null;
             this.btnCancel.ShadowGap = 1;
-            this.btnCancel.Size = new System.Drawing.Size(90, 30);
+            this.btnCancel.Size = new System.Drawing.Size(90, 40);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "취소";
             this.btnCancel.TextPadding = new System.Windows.Forms.Padding(0);
@@ -2281,15 +2282,19 @@ namespace ArduinoLadder.Forms
             // FormCommunicationInput
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BlankForm = true;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.pnl);
             this.Controls.Add(this.pnlBottom);
             this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "FormCommunicationInput";
-            this.Padding = new System.Windows.Forms.Padding(3, 40, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(0);
             this.Text = "통신항목";
             this.Title = "통신항목";
+            this.TitleHeight = 0;
             this.TitleIconBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(99)))), ((int)(((byte)(102)))));
             this.TitleIconSize = 14F;
             this.TitleIconString = "fa-wifi";

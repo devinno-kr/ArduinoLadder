@@ -30,6 +30,7 @@ namespace ArduinoLadder.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.pnlTop = new Devinno.Forms.Containers.DvContainer();
             this.pnlLD = new Devinno.Forms.Containers.DvTableLayoutPanel();
             this.btnF12 = new Devinno.Forms.Controls.DvButton();
@@ -80,22 +81,22 @@ namespace ArduinoLadder.Forms
             // 
             // pnlTop
             // 
-            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.pnlTop.Controls.Add(this.pnlLD);
             this.pnlTop.Controls.Add(this.pnlToolBar);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop.Location = new System.Drawing.Point(3, 40);
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Padding = new System.Windows.Forms.Padding(7, 10, 7, 7);
+            this.pnlTop.Padding = new System.Windows.Forms.Padding(10);
             this.pnlTop.ShadowGap = 1;
-            this.pnlTop.Size = new System.Drawing.Size(1018, 115);
+            this.pnlTop.Size = new System.Drawing.Size(1024, 127);
             this.pnlTop.TabIndex = 5;
             this.pnlTop.TabStop = false;
             this.pnlTop.Text = "dvContainer1";
             // 
             // pnlLD
             // 
-            this.pnlLD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlLD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.pnlLD.ColumnCount = 10;
             this.pnlLD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.pnlLD.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -118,12 +119,12 @@ namespace ArduinoLadder.Forms
             this.pnlLD.Controls.Add(this.btnF3, 1, 0);
             this.pnlLD.Controls.Add(this.btnSPC, 0, 0);
             this.pnlLD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlLD.Location = new System.Drawing.Point(7, 50);
+            this.pnlLD.Location = new System.Drawing.Point(10, 56);
             this.pnlLD.Name = "pnlLD";
             this.pnlLD.RowCount = 1;
             this.pnlLD.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnlLD.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-            this.pnlLD.Size = new System.Drawing.Size(1004, 58);
+            this.pnlLD.Size = new System.Drawing.Size(1004, 61);
             this.pnlLD.TabIndex = 3;
             // 
             // btnF12
@@ -143,7 +144,7 @@ namespace ArduinoLadder.Forms
             this.btnF12.Name = "btnF12";
             this.btnF12.Round = null;
             this.btnF12.ShadowGap = 1;
-            this.btnF12.Size = new System.Drawing.Size(98, 52);
+            this.btnF12.Size = new System.Drawing.Size(98, 55);
             this.btnF12.TabIndex = 9;
             this.btnF12.Text = "F12";
             this.btnF12.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -166,7 +167,7 @@ namespace ArduinoLadder.Forms
             this.btnF11.Name = "btnF11";
             this.btnF11.Round = null;
             this.btnF11.ShadowGap = 1;
-            this.btnF11.Size = new System.Drawing.Size(94, 52);
+            this.btnF11.Size = new System.Drawing.Size(94, 55);
             this.btnF11.TabIndex = 8;
             this.btnF11.Text = "F11";
             this.btnF11.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -189,7 +190,7 @@ namespace ArduinoLadder.Forms
             this.btnF9.Name = "btnF9";
             this.btnF9.Round = null;
             this.btnF9.ShadowGap = 1;
-            this.btnF9.Size = new System.Drawing.Size(94, 52);
+            this.btnF9.Size = new System.Drawing.Size(94, 55);
             this.btnF9.TabIndex = 7;
             this.btnF9.Text = "F9";
             this.btnF9.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -212,7 +213,7 @@ namespace ArduinoLadder.Forms
             this.btnF8.Name = "btnF8";
             this.btnF8.Round = null;
             this.btnF8.ShadowGap = 1;
-            this.btnF8.Size = new System.Drawing.Size(94, 52);
+            this.btnF8.Size = new System.Drawing.Size(94, 55);
             this.btnF8.TabIndex = 6;
             this.btnF8.Text = "F8";
             this.btnF8.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -235,7 +236,7 @@ namespace ArduinoLadder.Forms
             this.btnF7.Name = "btnF7";
             this.btnF7.Round = null;
             this.btnF7.ShadowGap = 1;
-            this.btnF7.Size = new System.Drawing.Size(94, 52);
+            this.btnF7.Size = new System.Drawing.Size(94, 55);
             this.btnF7.TabIndex = 5;
             this.btnF7.Text = "F7";
             this.btnF7.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -258,7 +259,7 @@ namespace ArduinoLadder.Forms
             this.btnF6.Name = "btnF6";
             this.btnF6.Round = null;
             this.btnF6.ShadowGap = 1;
-            this.btnF6.Size = new System.Drawing.Size(94, 52);
+            this.btnF6.Size = new System.Drawing.Size(94, 55);
             this.btnF6.TabIndex = 4;
             this.btnF6.Text = "F6";
             this.btnF6.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -281,7 +282,7 @@ namespace ArduinoLadder.Forms
             this.btnF5.Name = "btnF5";
             this.btnF5.Round = null;
             this.btnF5.ShadowGap = 1;
-            this.btnF5.Size = new System.Drawing.Size(94, 52);
+            this.btnF5.Size = new System.Drawing.Size(94, 55);
             this.btnF5.TabIndex = 3;
             this.btnF5.Text = "F5";
             this.btnF5.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -304,7 +305,7 @@ namespace ArduinoLadder.Forms
             this.btnF4.Name = "btnF4";
             this.btnF4.Round = null;
             this.btnF4.ShadowGap = 1;
-            this.btnF4.Size = new System.Drawing.Size(94, 52);
+            this.btnF4.Size = new System.Drawing.Size(94, 55);
             this.btnF4.TabIndex = 2;
             this.btnF4.Text = "F4";
             this.btnF4.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -327,7 +328,7 @@ namespace ArduinoLadder.Forms
             this.btnF3.Name = "btnF3";
             this.btnF3.Round = null;
             this.btnF3.ShadowGap = 1;
-            this.btnF3.Size = new System.Drawing.Size(94, 52);
+            this.btnF3.Size = new System.Drawing.Size(94, 55);
             this.btnF3.TabIndex = 1;
             this.btnF3.Text = "F3";
             this.btnF3.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -350,7 +351,7 @@ namespace ArduinoLadder.Forms
             this.btnSPC.Name = "btnSPC";
             this.btnSPC.Round = null;
             this.btnSPC.ShadowGap = 1;
-            this.btnSPC.Size = new System.Drawing.Size(94, 52);
+            this.btnSPC.Size = new System.Drawing.Size(94, 55);
             this.btnSPC.TabIndex = 0;
             this.btnSPC.Text = "SPACE";
             this.btnSPC.TextPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
@@ -358,7 +359,7 @@ namespace ArduinoLadder.Forms
             // 
             // pnlToolBar
             // 
-            this.pnlToolBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlToolBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.pnlToolBar.ColumnCount = 17;
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.pnlToolBar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
@@ -389,11 +390,11 @@ namespace ArduinoLadder.Forms
             this.pnlToolBar.Controls.Add(this.btnExport, 16, 0);
             this.pnlToolBar.Controls.Add(this.btnDefaultCode, 11, 0);
             this.pnlToolBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlToolBar.Location = new System.Drawing.Point(7, 10);
+            this.pnlToolBar.Location = new System.Drawing.Point(10, 10);
             this.pnlToolBar.Name = "pnlToolBar";
             this.pnlToolBar.RowCount = 1;
             this.pnlToolBar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnlToolBar.Size = new System.Drawing.Size(1004, 40);
+            this.pnlToolBar.Size = new System.Drawing.Size(1004, 46);
             this.pnlToolBar.TabIndex = 2;
             // 
             // btnNewFile
@@ -413,7 +414,7 @@ namespace ArduinoLadder.Forms
             this.btnNewFile.Name = "btnNewFile";
             this.btnNewFile.Round = null;
             this.btnNewFile.ShadowGap = 1;
-            this.btnNewFile.Size = new System.Drawing.Size(39, 34);
+            this.btnNewFile.Size = new System.Drawing.Size(39, 40);
             this.btnNewFile.TabIndex = 1;
             this.btnNewFile.Text = null;
             this.btnNewFile.TextPadding = new System.Windows.Forms.Padding(0);
@@ -437,7 +438,7 @@ namespace ArduinoLadder.Forms
             this.btnOpenFile.Name = "btnOpenFile";
             this.btnOpenFile.Round = null;
             this.btnOpenFile.ShadowGap = 1;
-            this.btnOpenFile.Size = new System.Drawing.Size(39, 34);
+            this.btnOpenFile.Size = new System.Drawing.Size(39, 40);
             this.btnOpenFile.TabIndex = 2;
             this.btnOpenFile.Text = null;
             this.btnOpenFile.TextPadding = new System.Windows.Forms.Padding(0);
@@ -461,7 +462,7 @@ namespace ArduinoLadder.Forms
             this.btnSaveFile.Name = "btnSaveFile";
             this.btnSaveFile.Round = null;
             this.btnSaveFile.ShadowGap = 1;
-            this.btnSaveFile.Size = new System.Drawing.Size(39, 34);
+            this.btnSaveFile.Size = new System.Drawing.Size(39, 40);
             this.btnSaveFile.TabIndex = 3;
             this.btnSaveFile.Text = null;
             this.btnSaveFile.TextPadding = new System.Windows.Forms.Padding(0);
@@ -485,7 +486,7 @@ namespace ArduinoLadder.Forms
             this.btnSaveAsFile.Name = "btnSaveAsFile";
             this.btnSaveAsFile.Round = null;
             this.btnSaveAsFile.ShadowGap = 1;
-            this.btnSaveAsFile.Size = new System.Drawing.Size(39, 34);
+            this.btnSaveAsFile.Size = new System.Drawing.Size(39, 40);
             this.btnSaveAsFile.TabIndex = 4;
             this.btnSaveAsFile.Text = null;
             this.btnSaveAsFile.TextPadding = new System.Windows.Forms.Padding(0);
@@ -509,7 +510,7 @@ namespace ArduinoLadder.Forms
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Round = null;
             this.btnCheck.ShadowGap = 1;
-            this.btnCheck.Size = new System.Drawing.Size(39, 34);
+            this.btnCheck.Size = new System.Drawing.Size(39, 40);
             this.btnCheck.TabIndex = 5;
             this.btnCheck.Text = null;
             this.btnCheck.TextPadding = new System.Windows.Forms.Padding(0);
@@ -533,7 +534,7 @@ namespace ArduinoLadder.Forms
             this.btnHardware.Name = "btnHardware";
             this.btnHardware.Round = null;
             this.btnHardware.ShadowGap = 1;
-            this.btnHardware.Size = new System.Drawing.Size(39, 34);
+            this.btnHardware.Size = new System.Drawing.Size(39, 40);
             this.btnHardware.TabIndex = 8;
             this.btnHardware.Text = null;
             this.btnHardware.TextPadding = new System.Windows.Forms.Padding(0);
@@ -557,7 +558,7 @@ namespace ArduinoLadder.Forms
             this.btnSymbol.Name = "btnSymbol";
             this.btnSymbol.Round = null;
             this.btnSymbol.ShadowGap = 1;
-            this.btnSymbol.Size = new System.Drawing.Size(39, 34);
+            this.btnSymbol.Size = new System.Drawing.Size(39, 40);
             this.btnSymbol.TabIndex = 9;
             this.btnSymbol.Text = null;
             this.btnSymbol.TextPadding = new System.Windows.Forms.Padding(0);
@@ -581,7 +582,7 @@ namespace ArduinoLadder.Forms
             this.btnCommunication.Name = "btnCommunication";
             this.btnCommunication.Round = null;
             this.btnCommunication.ShadowGap = 1;
-            this.btnCommunication.Size = new System.Drawing.Size(39, 34);
+            this.btnCommunication.Size = new System.Drawing.Size(39, 40);
             this.btnCommunication.TabIndex = 10;
             this.btnCommunication.Text = null;
             this.btnCommunication.TextPadding = new System.Windows.Forms.Padding(0);
@@ -605,7 +606,7 @@ namespace ArduinoLadder.Forms
             this.lblSketchPath.Name = "lblSketchPath";
             this.lblSketchPath.Round = null;
             this.lblSketchPath.ShadowGap = 1;
-            this.lblSketchPath.Size = new System.Drawing.Size(384, 34);
+            this.lblSketchPath.Size = new System.Drawing.Size(384, 40);
             this.lblSketchPath.TabIndex = 11;
             this.lblSketchPath.Text = "스케치 경로";
             this.lblSketchPath.Title = "스케치 경로";
@@ -639,7 +640,7 @@ namespace ArduinoLadder.Forms
             this.btnExport.Name = "btnExport";
             this.btnExport.Round = null;
             this.btnExport.ShadowGap = 1;
-            this.btnExport.Size = new System.Drawing.Size(39, 34);
+            this.btnExport.Size = new System.Drawing.Size(39, 40);
             this.btnExport.TabIndex = 12;
             this.btnExport.Text = null;
             this.btnExport.TextPadding = new System.Windows.Forms.Padding(0);
@@ -663,7 +664,7 @@ namespace ArduinoLadder.Forms
             this.btnDefaultCode.Name = "btnDefaultCode";
             this.btnDefaultCode.Round = null;
             this.btnDefaultCode.ShadowGap = 1;
-            this.btnDefaultCode.Size = new System.Drawing.Size(39, 34);
+            this.btnDefaultCode.Size = new System.Drawing.Size(39, 40);
             this.btnDefaultCode.TabIndex = 13;
             this.btnDefaultCode.Text = null;
             this.btnDefaultCode.TextPadding = new System.Windows.Forms.Padding(0);
@@ -672,7 +673,7 @@ namespace ArduinoLadder.Forms
             // 
             // pnlStatus
             // 
-            this.pnlStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.pnlStatus.Controls.Add(this.lblDebugPort);
             this.pnlStatus.Controls.Add(this.dvControl3);
             this.pnlStatus.Controls.Add(this.btnDTR);
@@ -682,11 +683,11 @@ namespace ArduinoLadder.Forms
             this.pnlStatus.Controls.Add(this.dvControl1);
             this.pnlStatus.Controls.Add(this.btnMonitoring);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlStatus.Location = new System.Drawing.Point(3, 708);
+            this.pnlStatus.Location = new System.Drawing.Point(0, 708);
             this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Padding = new System.Windows.Forms.Padding(7, 10, 7, 7);
+            this.pnlStatus.Padding = new System.Windows.Forms.Padding(10);
             this.pnlStatus.ShadowGap = 1;
-            this.pnlStatus.Size = new System.Drawing.Size(1018, 57);
+            this.pnlStatus.Size = new System.Drawing.Size(1024, 60);
             this.pnlStatus.TabIndex = 6;
             this.pnlStatus.TabStop = false;
             this.pnlStatus.Text = "dvContainer1";
@@ -703,7 +704,7 @@ namespace ArduinoLadder.Forms
             this.lblDebugPort.ButtonTextPadding = new System.Windows.Forms.Padding(0);
             this.lblDebugPort.ButtonWidth = 40;
             this.lblDebugPort.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblDebugPort.Location = new System.Drawing.Point(612, 10);
+            this.lblDebugPort.Location = new System.Drawing.Point(615, 10);
             this.lblDebugPort.Name = "lblDebugPort";
             this.lblDebugPort.Round = null;
             this.lblDebugPort.ShadowGap = 1;
@@ -727,7 +728,7 @@ namespace ArduinoLadder.Forms
             // dvControl3
             // 
             this.dvControl3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dvControl3.Location = new System.Drawing.Point(909, 10);
+            this.dvControl3.Location = new System.Drawing.Point(912, 10);
             this.dvControl3.Name = "dvControl3";
             this.dvControl3.ShadowGap = 1;
             this.dvControl3.Size = new System.Drawing.Size(6, 40);
@@ -748,7 +749,7 @@ namespace ArduinoLadder.Forms
             this.btnDTR.IconImage = null;
             this.btnDTR.IconSize = 12F;
             this.btnDTR.IconString = null;
-            this.btnDTR.Location = new System.Drawing.Point(915, 10);
+            this.btnDTR.Location = new System.Drawing.Point(918, 10);
             this.btnDTR.Name = "btnDTR";
             this.btnDTR.Round = null;
             this.btnDTR.ShadowGap = 1;
@@ -770,7 +771,7 @@ namespace ArduinoLadder.Forms
             this.lblCursorPosition.IconSize = 12F;
             this.lblCursorPosition.IconString = null;
             this.lblCursorPosition.LabelColor = null;
-            this.lblCursorPosition.Location = new System.Drawing.Point(52, 10);
+            this.lblCursorPosition.Location = new System.Drawing.Point(55, 10);
             this.lblCursorPosition.Name = "lblCursorPosition";
             this.lblCursorPosition.Round = null;
             this.lblCursorPosition.ShadowGap = 1;
@@ -786,7 +787,7 @@ namespace ArduinoLadder.Forms
             // dvControl2
             // 
             this.dvControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dvControl2.Location = new System.Drawing.Point(47, 10);
+            this.dvControl2.Location = new System.Drawing.Point(50, 10);
             this.dvControl2.Name = "dvControl2";
             this.dvControl2.ShadowGap = 1;
             this.dvControl2.Size = new System.Drawing.Size(5, 40);
@@ -807,7 +808,7 @@ namespace ArduinoLadder.Forms
             this.btnSetting.IconImage = null;
             this.btnSetting.IconSize = 12F;
             this.btnSetting.IconString = "fa-gear";
-            this.btnSetting.Location = new System.Drawing.Point(7, 10);
+            this.btnSetting.Location = new System.Drawing.Point(10, 10);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Round = null;
             this.btnSetting.ShadowGap = 1;
@@ -820,7 +821,7 @@ namespace ArduinoLadder.Forms
             // dvControl1
             // 
             this.dvControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dvControl1.Location = new System.Drawing.Point(960, 10);
+            this.dvControl1.Location = new System.Drawing.Point(963, 10);
             this.dvControl1.Name = "dvControl1";
             this.dvControl1.ShadowGap = 1;
             this.dvControl1.Size = new System.Drawing.Size(6, 40);
@@ -841,7 +842,7 @@ namespace ArduinoLadder.Forms
             this.btnMonitoring.IconImage = null;
             this.btnMonitoring.IconSize = 12F;
             this.btnMonitoring.IconString = "fa-tv";
-            this.btnMonitoring.Location = new System.Drawing.Point(966, 10);
+            this.btnMonitoring.Location = new System.Drawing.Point(969, 10);
             this.btnMonitoring.Name = "btnMonitoring";
             this.btnMonitoring.Round = null;
             this.btnMonitoring.ShadowGap = 1;
@@ -860,26 +861,26 @@ namespace ArduinoLadder.Forms
             this.splitter.Controls.Add(this.pnlContent, 0, 0);
             this.splitter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitter.DrawSplitter = false;
-            this.splitter.Location = new System.Drawing.Point(3, 155);
+            this.splitter.Location = new System.Drawing.Point(0, 127);
             this.splitter.Name = "splitter";
             this.splitter.RowCount = 2;
             this.splitter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70.88608F));
             this.splitter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.11392F));
-            this.splitter.Size = new System.Drawing.Size(1018, 553);
+            this.splitter.Size = new System.Drawing.Size(1024, 581);
             this.splitter.SplitterColor = null;
             this.splitter.TabIndex = 7;
             // 
             // pnlMessage
             // 
-            this.pnlMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.pnlMessage.Controls.Add(this.gridMessage);
             this.pnlMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMessage.Location = new System.Drawing.Point(0, 393);
+            this.pnlMessage.Location = new System.Drawing.Point(0, 412);
             this.pnlMessage.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.pnlMessage.Name = "pnlMessage";
-            this.pnlMessage.Padding = new System.Windows.Forms.Padding(7, 10, 7, 0);
+            this.pnlMessage.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
             this.pnlMessage.ShadowGap = 1;
-            this.pnlMessage.Size = new System.Drawing.Size(1018, 160);
+            this.pnlMessage.Size = new System.Drawing.Size(1024, 169);
             this.pnlMessage.TabIndex = 0;
             this.pnlMessage.TabStop = false;
             this.pnlMessage.Text = "dvContainer1";
@@ -893,7 +894,7 @@ namespace ArduinoLadder.Forms
             this.gridMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridMessage.HScrollPosition = 0D;
             this.gridMessage.InputColor = null;
-            this.gridMessage.Location = new System.Drawing.Point(7, 10);
+            this.gridMessage.Location = new System.Drawing.Point(10, 10);
             this.gridMessage.Name = "gridMessage";
             this.gridMessage.RowColor = null;
             this.gridMessage.RowHeight = 30;
@@ -901,7 +902,7 @@ namespace ArduinoLadder.Forms
             this.gridMessage.SelectedRowColor = null;
             this.gridMessage.SelectionMode = Devinno.Forms.Controls.DvDataGridSelectionMode.Single;
             this.gridMessage.ShadowGap = 1;
-            this.gridMessage.Size = new System.Drawing.Size(1004, 150);
+            this.gridMessage.Size = new System.Drawing.Size(1004, 159);
             this.gridMessage.SummaryRowColor = null;
             this.gridMessage.TabIndex = 0;
             this.gridMessage.Text = "dvDataGrid1";
@@ -915,9 +916,9 @@ namespace ArduinoLadder.Forms
             this.pnlContent.Location = new System.Drawing.Point(0, 0);
             this.pnlContent.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Padding = new System.Windows.Forms.Padding(7, 10, 7, 8);
+            this.pnlContent.Padding = new System.Windows.Forms.Padding(10);
             this.pnlContent.ShadowGap = 1;
-            this.pnlContent.Size = new System.Drawing.Size(1018, 391);
+            this.pnlContent.Size = new System.Drawing.Size(1024, 410);
             this.pnlContent.TabIndex = 1;
             this.pnlContent.TabStop = false;
             this.pnlContent.Text = "dvContainer2";
@@ -933,7 +934,7 @@ namespace ArduinoLadder.Forms
             this.ladder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ladder.Font = new System.Drawing.Font("나눔고딕", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ladder.LadderDisplayType = ArduinoLadder.Controls.LadderDisplayKinds.DEC;
-            this.ladder.Location = new System.Drawing.Point(7, 10);
+            this.ladder.Location = new System.Drawing.Point(10, 10);
             this.ladder.Name = "ladder";
             this.ladder.NumberBoxColor = null;
             this.ladder.NumberBoxWidth = 100;
@@ -941,7 +942,7 @@ namespace ArduinoLadder.Forms
             this.ladder.RowHeight = 60;
             this.ladder.ScrollPosition = 0D;
             this.ladder.ShadowGap = 1;
-            this.ladder.Size = new System.Drawing.Size(1004, 373);
+            this.ladder.Size = new System.Drawing.Size(1004, 390);
             this.ladder.TabIndex = 0;
             this.ladder.Text = "ladderEditorControl1";
             // 
@@ -960,19 +961,23 @@ namespace ArduinoLadder.Forms
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.BlankForm = true;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.splitter);
             this.Controls.Add(this.pnlStatus);
             this.Controls.Add(this.pnlTop);
             this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "FormMain";
-            this.Padding = new System.Windows.Forms.Padding(3, 40, 3, 3);
+            this.Padding = new System.Windows.Forms.Padding(0);
             this.Text = "Arduino Ladder";
             this.Title = "Arduino Ladder";
+            this.TitleHeight = 0;
             this.TitleIconBoxColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(99)))));
-            this.TitleIconSize = 17F;
+            this.TitleIconSize = 18F;
             this.TitleIconString = "fa-microchip";
             this.pnlTop.ResumeLayout(false);
             this.pnlLD.ResumeLayout(false);

@@ -29,6 +29,7 @@ namespace ArduinoLadder.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDefault));
             this.dvContainer1 = new Devinno.Forms.Containers.DvContainer();
             this.inputPanel1 = new ArduinoLadder.Controls.InputPanel();
             this.txt = new System.Windows.Forms.TextBox();
@@ -40,11 +41,11 @@ namespace ArduinoLadder.Forms
             // 
             this.dvContainer1.Controls.Add(this.inputPanel1);
             this.dvContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dvContainer1.Location = new System.Drawing.Point(0, 40);
+            this.dvContainer1.Location = new System.Drawing.Point(0, 0);
             this.dvContainer1.Name = "dvContainer1";
             this.dvContainer1.Padding = new System.Windows.Forms.Padding(10);
             this.dvContainer1.ShadowGap = 1;
-            this.dvContainer1.Size = new System.Drawing.Size(338, 355);
+            this.dvContainer1.Size = new System.Drawing.Size(338, 395);
             this.dvContainer1.TabIndex = 0;
             this.dvContainer1.TabStop = false;
             this.dvContainer1.Text = "dvContainer1";
@@ -57,7 +58,7 @@ namespace ArduinoLadder.Forms
             this.inputPanel1.Name = "inputPanel1";
             this.inputPanel1.Padding = new System.Windows.Forms.Padding(10);
             this.inputPanel1.ShadowGap = 1;
-            this.inputPanel1.Size = new System.Drawing.Size(318, 335);
+            this.inputPanel1.Size = new System.Drawing.Size(318, 375);
             this.inputPanel1.TabIndex = 0;
             this.inputPanel1.TabStop = false;
             this.inputPanel1.Text = "inputPanel1";
@@ -71,20 +72,25 @@ namespace ArduinoLadder.Forms
             this.txt.Location = new System.Drawing.Point(10, 10);
             this.txt.Multiline = true;
             this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(298, 315);
+            this.txt.Size = new System.Drawing.Size(298, 355);
             this.txt.TabIndex = 0;
             // 
             // FormDefault
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BlankForm = true;
             this.ClientSize = new System.Drawing.Size(338, 395);
             this.Controls.Add(this.dvContainer1);
             this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormDefault";
+            this.Padding = new System.Windows.Forms.Padding(0);
             this.Text = "메인 코드";
             this.Title = "메인 코드";
+            this.TitleHeight = 0;
             this.TitleIconBoxColor = System.Drawing.Color.Teal;
             this.TitleIconSize = 14F;
             this.TitleIconString = "fa-code";
