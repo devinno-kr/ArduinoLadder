@@ -237,6 +237,7 @@ namespace ArduinoLadder.Forms
                     Program.DataMgr.ProjectFolder = ret.ProjectFolder;
                     Program.DataMgr.ArduinoFolder = ret.ArduinoFolder;
                     Program.DataMgr.Language = ret.Language;
+                    Program.DataMgr.DescriptionViewAll = ret.DescriptionViewAll;
                     Program.DataMgr.SaveSetting();
                 }
             };

@@ -57,6 +57,8 @@ namespace ArduinoLadder.Managers
             }
         }
         #endregion
+
+        public bool DescriptionViewAll { get; set; }
         #endregion
 
         #region Event
@@ -79,6 +81,7 @@ namespace ArduinoLadder.Managers
                 ProjectFolder = this.ProjectFolder,
                 ArduinoFolder = this.ArduinoFolder,
                 Language = this.Language,
+                DescriptionViewAll = this.DescriptionViewAll,
             });
         }
         #endregion
@@ -91,12 +94,14 @@ namespace ArduinoLadder.Managers
                 this.ProjectFolder = set.ProjectFolder;
                 this.ArduinoFolder = set.ArduinoFolder;
                 this.Language = set.Language;
+                this.DescriptionViewAll = set.DescriptionViewAll;
             }
             else
             {
                 this.ProjectFolder = Path.Combine(Application.StartupPath, "arduino_ld");
                 this.ArduinoFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "arduino");
                 this.Language = Lang.KO;
+                this.DescriptionViewAll = false;
             }
         }
         #endregion
@@ -112,6 +117,7 @@ namespace ArduinoLadder.Managers
         public string ProjectFolder { get; set; }
         public string ArduinoFolder { get; set; }
         public Lang Language { get; set; } = Lang.NONE;
+        public bool DescriptionViewAll { get; set; } = false;
     }
     #endregion
 }

@@ -97,6 +97,7 @@ namespace ArduinoLadder.Forms
             lblPath.Value = Program.DataMgr.ProjectFolder;
             lblArduino.Value = Program.DataMgr.ArduinoFolder;
             inLang.Value = Program.DataMgr.Language == Lang.KO;
+            inDescView.Value = Program.DataMgr.DescriptionViewAll;
 
             LangSet(Program.DataMgr.Language);
 
@@ -107,6 +108,7 @@ namespace ArduinoLadder.Forms
                     ProjectFolder = lblPath.Value,
                     ArduinoFolder = lblArduino.Value,
                     Language = inLang.Value ? Lang.KO : Lang.EN,
+                    DescriptionViewAll = inDescView.Value,
                 };
             }
 

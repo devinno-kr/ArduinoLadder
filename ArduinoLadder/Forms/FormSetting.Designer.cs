@@ -41,6 +41,7 @@ namespace ArduinoLadder.Forms
             this.btnOK = new Devinno.Forms.Controls.DvButton();
             this.dvControl2 = new Devinno.Forms.Controls.DvControl();
             this.btnCancel = new Devinno.Forms.Controls.DvButton();
+            this.inDescView = new Devinno.Forms.Controls.DvValueInputBool();
             this.dvContainer1.SuspendLayout();
             this.dvTableLayoutPanel1.SuspendLayout();
             this.dvContainer2.SuspendLayout();
@@ -56,7 +57,7 @@ namespace ArduinoLadder.Forms
             this.dvContainer1.Name = "dvContainer1";
             this.dvContainer1.Padding = new System.Windows.Forms.Padding(10);
             this.dvContainer1.ShadowGap = 1;
-            this.dvContainer1.Size = new System.Drawing.Size(446, 244);
+            this.dvContainer1.Size = new System.Drawing.Size(446, 297);
             this.dvContainer1.TabIndex = 0;
             this.dvContainer1.TabStop = false;
             this.dvContainer1.Text = "dvContainer1";
@@ -65,6 +66,7 @@ namespace ArduinoLadder.Forms
             // 
             this.dvTableLayoutPanel1.ColumnCount = 1;
             this.dvTableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.dvTableLayoutPanel1.Controls.Add(this.inDescView, 0, 4);
             this.dvTableLayoutPanel1.Controls.Add(this.lblArduino, 0, 2);
             this.dvTableLayoutPanel1.Controls.Add(this.lblTitleAreas, 0, 0);
             this.dvTableLayoutPanel1.Controls.Add(this.lblPath, 0, 1);
@@ -72,12 +74,14 @@ namespace ArduinoLadder.Forms
             this.dvTableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dvTableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.dvTableLayoutPanel1.Name = "dvTableLayoutPanel1";
-            this.dvTableLayoutPanel1.RowCount = 4;
+            this.dvTableLayoutPanel1.RowCount = 6;
             this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.dvTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.dvTableLayoutPanel1.Size = new System.Drawing.Size(426, 174);
+            this.dvTableLayoutPanel1.Size = new System.Drawing.Size(426, 227);
             this.dvTableLayoutPanel1.TabIndex = 7;
             // 
             // lblArduino
@@ -186,7 +190,7 @@ namespace ArduinoLadder.Forms
             this.inLang.Location = new System.Drawing.Point(3, 131);
             this.inLang.Name = "inLang";
             this.inLang.Off = "ENG";
-            this.inLang.On = "KOR";
+            this.inLang.On = "한글";
             this.inLang.Round = null;
             this.inLang.ShadowGap = 1;
             this.inLang.Size = new System.Drawing.Size(420, 40);
@@ -209,7 +213,7 @@ namespace ArduinoLadder.Forms
             // dvControl1
             // 
             this.dvControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dvControl1.Location = new System.Drawing.Point(10, 184);
+            this.dvControl1.Location = new System.Drawing.Point(10, 237);
             this.dvControl1.Name = "dvControl1";
             this.dvControl1.ShadowGap = 1;
             this.dvControl1.Size = new System.Drawing.Size(426, 10);
@@ -223,7 +227,7 @@ namespace ArduinoLadder.Forms
             this.dvContainer2.Controls.Add(this.dvControl2);
             this.dvContainer2.Controls.Add(this.btnCancel);
             this.dvContainer2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dvContainer2.Location = new System.Drawing.Point(10, 194);
+            this.dvContainer2.Location = new System.Drawing.Point(10, 247);
             this.dvContainer2.Name = "dvContainer2";
             this.dvContainer2.Padding = new System.Windows.Forms.Padding(168, 0, 0, 0);
             this.dvContainer2.ShadowGap = 1;
@@ -289,12 +293,47 @@ namespace ArduinoLadder.Forms
             this.btnCancel.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnCancel.UseKey = false;
             // 
+            // inDescView
+            // 
+            this.inDescView.Button = null;
+            this.inDescView.ButtonColor = null;
+            this.inDescView.ButtonIconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.inDescView.ButtonIconGap = 0;
+            this.inDescView.ButtonIconImage = null;
+            this.inDescView.ButtonIconSize = 12F;
+            this.inDescView.ButtonIconString = null;
+            this.inDescView.ButtonTextPadding = new System.Windows.Forms.Padding(0);
+            this.inDescView.ButtonWidth = null;
+            this.inDescView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inDescView.Location = new System.Drawing.Point(3, 177);
+            this.inDescView.Name = "inDescView";
+            this.inDescView.Off = "축약";
+            this.inDescView.On = "전체";
+            this.inDescView.Round = null;
+            this.inDescView.ShadowGap = 1;
+            this.inDescView.Size = new System.Drawing.Size(420, 40);
+            this.inDescView.TabIndex = 6;
+            this.inDescView.Text = "구문 표시";
+            this.inDescView.Title = "구문 표시";
+            this.inDescView.TitleColor = null;
+            this.inDescView.TitleIconAlignment = Devinno.Forms.DvTextIconAlignment.LeftRight;
+            this.inDescView.TitleIconGap = 0;
+            this.inDescView.TitleIconImage = null;
+            this.inDescView.TitleIconSize = 12F;
+            this.inDescView.TitleIconString = null;
+            this.inDescView.TitleTextPadding = new System.Windows.Forms.Padding(0);
+            this.inDescView.TitleWidth = 100;
+            this.inDescView.Unit = "";
+            this.inDescView.UnitWidth = null;
+            this.inDescView.Value = false;
+            this.inDescView.ValueColor = null;
+            // 
             // FormSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BlankForm = true;
-            this.ClientSize = new System.Drawing.Size(446, 244);
+            this.ClientSize = new System.Drawing.Size(446, 297);
             this.Controls.Add(this.dvContainer1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -328,5 +367,6 @@ namespace ArduinoLadder.Forms
         private Controls.DvValueLabelPath lblPath;
         private Controls.DvValueLabelPath lblArduino;
         private Devinno.Forms.Controls.DvValueInputBool inLang;
+        private Devinno.Forms.Controls.DvValueInputBool inDescView;
     }
 }
