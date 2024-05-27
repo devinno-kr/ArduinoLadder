@@ -2894,18 +2894,19 @@ namespace ArduinoLadder.Controls
         #region SetDebug
         public void SetDebug(List<DebugInfo> dbgs)
         {
-            var dic = dbgs.ToDictionary(x => x.Row + "," + x.Column);
+            //var dic = dbgs.ToDictionary(x => x.Row + "," + x.Column);
+            var dic = dbgs.ToLookup(x => x.Row + "," + x.Column);
 
-            foreach (var vk in dic.Keys)
+            foreach (var vk in dic)
             {
-                if (vk == "4,8")
+                if (vk.Key == "4,8")
                 {
 
                 }
-                if (MonitorValues.ContainsKey(vk))
+                if (MonitorValues.ContainsKey(vk.Key))
                 {
-                    var mon = MonitorValues[vk];
-                    var v = dic[vk];
+                    var mon = MonitorValues[vk.Key];
+                    var v = dic[vk.Key].FirstOrDefault();
 
                     if (v.Type == DebugInfoType.Contact && mon.ValueType == MonitorValueKinds.CONTACT)
                     {

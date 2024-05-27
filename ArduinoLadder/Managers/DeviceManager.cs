@@ -93,7 +93,8 @@ namespace ArduinoLadder.Managers
                 }
             }
 
-            Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
+            if (!Program.MainForm.IsDisposed)
+                Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
         }
 
         private void Comm_BitReadReceived(object sender, ModbusRTUMaster2.BitReadEventArgs e)
@@ -105,7 +106,8 @@ namespace ArduinoLadder.Managers
                 if (Debugs.ContainsKey(addr)) Debugs[addr].Contact = val;
             }
 
-            Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
+            if (!Program.MainForm.IsDisposed)
+                Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
         }
         #endregion
 

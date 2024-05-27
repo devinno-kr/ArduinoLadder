@@ -238,9 +238,10 @@ namespace ArduinoLadder.Managers
                 {
                     return ser.BytesToRead;
                 }
-                catch (IOException) { throw new SchedulerStopException(); }
+                catch (IOException ex) { throw new SchedulerStopException(); }
                 catch (UnauthorizedAccessException) { throw new SchedulerStopException(); }
                 catch (InvalidOperationException) { throw new SchedulerStopException(); }
+                catch (OperationCanceledException) { throw new SchedulerStopException(); }
             }
         }
 
@@ -251,7 +252,14 @@ namespace ArduinoLadder.Managers
             {
                 if(ser.IsOpen && IsStart)
                 {
-                    ser.DtrEnable = value;
+                    try
+                    {
+                        ser.DtrEnable = value;
+                    }
+                    catch (IOException ex) { try { ser.Close(); } catch { }  }
+                    catch (UnauthorizedAccessException) { try { ser.Close(); } catch { } }
+                    catch (InvalidOperationException) { try { ser.Close(); } catch { } }
+                    catch (OperationCanceledException) { try { ser.Close(); } catch { } }
                 }
             }
         }
@@ -705,9 +713,10 @@ namespace ArduinoLadder.Managers
                 ser.DiscardOutBuffer();
                 ser.Write(data, offset, count);
             }
-            catch (IOException) { throw new SchedulerStopException(); }
+            catch (IOException ex) { throw new SchedulerStopException(); }
             catch (UnauthorizedAccessException) { throw new SchedulerStopException(); }
             catch (InvalidOperationException) { throw new SchedulerStopException(); }
+            catch (OperationCanceledException) { throw new SchedulerStopException(); }
         }
         #endregion
         #region OnRead
@@ -721,6 +730,7 @@ namespace ArduinoLadder.Managers
             catch (IOException) { throw new SchedulerStopException(); }
             catch (UnauthorizedAccessException) { throw new SchedulerStopException(); }
             catch (InvalidOperationException) { throw new SchedulerStopException(); }
+            catch (OperationCanceledException) { throw new SchedulerStopException(); }
             catch { return null; }
         }
         #endregion
@@ -734,6 +744,7 @@ namespace ArduinoLadder.Managers
             catch (IOException) { throw new SchedulerStopException(); }
             catch (UnauthorizedAccessException) { throw new SchedulerStopException(); }
             catch (InvalidOperationException) { throw new SchedulerStopException(); }
+            catch (OperationCanceledException) { throw new SchedulerStopException(); }
         }
         #endregion
         #region OnThreadEnd

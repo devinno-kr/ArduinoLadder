@@ -1085,7 +1085,7 @@ namespace ArduinoLadder.Tools
                         }
                         else if (v.Type == DebugInfoType.Timer)
                         {
-                            sbPLC.AppendLine(R($"      Debugs[D{k}].Timer = {v.TCode};") + $"__DBGW[{iW}] = {v.VCode};");
+                            sbPLC.AppendLine(R($"      Debugs[D{k}].Timer = {v.TCode};") + $"__DBGW[{iW}] = {v.TCode};");
                             sbPLC.AppendLine(R($"      Debugs[D{k}].Contact = {v.VCode};") + $"setBit(__DBGP, {iP}, {v.VCode});");
                             iW++;
                             iP++;
