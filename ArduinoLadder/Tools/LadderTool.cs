@@ -571,7 +571,7 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine("    #elif defined(__SAM3X8E__)");
                 sbPLC.AppendLine("    Timer3.attachInterrupt(ladderTick);");
                 sbPLC.AppendLine("    Timer3.start(10000);");
-                sbPLC.AppendLine("    #elif ( defined(ARDUINO_NANO_RP2040_CONNECT) || defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_ADAFRUIT_FEATHER_RP2040) || defined(ARDUINO_GENERIC_RP2040) ) && defined(ARDUINO_ARCH_MBED)");
+                sbPLC.AppendLine("    #elif ( defined(ARDUINO_NANO_RP2040_CONNECT) || defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_ADAFRUIT_FEATHER_RP2040) || defined(ARDUINO_GENERIC_RP2040) )");
                 sbPLC.AppendLine("    pcTmr.attachInterruptInterval(10000, pcTmrISR);");
                 sbPLC.AppendLine("    #elif (defined(ARDUINO_ARCH_ESP32) || defined(ESP32))");
                 sbPLC.AppendLine("    timer = timerBegin(0, 80, true);");
