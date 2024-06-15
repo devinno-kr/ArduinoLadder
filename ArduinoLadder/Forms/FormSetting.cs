@@ -76,6 +76,9 @@ namespace ArduinoLadder.Forms
                 inLang.Title = LM.LanguageK;
                 btnOK.Text = LM.OkK;
                 btnCancel.Text = LM.CancelK;
+                inDescView.Title = LM.SyntaxDisplayK;
+                inDescView.Off = LM.SyntaxShortenedK;
+                inDescView.On = LM.SyntaxAllK;
             }
             else if (lang == Managers.Lang.EN)
             {
@@ -86,6 +89,9 @@ namespace ArduinoLadder.Forms
                 inLang.Title = LM.LanguageE;
                 btnOK.Text = LM.OkE;
                 btnCancel.Text = LM.CancelE;
+                inDescView.Title = LM.SyntaxDisplayE;
+                inDescView.Off = LM.SyntaxShortenedE;
+                inDescView.On = LM.SyntaxAllE;
             }
         }
         #endregion

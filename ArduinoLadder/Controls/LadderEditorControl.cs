@@ -1596,7 +1596,6 @@ namespace ArduinoLadder.Controls
                 if (str.Length > 0 && str.StartsWith("'") && ItemColor != Color.Magenta) { br.Color = Color.Lime; bMSG = true; }
                 if (str.Length > 0 && str.StartsWith("#") && itm.Col == 0 && ItemColor != Color.Magenta) { br.Color = Color.Orange; bMSG = true; }
                 #endregion
-                //bMSG |= Program.DataMgr.DescriptionViewAll;
 
                 if (bMSG)
                 {

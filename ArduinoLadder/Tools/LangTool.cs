@@ -1028,6 +1028,45 @@ namespace ArduinoLadder.Tools
         }
         #endregion
 
+        #region SyntaxDisplay
+        public const string SyntaxDisplayK = "구문 표시";
+        public const string SyntaxDisplayE = "Syntax Display";
+        public static string SyntaxDisplay
+        {
+            get
+            {
+                if (lang == Lang.KO) return SyntaxDisplayK;
+                else if (lang == Lang.EN) return SyntaxDisplayE;
+                else return "";
+            }
+        }
+        #endregion
+        #region SyntaxAll
+        public const string SyntaxAllK = "전체";
+        public const string SyntaxAllE = "All";
+        public static string SyntaxAll
+        {
+            get
+            {
+                if (lang == Lang.KO) return SyntaxAllK;
+                else if (lang == Lang.EN) return SyntaxAllE;
+                else return "";
+            }
+        }
+        #endregion
+        #region SyntaxShortened
+        public const string SyntaxShortenedK = "축약";
+        public const string SyntaxShortenedE = "Shortened";
+        public static string SyntaxShortened
+        {
+            get
+            {
+                if (lang == Lang.KO) return SyntaxShortenedK;
+                else if (lang == Lang.EN) return SyntaxShortenedE;
+                else return "";
+            }
+        }
+        #endregion
 
         #region Ok
         public const string OkK = "확인";
