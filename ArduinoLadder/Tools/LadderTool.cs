@@ -361,7 +361,7 @@ namespace ArduinoLadder.Tools
                     {
                         if (!string.IsNullOrWhiteSpace(code))
                         {
-                            if (LadderFunc.Funcs.Where(x => x.Name.StartsWith(code.Split('(').Where(x2 => !string.IsNullOrWhiteSpace(x2.Trim())).FirstOrDefault()?.Trim())).Count() > 0)
+                            if (LadderFunc.Funcs.Where(x => code.Trim().StartsWith(x.Name)).Count() > 0)
                             {
                                 var fn = FuncInfo.Parse(code);
                                 if (fn != null)
