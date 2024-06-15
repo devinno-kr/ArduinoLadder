@@ -1,4 +1,5 @@
-﻿using ArduinoLadder.Ladder;
+﻿using ArduinoLadder.Controls;
+using ArduinoLadder.Ladder;
 using ArduinoLadder.Tools;
 using Devinno.Communications.Setting;
 using Devinno.Data;
@@ -67,7 +68,7 @@ namespace ArduinoLadder.Forms
 
             #region Ladder Properties
             ladder.RowHeight = 36;
-            ladder.ColumnCount = 14;
+            ladder.ColumnCount = 16;
             #endregion
 
             #region Timer
@@ -143,7 +144,7 @@ namespace ArduinoLadder.Forms
                     CurrentDocument.Hardwares.Clear();
                     CurrentDocument.Hardwares.AddRange(ret.Hardwares);
 
-                    CurrentDocument.Edit = true;
+                    CurrentDocument.Deploy = CurrentDocument.Edit = true;
                 }
             };
             #endregion
@@ -161,7 +162,7 @@ namespace ArduinoLadder.Forms
                     CurrentDocument.Symbols.Clear();
                     CurrentDocument.Symbols.AddRange(ret.Symbols);
 
-                    CurrentDocument.Edit = true;
+                    CurrentDocument.Deploy = CurrentDocument.Edit = true;
                 }
             };
             #endregion
@@ -172,7 +173,7 @@ namespace ArduinoLadder.Forms
                 if (ret != null)
                 {
                     CurrentDocument.Communications = CryptoTool.EncodeBase64String(Serialize.JsonSerializeWithType(ret));
-                    CurrentDocument.Edit = true;
+                    CurrentDocument.Deploy = CurrentDocument.Edit = true;
                 }
             };
             #endregion
@@ -197,7 +198,7 @@ namespace ArduinoLadder.Forms
                         if (CurrentDocument != null)
                         {
                             CurrentDocument.SketchPath = fbd.SelectedPath;
-                            CurrentDocument.Edit = true;
+                            CurrentDocument.Deploy = CurrentDocument.Edit = true;
                         }
                     }
                 }
@@ -220,6 +221,8 @@ namespace ArduinoLadder.Forms
                             foreach (var filename in dic.Keys)
                                 File.WriteAllText(Path.Combine(CurrentDocument.SketchPath, filename), dic[filename]);
                         }
+
+                        CurrentDocument.Deploy = false;
 
                         Message(LM.Deploy, LM.DeployComplete);
                     }
@@ -264,7 +267,7 @@ namespace ArduinoLadder.Forms
             #endregion
 
             #region ladder.LadderChanged            : 레더 변경
-            ladder.LadderChanged += (o, s) => { if (CurrentDocument != null) CurrentDocument.Edit = true; };
+            ladder.LadderChanged += (o, s) => { if (CurrentDocument != null) CurrentDocument.Deploy = CurrentDocument.Edit = true; };
             #endregion
             #region gridMessage.CellMouseClick      : 에러 클릭
             gridMessage.CellMouseClick += (o, s) =>
@@ -292,6 +295,12 @@ namespace ArduinoLadder.Forms
                     }
                 }
             };
+            #endregion
+
+            #region tsmi[DEC/HEX/BIN].Click
+            tsmiDEC.Click += (o, s) => { ladder.LadderDisplayType = LadderDisplayKinds.DEC; ladder.Invalidate(); };
+            tsmiHEX.Click += (o, s) => { ladder.LadderDisplayType = LadderDisplayKinds.HEX; ladder.Invalidate(); };
+            tsmiBIN.Click += (o, s) => { ladder.LadderDisplayType = LadderDisplayKinds.BIN; ladder.Invalidate(); };
             #endregion
 
             #region btnDTR.ButtonClick              : DTR
@@ -551,6 +560,7 @@ namespace ArduinoLadder.Forms
             btnExport.Enabled = CurrentDocument != null && !IsDebugging;
             gridMessage.Enabled = CurrentDocument != null;
             btnMonitoring.Enabled = CurrentDocument != null;
+            btnExport.ButtonColor = CurrentDocument?.Deploy ?? false ? Color.Green : Theme.ButtonColor;
 
             ladder.Debug = IsDebugging;
             lblSketchPath.Value = CurrentDocument?.SketchPath ?? "";

@@ -20,6 +20,9 @@ namespace ArduinoLadder.Ladder
         public bool Edit { get; set; }
 
         [JsonIgnore]
+        public bool Deploy { get; set; }
+
+        [JsonIgnore]
         public string DisplayTitle => (string.IsNullOrWhiteSpace(Title) ? "NONAME" : Title) + (MustSave ? "*" : "");
 
         [JsonIgnore]
@@ -34,11 +37,11 @@ namespace ArduinoLadder.Ladder
         public List<HardwareInfo> Hardwares { get; set; } = new List<HardwareInfo>();
         public string Communications { get; set; }
 
-        public int P_Count { get; set; } = 32768;   //4096 bytes
-        public int M_Count { get; set; } = 32768;   //4096 bytes
-        public int T_Count { get; set; } = 2048;    //4096 bytes
-        public int C_Count { get; set; } = 2048;    //4096 bytes
-        public int D_Count { get; set; } = 4096;    //8192 bytes
+        public int P_Count { get; set; } = 8192;   //4096 bytes
+        public int M_Count { get; set; } = 8192;   //4096 bytes
+        public int T_Count { get; set; } = 256;    //4096 bytes
+        public int C_Count { get; set; } = 512;    //4096 bytes
+        public int D_Count { get; set; } = 512;    //8192 bytes
         #endregion
 
         #region Method

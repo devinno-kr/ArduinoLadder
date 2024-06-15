@@ -21,10 +21,10 @@ namespace ArduinoLadder.Managers
 
         #region Properties
         public bool IsDebugging { get; private set; }
-        public bool IsOpen => comm.IsStart && comm.IsOpen;  
+        public bool IsOpen => comm.IsStart && comm.IsOpen;
         public int Baudrate { get => comm.Baudrate; set => comm.Baudrate = value; }
         public string PortName { get => comm.Port; set => comm.Port = value; }
-        
+
         public bool DTR
         {
             get => comm.DTR;
@@ -51,7 +51,7 @@ namespace ArduinoLadder.Managers
                 var txt = File.ReadAllText(PATH_PORT);
                 var sp = txt.Split(":");
                 int baud;
-                if(GetPortNames().Contains(sp[0]) && int.TryParse(sp[1], out baud))
+                if (GetPortNames().Contains(sp[0]) && int.TryParse(sp[1], out baud))
                 {
                     PortName = sp[0];
                     Baudrate = baud;
@@ -93,8 +93,12 @@ namespace ArduinoLadder.Managers
                 }
             }
 
-            if (!Program.MainForm.IsDisposed)
-                Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
+            try
+            {
+                if (!Program.MainForm.IsDisposed)
+                    Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
+            }
+            catch (ObjectDisposedException ex) { }
         }
 
         private void Comm_BitReadReceived(object sender, ModbusRTUMaster2.BitReadEventArgs e)
@@ -106,8 +110,12 @@ namespace ArduinoLadder.Managers
                 if (Debugs.ContainsKey(addr)) Debugs[addr].Contact = val;
             }
 
-            if (!Program.MainForm.IsDisposed)
-                Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
+            try
+            {
+                if (!Program.MainForm.IsDisposed)
+                    Program.MainForm.Invoke(new Action(() => Program.MainForm.Debug(Debugs.Values.ToList())));
+            }
+            catch (ObjectDisposedException ex) { }
         }
         #endregion
 

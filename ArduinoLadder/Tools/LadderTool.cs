@@ -34,15 +34,89 @@ namespace ArduinoLadder.Tools
             if ((itm.ItemType == LadderItemType.OUT_COIL) || (itm.ItemType == LadderItemType.OUT_FUNC))
             {
                 #region List
-                List<LadderItem> mls = new List<LadderItem>();
-                for (int i = 0; i < itms.Count; i++)
                 {
-                    var v = itms[i].Clone();
-                    if (mls.Count > 0 && mls[i - 1].VerticalLine && mls[i - 1].Row == v.Row - 1) mls[i - 1].ItemType = LadderItemType.NONE;
-                    mls.Add(v);
+                    List<LadderItem> mls = new List<LadderItem>();
+                    for (int i = 0; i < itms.Count; i++)
+                    {
+                        var v = itms[i].Clone();
+                        if (mls.Count > 0 && mls[i - 1].VerticalLine && mls[i - 1].Row == v.Row - 1) mls[i - 1].ItemType = LadderItemType.NONE;
+                        mls.Add(v);
+                    }
+                    result.Add(mls);
                 }
-                result.Add(mls);
                 #endregion
+
+                if(itm.VerticalLine)
+                {
+                    bool bEnt = false;
+
+                    #region 위로 이동 - 우측위
+                    if (dic.ContainsKey(righttop) && !dic.ContainsKey(right))
+                    {
+                        LadderItem next = dic[righttop];
+                        if (next.VerticalLine && !itms.Contains(next))
+                        {
+                            bEnt = true;
+                            Reent(next, dic, result, faild, new List<LadderItem>(itms.ToArray()));
+                        }
+                    }
+                    #endregion
+                    #region 위로 이동
+                    if (dic.ContainsKey(top))
+                    {
+                        LadderItem next = dic[top];
+                        if (next.VerticalLine && !itms.Contains(next))
+                        {
+                            bEnt = true;
+                            Reent(next, dic, result, faild, new List<LadderItem>(itms.ToArray()));
+                        }
+                    }
+                    #endregion
+                    #region 우측 이동
+                    if (dic.ContainsKey(right))
+                    {
+                        LadderItem next = dic[right];
+                        if (
+                            (itm.ItemType == LadderItemType.IN_A) ||
+                            (itm.ItemType == LadderItemType.IN_B) ||
+                            (itm.ItemType == LadderItemType.FALLING_EDGE) ||
+                            (itm.ItemType == LadderItemType.RISING_EDGE) ||
+                            (itm.ItemType == LadderItemType.NOT) ||
+                            (itm.ItemType == LadderItemType.LINE_H)
+                            && !itms.Contains(next)
+                          )
+                        {
+                            bEnt = true;
+                            Reent(next, dic, result, faild, new List<LadderItem>(itms.ToArray()));
+                        }
+                    }
+                    #endregion
+                    #region 아래 이동
+                    if (dic.ContainsKey(bottom))
+                    {
+                        LadderItem next = dic[bottom];
+                        if (itm.VerticalLine && !itms.Contains(next))
+                        {
+                            bEnt = true;
+                            Reent(next, dic, result, faild, new List<LadderItem>(itms.ToArray()));
+                        }
+                    }
+                    #endregion
+
+                    #region List
+                    if (!bEnt)
+                    {
+                        List<LadderItem> mls = new List<LadderItem>();
+                        for (int i = 0; i < itms.Count; i++)
+                        {
+                            var v = itms[i].Clone();
+                            if (mls.Count > 0 && mls[i - 1].VerticalLine && mls[i - 1].Row == v.Row - 1) mls[i - 1].ItemType = LadderItemType.NONE;
+                            mls.Add(v);
+                        }
+                        faild.Add(mls);
+                    }
+                    #endregion
+                }
             }
             else
             {
@@ -170,7 +244,7 @@ namespace ArduinoLadder.Tools
             var dic = doc.Ladders.ToDictionary(x => x.Key);
             var r = Build(doc);
 
-            #region 완성되지 않은 연결
+            #region 완성되지 않은 연결 - p1
             if (r.InvalidNodes.Count > 0)
             {
                 foreach (var vk in r.InvalidNodes.Keys)
@@ -192,6 +266,24 @@ namespace ArduinoLadder.Tools
             }
             #endregion
 
+            #region 완성되지 않은 연결 - p2
+            if (r.ValidNodes.Count > 0)
+            {
+                var va = r.ValidNodes.Keys.ToList();
+                var ra = doc.Ladders.Where(x => (x.ItemType == LadderItemType.OUT_COIL || x.ItemType == LadderItemType.OUT_FUNC) && !va.Contains(x.Key)).ToList();
+
+                foreach (var v in ra)
+                {
+                    ret.Add(new LadderCheckMessage()
+                    {
+                        Row = v != null ? (int?)v.Row + 1 : null,
+                        Column = v != null ? (int?)v.Col + 1 : null,
+                        Message = LM.LadderErrorIncomplete,
+                    });
+                }
+            }
+            #endregion
+
             #region 잘못된 주석
             var els = doc.Ladders.Where(x => x.ItemType == LadderItemType.NONE && !(((x.Code.StartsWith("#") && x.Col == 0) || x.Code.StartsWith("'") || string.IsNullOrWhiteSpace(x.Code)))).ToList();
             foreach (var v in els)
@@ -208,24 +300,44 @@ namespace ArduinoLadder.Tools
             foreach (var itm in doc.Ladders)
             {
                 #region 비정상적인 연결
-                if (itm.ItemType != LadderItemType.NONE)
                 {
                     string left = (itm.Row).ToString() + "," + (itm.Col - 1).ToString();
                     string top = (itm.Row - 1).ToString() + "," + (itm.Col).ToString();
                     string leftbottom = (itm.Row + 1).ToString() + "," + (itm.Col - 1).ToString();
 
-                    bool b1 = (dic.ContainsKey(left) && dic[left].ItemType != LadderItemType.OUT_COIL && dic[left].ItemType != LadderItemType.OUT_FUNC);
-                    bool b2 = (dic.ContainsKey(top) && dic[top].VerticalLine);
-                    bool b3 = (dic.ContainsKey(leftbottom) && itm.VerticalLine && dic[leftbottom].ItemType != LadderItemType.OUT_COIL && dic[leftbottom].ItemType != LadderItemType.OUT_FUNC);
-
-                    if (itm.Col > 0 && !b1 && !b2 && !b3)
+                    if (itm.ItemType != LadderItemType.NONE)
                     {
-                        ret.Add(new LadderCheckMessage()
+                        bool b1 = (dic.ContainsKey(left) && dic[left].ItemType == LadderItemType.OUT_COIL && dic[left].ItemType == LadderItemType.OUT_FUNC);                                            // 좌측이 종료노드
+                        bool b2 = !dic.ContainsKey(left) && dic.ContainsKey(top) && !dic[top].VerticalLine;
+                        bool b3 = !dic.ContainsKey(left) && !dic.ContainsKey(top);
+
+                        if (itm.Col > 0 && (b1 || b2 || b3 ))
                         {
-                            Row = itm.Row + 1,
-                            Column = itm.Col + 1,
-                            Message = LM.LadderErrorAbnormal,
-                        });
+                            ret.Add(new LadderCheckMessage()
+                            {
+                                Row = itm.Row + 1,
+                                Column = itm.Col + 1,
+                                Message = LM.LadderErrorAbnormal,
+                            });
+                        }
+                    }
+                    else
+                    {
+                        if (itm.VerticalLine)
+                        {
+                            bool b1 = (!dic.ContainsKey(left) && !dic.ContainsKey(top));                                                                                                // 내가 수직연결을 가지고 있는데 왼편이 없고 위에가 없어
+                            bool b2 = (!dic.ContainsKey(left) && dic.ContainsKey(top) && !dic[top].VerticalLine);                                                                       // 내가 수직연결을 가지고 있는데 왼편이 없고 위가 수직을 안가지고 있어
+
+                            if (itm.Col > 0 && (b1 || b2))
+                            {
+                                ret.Add(new LadderCheckMessage()
+                                {
+                                    Row = itm.Row + 1,
+                                    Column = itm.Col + 1,
+                                    Message = LM.LadderErrorAbnormal,
+                                });
+                            }
+                        }
                     }
                 }
                 #endregion
@@ -439,7 +551,6 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine("#elif defined(__SAM3X8E__)");
                 sbPLC.AppendLine("#include <DueTimer.h>");
                 sbPLC.AppendLine("#elif ( defined(ARDUINO_NANO_RP2040_CONNECT) || defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_ADAFRUIT_FEATHER_RP2040) || defined(ARDUINO_GENERIC_RP2040) )");
-                //sbPLC.AppendLine("#define USING_MBED_RPI_PICO_TIMER_INTERRUPT true"); 
                 sbPLC.AppendLine("#include <RPi_Pico_TimerInterrupt.h>");
                 sbPLC.AppendLine("#endif");
                 sbPLC.AppendLine("");
@@ -480,11 +591,11 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine($"MCSV MCS[MCSCNT];");
                 sbPLC.AppendLine($"");
                 sbPLC.AppendLine($"bool _SR_ON = true, _SR_OFF = false;");
-                sbPLC.AppendLine($"bool _SR_10R = false, _SR_100R = false, _SR_1000R = false;");
-                sbPLC.AppendLine($"bool _SR_F10R = false, _SR_F100R = false, _SR_F1000R = false;");
+                sbPLC.AppendLine($"bool _SR_10R = false,  _SR_20R = false,  _SR_50R = false,  _SR_100R = false,  _SR_200R = false,  _SR_250R = false,  _SR_500R = false,  _SR_1000R = false;");
+                sbPLC.AppendLine($"bool _SR_F10R = false, _SR_F20R = false, _SR_F50R = false, _SR_F100R = false, _SR_F200R = false, _SR_F250R = false, _SR_F500R = false, _SR_F1000R = false;");
                 sbPLC.AppendLine($"bool _SR_BEGIN = false;");
                 sbPLC.AppendLine($"bool _100_ = false, _1000_ = false;");
-                sbPLC.AppendLine($"int _CNT100 = 0, _CNT1000 = 0;");
+                sbPLC.AppendLine($"int _CNT20 = 0, _CNT50 = 0, _CNT100 = 0, _CNT200 = 0, _CNT250 = 0, _CNT500 = 0, _CNT1000 = 0;");
                 sbPLC.AppendLine($"");
                 sbPLC.AppendLine($"DebugInfo Debugs[{Debugs.Count}];");
                 sbPLC.AppendLine($"bool useDebug = false;");
@@ -591,11 +702,16 @@ namespace ArduinoLadder.Tools
                 #region Load Special Relay
                 sbPLC.AppendLine("    bool _result_ = false, _b_ = false, _ck_ = false, _mc_ = true;          ");
                 sbPLC.AppendLine("    bool SR_ON  = _SR_ON,  SR_OFF  = _SR_OFF,  SR_BEGIN = _SR_BEGIN;        ");
-                sbPLC.AppendLine("    bool SR_10R  = _SR_10R,  SR_100R  = _SR_100R,  SR_1000R  = _SR_1000R;   ");
-                sbPLC.AppendLine("    bool SR_F10R = _SR_F10R, SR_F100R = _SR_F100R, SR_F1000R = _SR_F1000R;  ");
+                sbPLC.AppendLine("    bool  SR_10R =  _SR_10R,  SR_20R  = _SR_20R,  SR_50R  = _SR_50R,  SR_100R  = _SR_100R,  SR_200R  = _SR_200R,  SR_250R  = _SR_250R,  SR_500R  = _SR_500R,  SR_1000R  = _SR_1000R;");
+                sbPLC.AppendLine("    bool SR_F10R = _SR_F10R, SR_F20R = _SR_F20R, SR_F50R = _SR_F50R, SR_F100R = _SR_F100R, SR_F200R = _SR_F200R, SR_F250R = _SR_F250R, SR_F500R = _SR_F500R, SR_F1000R = _SR_F1000R;");
                 sbPLC.AppendLine("");
                 sbPLC.AppendLine("    if( _SR_10R ) _SR_10R = false;                                          ");
+                sbPLC.AppendLine("    if( _SR_20R ) _SR_20R = false;                                          ");
+                sbPLC.AppendLine("    if( _SR_50R ) _SR_50R = false;                                          ");
                 sbPLC.AppendLine("    if( _SR_100R ) _SR_100R = false;                                        ");
+                sbPLC.AppendLine("    if( _SR_200R ) _SR_200R = false;                                        ");
+                sbPLC.AppendLine("    if( _SR_250R ) _SR_250R = false;                                        ");
+                sbPLC.AppendLine("    if( _SR_500R ) _SR_500R = false;                                        ");
                 sbPLC.AppendLine("    if( _SR_1000R ) _SR_1000R = false;                                      ");
                 sbPLC.AppendLine("");
                 #endregion
@@ -843,7 +959,7 @@ namespace ArduinoLadder.Tools
                                                             sbPLC.AppendLine(L($"        MCS[{idx}].value = _result_;", nd));
                                                             sbPLC.AppendLine(L($"        {nm} = _result_;", nd));
 
-                                                            sbPLC.AppendLine(L($"        _mc_ = _MCSCHK();", nd));
+                                                            sbPLC.AppendLine(L($"        _mc_ = _MCSCHK_();", nd));
                                                         }
                                                         break;
                                                     case "MCSCLR":
@@ -853,7 +969,7 @@ namespace ArduinoLadder.Tools
                                                             sbPLC.AppendLine(L($"        MCS[{idx}].value = false;", nd));
                                                             sbPLC.AppendLine(L($"        {nm} = _result_;", nd));
 
-                                                            sbPLC.AppendLine(L($"        _mc_ = _MCSCHK();", nd));
+                                                            sbPLC.AppendLine(L($"        _mc_ = _MCSCHK_();", nd));
                                                         }
                                                         break;
                                                     #endregion
@@ -1001,7 +1117,7 @@ namespace ArduinoLadder.Tools
                                                         {
                                                             sbPLC.AppendLine(L($"        {nm} = false;", nd));
 
-                                                            sbPLC.AppendLine(L($"        _mc_ = _MCSCHK();", nd));
+                                                            sbPLC.AppendLine(L($"        _mc_ = _MCSCHK_();", nd));
                                                         }
                                                         break;
                                                     case "MCSCLR":
@@ -1011,7 +1127,7 @@ namespace ArduinoLadder.Tools
                                                             sbPLC.AppendLine(L($"        MCS[{idx}].value = false;", nd));
                                                             sbPLC.AppendLine(L($"        {nm} = MCS[{idx}].use;", nd));
 
-                                                            sbPLC.AppendLine(L($"        _mc_ = _MCSCHK();", nd));
+                                                            sbPLC.AppendLine(L($"        _mc_ = _MCSCHK_();", nd));
                                                         }
                                                         break;
                                                         #endregion
@@ -1121,7 +1237,12 @@ namespace ArduinoLadder.Tools
                 #region ladderTick
                 sbPLC.AppendLine("void ladderTick()");
                 sbPLC.AppendLine("{");
+                sbPLC.AppendLine("    _CNT20++;");
+                sbPLC.AppendLine("    _CNT50++;");
                 sbPLC.AppendLine("    _CNT100++;");
+                sbPLC.AppendLine("    _CNT200++;");
+                sbPLC.AppendLine("    _CNT250++;");
+                sbPLC.AppendLine("    _CNT500++;");
                 sbPLC.AppendLine("    _CNT1000++;");
                 sbPLC.AppendLine("");
                 sbPLC.AppendLine("    _100_ = _CNT100 >= 10;");
@@ -1130,11 +1251,46 @@ namespace ArduinoLadder.Tools
                 sbPLC.AppendLine("    _SR_10R = true;");
                 sbPLC.AppendLine("    _SR_F10R = !_SR_F10R;");
                 sbPLC.AppendLine("");
+                sbPLC.AppendLine("    if (_CNT20 >= 2)");
+                sbPLC.AppendLine("    {");
+                sbPLC.AppendLine("      _SR_20R = true;");
+                sbPLC.AppendLine("      _SR_F20R = !_SR_F20R;");
+                sbPLC.AppendLine("      _CNT20 = 0;");
+                sbPLC.AppendLine("    }");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("    if (_CNT50 >= 5)");
+                sbPLC.AppendLine("    {");
+                sbPLC.AppendLine("      _SR_50R = true;");
+                sbPLC.AppendLine("      _SR_F50R = !_SR_F50R;");
+                sbPLC.AppendLine("      _CNT50 = 0;");
+                sbPLC.AppendLine("    }");
+                sbPLC.AppendLine("");
                 sbPLC.AppendLine("    if (_CNT100 >= 10)");
                 sbPLC.AppendLine("    {");
                 sbPLC.AppendLine("      _SR_100R = true;");
                 sbPLC.AppendLine("      _SR_F100R = !_SR_F100R;");
                 sbPLC.AppendLine("      _CNT100 = 0;");
+                sbPLC.AppendLine("    }");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("    if (_CNT200 >= 20)");
+                sbPLC.AppendLine("    {");
+                sbPLC.AppendLine("      _SR_200R = true;");
+                sbPLC.AppendLine("      _SR_F200R = !_SR_F200R;");
+                sbPLC.AppendLine("      _CNT200 = 0;");
+                sbPLC.AppendLine("    }");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("    if (_CNT250 >= 25)");
+                sbPLC.AppendLine("    {");
+                sbPLC.AppendLine("      _SR_250R = true;");
+                sbPLC.AppendLine("      _SR_F250R = !_SR_F250R;");
+                sbPLC.AppendLine("      _CNT250 = 0;");
+                sbPLC.AppendLine("    }");
+                sbPLC.AppendLine("");
+                sbPLC.AppendLine("    if (_CNT500 >= 50)");
+                sbPLC.AppendLine("    {");
+                sbPLC.AppendLine("      _SR_500R = true;");
+                sbPLC.AppendLine("      _SR_F500R = !_SR_F500R;");
+                sbPLC.AppendLine("      _CNT500 = 0;");
                 sbPLC.AppendLine("    }");
                 sbPLC.AppendLine("");
                 sbPLC.AppendLine("    if (_CNT1000 >= 100)");

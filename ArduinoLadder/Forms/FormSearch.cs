@@ -31,7 +31,11 @@ namespace ArduinoLadder.Forms
         {
             InitializeComponent();
 
-            inSearch.OriginalTextBox.KeyUp += (o, s) => { if (s.KeyCode == Keys.Enter) Search(); };
+            inSearch.OriginalTextBox.KeyUp += (o, s) =>
+            {
+                if (s.KeyCode == Keys.Enter) Search();
+                else if (s.KeyCode == Keys.Escape) this.Close();
+            };
             btnSearch.ButtonClick += (o, s) => Search();
             btnClose.ButtonClick += (o, s) => this.Close();
 

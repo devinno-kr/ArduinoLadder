@@ -70,6 +70,10 @@ namespace ArduinoLadder.Forms
             this.pnlContent = new Devinno.Forms.Containers.DvContainer();
             this.ladder = new ArduinoLadder.Controls.LadderEditorControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.cmsDis = new Devinno.Forms.Menus.DvContextMenuStrip();
+            this.tsmiDEC = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHEX = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiBIN = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTop.SuspendLayout();
             this.pnlLD.SuspendLayout();
             this.pnlToolBar.SuspendLayout();
@@ -77,6 +81,7 @@ namespace ArduinoLadder.Forms
             this.splitter.SuspendLayout();
             this.pnlMessage.SuspendLayout();
             this.pnlContent.SuspendLayout();
+            this.cmsDis.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -927,7 +932,8 @@ namespace ArduinoLadder.Forms
             // 
             this.ladder.AllowDrop = true;
             this.ladder.BoxColor = null;
-            this.ladder.ColumnCount = 15;
+            this.ladder.ColumnCount = 16;
+            this.ladder.ContextMenuStrip = this.cmsDis;
             this.ladder.CurX = 0;
             this.ladder.CurY = 0;
             this.ladder.Debug = false;
@@ -958,6 +964,34 @@ namespace ArduinoLadder.Forms
             this.toolTip.UseAnimation = false;
             this.toolTip.UseFading = false;
             // 
+            // cmsDis
+            // 
+            this.cmsDis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.cmsDis.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiDEC,
+            this.tsmiHEX,
+            this.tsmiBIN});
+            this.cmsDis.Name = "cmsDis";
+            this.cmsDis.Size = new System.Drawing.Size(126, 70);
+            // 
+            // tsmiDEC
+            // 
+            this.tsmiDEC.Name = "tsmiDEC";
+            this.tsmiDEC.Size = new System.Drawing.Size(125, 22);
+            this.tsmiDEC.Text = "DEC 표시";
+            // 
+            // tsmiHEX
+            // 
+            this.tsmiHEX.Name = "tsmiHEX";
+            this.tsmiHEX.Size = new System.Drawing.Size(125, 22);
+            this.tsmiHEX.Text = "HEX 표시";
+            // 
+            // tsmiBIN
+            // 
+            this.tsmiBIN.Name = "tsmiBIN";
+            this.tsmiBIN.Size = new System.Drawing.Size(125, 22);
+            this.tsmiBIN.Text = "BIN 표시";
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -986,6 +1020,7 @@ namespace ArduinoLadder.Forms
             this.splitter.ResumeLayout(false);
             this.pnlMessage.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);
+            this.cmsDis.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1031,6 +1066,10 @@ namespace ArduinoLadder.Forms
         private Devinno.Forms.Controls.DvButton btnDefaultCode;
         private Devinno.Forms.Controls.DvControl dvControl3;
         private Devinno.Forms.Controls.DvButton btnDTR;
+        private Devinno.Forms.Menus.DvContextMenuStrip cmsDis;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDEC;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHEX;
+        private System.Windows.Forms.ToolStripMenuItem tsmiBIN;
     }
 }
 

@@ -1,5 +1,7 @@
 ﻿using ArduinoLadder.Ladder;
 using Devinno.Forms.Dialogs;
+using Devinno.Forms.Themes;
+using Devinno.Forms.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +19,11 @@ namespace ArduinoLadder.Forms
 {
     public partial class FormHardware : DvForm
     {
+        #region Interop
+        [DllImport("uxtheme", CharSet = CharSet.Unicode)]
+        static extern Int32 SetWindowTheme(IntPtr hWnd, string subAppName, string subIdList);
+        #endregion
+
         #region class : Result
         public class Result
         {
@@ -123,7 +131,6 @@ namespace ArduinoLadder.Forms
             #region Form Props
             StartPosition = FormStartPosition.CenterParent;
             #endregion
- 
         }
         #endregion
 
@@ -152,6 +159,8 @@ namespace ArduinoLadder.Forms
         #region ShowHardware
         public Result ShowHardware(LadderDocument doc)
         {
+            SetWindowTheme(txt.Handle, "DarkMode_Explorer", null);
+
             Result ret = null;
             
             this.doc = doc;
